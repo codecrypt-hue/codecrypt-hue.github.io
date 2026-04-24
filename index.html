@@ -27,11 +27,21 @@
       overflow-y: auto;
       animation: modalFadeIn 0.4s ease;
     }
-    #epl-modal.open { display: block; }
+
+    #epl-modal.open {
+      display: block;
+    }
 
     @keyframes modalFadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* ── Close Button ─────────────────────────────────────── */
@@ -41,17 +51,24 @@
       float: right;
       margin: 1.2rem 1.5rem 0 0;
       z-index: 10001;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       color: #fff;
-      width: 42px; height: 42px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       cursor: pointer;
       font-size: 1.1rem;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: background 0.2s, transform 0.2s;
     }
-    #epl-close:hover { background: rgba(255,80,80,0.3); transform: rotate(90deg); }
+
+    #epl-close:hover {
+      background: rgba(255, 80, 80, 0.3);
+      transform: rotate(90deg);
+    }
 
     /* ── Inner wrapper ────────────────────────────────────── */
     .epl-wrap {
@@ -65,23 +82,28 @@
     .epl-hero {
       text-align: center;
       padding: 3rem 1rem 2.5rem;
-      background: linear-gradient(135deg, rgba(99,102,241,0.15) 0%, rgba(6,182,212,0.08) 100%);
-      border: 1px solid rgba(99,102,241,0.25);
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(6, 182, 212, 0.08) 100%);
+      border: 1px solid rgba(99, 102, 241, 0.25);
       border-radius: 20px;
       margin-bottom: 2.5rem;
       position: relative;
       overflow: hidden;
     }
+
     .epl-hero::before {
       content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.2) 0%, transparent 70%);
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
       pointer-events: none;
     }
+
     .epl-org-badge {
-      display: inline-flex; align-items: center; gap: .5rem;
-      background: rgba(99,102,241,0.15);
-      border: 1px solid rgba(99,102,241,0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.4);
       border-radius: 50px;
       padding: .35rem 1rem;
       font-size: .78rem;
@@ -90,6 +112,7 @@
       letter-spacing: .04em;
       margin-bottom: 1.2rem;
     }
+
     .epl-hero h1 {
       font-family: 'Orbitron', sans-serif;
       font-size: clamp(1.8rem, 5vw, 3.2rem);
@@ -102,15 +125,24 @@
       animation: shimmer 3s linear infinite;
       margin-bottom: .7rem;
     }
-    @keyframes shimmer { to { background-position: 200% center; } }
+
+    @keyframes shimmer {
+      to {
+        background-position: 200% center;
+      }
+    }
+
     .epl-hero .subtitle {
       font-family: 'Syne', sans-serif;
       font-size: 1.05rem;
       color: #94a3b8;
       margin-bottom: 1.8rem;
     }
+
     .epl-register-btn {
-      display: inline-flex; align-items: center; gap: .6rem;
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
       background: linear-gradient(135deg, #6366f1, #38bdf8);
       color: #fff;
       font-family: 'Orbitron', sans-serif;
@@ -120,10 +152,14 @@
       padding: .9rem 2.2rem;
       border-radius: 50px;
       text-decoration: none;
-      box-shadow: 0 0 30px rgba(99,102,241,0.5);
+      box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
       transition: transform 0.2s, box-shadow 0.2s;
     }
-    .epl-register-btn:hover { transform: scale(1.05); box-shadow: 0 0 45px rgba(99,102,241,0.7); }
+
+    .epl-register-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 45px rgba(99, 102, 241, 0.7);
+    }
 
     /* ── Section headings ─────────────────────────────────── */
     .epl-section-title {
@@ -134,14 +170,21 @@
       letter-spacing: .08em;
       text-transform: uppercase;
       margin: 2.5rem 0 1.2rem;
-      display: flex; align-items: center; gap: .7rem;
+      display: flex;
+      align-items: center;
+      gap: .7rem;
     }
-    .epl-section-title i { color: #818cf8; font-size: 1rem; }
+
+    .epl-section-title i {
+      color: #818cf8;
+      font-size: 1rem;
+    }
+
     .epl-section-title::after {
       content: '';
       flex: 1;
       height: 1px;
-      background: linear-gradient(90deg, rgba(99,102,241,0.5), transparent);
+      background: linear-gradient(90deg, rgba(99, 102, 241, 0.5), transparent);
     }
 
     /* ── Rules Grid ───────────────────────────────────────── */
@@ -151,19 +194,24 @@
       gap: 1rem;
       margin-bottom: 1rem;
     }
+
     .rule-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.09);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
       border-radius: 14px;
       padding: 1.1rem 1.2rem;
-      display: flex; gap: .9rem; align-items: flex-start;
+      display: flex;
+      gap: .9rem;
+      align-items: flex-start;
     }
+
     .rule-card i {
       font-size: 1.2rem;
       color: #818cf8;
       margin-top: .1rem;
       flex-shrink: 0;
     }
+
     .rule-card h5 {
       font-family: 'Syne', sans-serif;
       font-size: .8rem;
@@ -173,6 +221,7 @@
       letter-spacing: .06em;
       margin-bottom: .3rem;
     }
+
     .rule-card p {
       font-family: 'JetBrains Mono', monospace;
       font-size: .82rem;
@@ -186,30 +235,37 @@
       padding-left: 2rem;
       margin-bottom: 1rem;
     }
+
     .timeline::before {
       content: '';
       position: absolute;
-      left: .55rem; top: 0; bottom: 0;
+      left: .55rem;
+      top: 0;
+      bottom: 0;
       width: 2px;
       background: linear-gradient(180deg, #6366f1, #38bdf8, transparent);
       border-radius: 2px;
     }
+
     .tl-item {
       position: relative;
       margin-bottom: 1.4rem;
       padding-left: 1rem;
     }
+
     .tl-item::before {
       content: '';
       position: absolute;
       left: -1.45rem;
       top: .35rem;
-      width: 11px; height: 11px;
+      width: 11px;
+      height: 11px;
       border-radius: 50%;
       background: #6366f1;
-      box-shadow: 0 0 10px rgba(99,102,241,0.8);
+      box-shadow: 0 0 10px rgba(99, 102, 241, 0.8);
       border: 2px solid #1e1b4b;
     }
+
     .tl-date {
       font-family: 'Orbitron', sans-serif;
       font-size: .72rem;
@@ -217,12 +273,14 @@
       letter-spacing: .08em;
       margin-bottom: .2rem;
     }
+
     .tl-event {
       font-family: 'Syne', sans-serif;
       font-size: .95rem;
       font-weight: 600;
       color: #e2e8f0;
     }
+
     .tl-desc {
       font-family: 'JetBrains Mono', monospace;
       font-size: .78rem;
@@ -231,7 +289,11 @@
     }
 
     /* ── Domains (Accordion) ──────────────────────────────── */
-    .domains-list { display: flex; flex-direction: column; gap: .8rem; }
+    .domains-list {
+      display: flex;
+      flex-direction: column;
+      gap: .8rem;
+    }
 
     .domain-accordion {
       border-radius: 14px;
@@ -239,35 +301,69 @@
       border: 1px solid;
       transition: box-shadow 0.3s;
     }
-    .domain-accordion:hover { box-shadow: 0 0 20px var(--domain-glow); }
+
+    .domain-accordion:hover {
+      box-shadow: 0 0 20px var(--domain-glow);
+    }
 
     /* domain colors */
-    .domain-fintech  { --domain-color: #F59E0B; --domain-glow: rgba(245,158,11,0.3); border-color: rgba(245,158,11,0.35); }
-    .domain-cyber    { --domain-color: #3B82F6; --domain-glow: rgba(59,130,246,0.3); border-color: rgba(59,130,246,0.35); }
-    .domain-med      { --domain-color: #EF4444; --domain-glow: rgba(239,68,68,0.3);  border-color: rgba(239,68,68,0.35); }
-    .domain-academic { --domain-color: #A855F7; --domain-glow: rgba(168,85,247,0.3); border-color: rgba(168,85,247,0.35); }
+    .domain-fintech {
+      --domain-color: #F59E0B;
+      --domain-glow: rgba(245, 158, 11, 0.3);
+      border-color: rgba(245, 158, 11, 0.35);
+    }
+
+    .domain-cyber {
+      --domain-color: #3B82F6;
+      --domain-glow: rgba(59, 130, 246, 0.3);
+      border-color: rgba(59, 130, 246, 0.35);
+    }
+
+    .domain-med {
+      --domain-color: #EF4444;
+      --domain-glow: rgba(239, 68, 68, 0.3);
+      border-color: rgba(239, 68, 68, 0.35);
+    }
+
+    .domain-academic {
+      --domain-color: #A855F7;
+      --domain-glow: rgba(168, 85, 247, 0.3);
+      border-color: rgba(168, 85, 247, 0.35);
+    }
 
     .domain-header {
-      display: flex; align-items: center; gap: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
       padding: 1rem 1.3rem;
       cursor: pointer;
-      background: rgba(255,255,255,0.03);
+      background: rgba(255, 255, 255, 0.03);
       user-select: none;
       transition: background 0.2s;
     }
-    .domain-header:hover { background: rgba(255,255,255,0.06); }
+
+    .domain-header:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
 
     .domain-icon {
-      width: 42px; height: 42px;
+      width: 42px;
+      height: 42px;
       border-radius: 10px;
-      background: rgba(255,255,255,0.06);
+      background: rgba(255, 255, 255, 0.06);
       border: 1px solid var(--domain-color);
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 1.1rem;
       color: var(--domain-color);
       flex-shrink: 0;
     }
-    .domain-meta { flex: 1; }
+
+    .domain-meta {
+      flex: 1;
+    }
+
     .domain-name {
       font-family: 'Orbitron', sans-serif;
       font-size: .88rem;
@@ -275,114 +371,162 @@
       color: var(--domain-color);
       letter-spacing: .05em;
     }
+
     .domain-tagline {
       font-family: 'JetBrains Mono', monospace;
       font-size: .73rem;
       color: #64748b;
       margin-top: .15rem;
     }
+
     .domain-toggle {
       color: var(--domain-color);
       font-size: .85rem;
       transition: transform 0.3s;
     }
-    .domain-accordion.active .domain-toggle { transform: rotate(180deg); }
+
+    .domain-accordion.active .domain-toggle {
+      transform: rotate(180deg);
+    }
 
     .domain-body {
       display: none;
       padding: 0 1.3rem 1.3rem;
-      background: rgba(0,0,0,0.2);
-      border-top: 1px solid rgba(255,255,255,0.06);
+      background: rgba(0, 0, 0, 0.2);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
-    .domain-accordion.active .domain-body { display: block; }
+
+    .domain-accordion.active .domain-body {
+      display: block;
+    }
 
     /* track tabs */
     .track-tabs {
-      display: flex; gap: .5rem;
+      display: flex;
+      gap: .5rem;
       margin: 1rem 0 .8rem;
       flex-wrap: wrap;
     }
+
     .track-tab {
       font-family: 'JetBrains Mono', monospace;
       font-size: .73rem;
       padding: .3rem .9rem;
       border-radius: 50px;
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       color: #94a3b8;
       cursor: pointer;
       transition: all 0.2s;
       background: transparent;
     }
-    .track-tab.active, .track-tab:hover {
+
+    .track-tab.active,
+    .track-tab:hover {
       border-color: var(--domain-color);
       color: var(--domain-color);
-      background: rgba(255,255,255,0.04);
+      background: rgba(255, 255, 255, 0.04);
     }
 
     /* project type sub-tabs */
     .type-tabs {
-      display: flex; gap: .4rem;
+      display: flex;
+      gap: .4rem;
       margin-bottom: .7rem;
     }
+
     .type-tab {
       font-family: 'JetBrains Mono', monospace;
       font-size: .7rem;
       padding: .2rem .7rem;
       border-radius: 4px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       color: #64748b;
       cursor: pointer;
       transition: all 0.2s;
       background: transparent;
     }
-    .type-tab.active, .type-tab:hover {
-      background: rgba(255,255,255,0.08);
+
+    .type-tab.active,
+    .type-tab:hover {
+      background: rgba(255, 255, 255, 0.08);
       color: #e2e8f0;
     }
 
-    .ps-list { list-style: none; padding: 0; margin: 0; }
+    .ps-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
     .ps-list li {
       font-family: 'JetBrains Mono', monospace;
       font-size: .78rem;
       color: #94a3b8;
       padding: .45rem .6rem;
       border-radius: 7px;
-      display: flex; gap: .7rem; align-items: flex-start;
+      display: flex;
+      gap: .7rem;
+      align-items: flex-start;
       transition: background 0.15s;
     }
-    .ps-list li:hover { background: rgba(255,255,255,0.04); }
+
+    .ps-list li:hover {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
     .ps-id {
       font-size: .68rem;
       color: var(--domain-color);
-      background: rgba(255,255,255,0.06);
+      background: rgba(255, 255, 255, 0.06);
       border: 1px solid var(--domain-color);
       border-radius: 4px;
       padding: .1rem .4rem;
       flex-shrink: 0;
       margin-top: .05rem;
     }
+
     .ps-sdg {
       font-size: .65rem;
       color: #475569;
       margin-top: .2rem;
     }
 
-    .track-panel { display: none; }
-    .track-panel.active { display: block; }
+    .track-panel {
+      display: none;
+    }
+
+    .track-panel.active {
+      display: block;
+    }
 
     /* ── Guidelines ───────────────────────────────────────── */
-    .guidelines-list { list-style: none; padding: 0; }
+    .guidelines-list {
+      list-style: none;
+      padding: 0;
+    }
+
     .guidelines-list li {
-      display: flex; gap: .8rem; align-items: flex-start;
+      display: flex;
+      gap: .8rem;
+      align-items: flex-start;
       padding: .65rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       font-family: 'Syne', sans-serif;
       font-size: .88rem;
       color: #94a3b8;
       line-height: 1.5;
     }
-    .guidelines-list li:last-child { border-bottom: none; }
-    .guidelines-list li i { color: #818cf8; margin-top: .1rem; flex-shrink: 0; font-size: .9rem; }
+
+    .guidelines-list li:last-child {
+      border-bottom: none;
+    }
+
+    .guidelines-list li i {
+      color: #818cf8;
+      margin-top: .1rem;
+      flex-shrink: 0;
+      font-size: .9rem;
+    }
 
     /* ── Contact ──────────────────────────────────────────── */
     .epl-contacts {
@@ -390,14 +534,23 @@
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: .8rem;
     }
+
     .epl-contact-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.09);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
       border-radius: 12px;
       padding: 1rem;
-      display: flex; gap: .8rem; align-items: center;
+      display: flex;
+      gap: .8rem;
+      align-items: center;
     }
-    .epl-contact-card i { color: #818cf8; font-size: 1rem; flex-shrink: 0; }
+
+    .epl-contact-card i {
+      color: #818cf8;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
     .epl-contact-card .cc-role {
       font-family: 'JetBrains Mono', monospace;
       font-size: .68rem;
@@ -405,6 +558,7 @@
       text-transform: uppercase;
       letter-spacing: .05em;
     }
+
     .epl-contact-card .cc-name {
       font-family: 'Syne', sans-serif;
       font-size: .85rem;
@@ -412,6 +566,7 @@
       color: #e2e8f0;
       margin: .1rem 0;
     }
+
     .epl-contact-card a {
       font-family: 'JetBrains Mono', monospace;
       font-size: .78rem;
@@ -420,13 +575,25 @@
     }
 
     /* ── Make existing event card clickable ───────────────── */
-    .event-card { cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
-    .event-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(99,102,241,0.25); }
+    .event-card {
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .event-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(99, 102, 241, 0.25);
+    }
 
     /* ── Responsive ───────────────────────────────────────── */
     @media (max-width: 600px) {
-      .epl-wrap { padding: 1rem 1rem 4rem; }
-      .rules-grid { grid-template-columns: 1fr; }
+      .epl-wrap {
+        padding: 1rem 1rem 4rem;
+      }
+
+      .rules-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -455,30 +622,30 @@
   <canvas id="particle-canvas"></canvas>
 
   <!-- NAVBAR -->
-<nav id="navbar">
-  <div class="nav-inner">
-    <a href="#home" class="nav-logo" data-nav="home">
-      <div class="logo-box">
-        <span class="logo-bracket"></span>
-        <img src="logo.png" alt="Code Crypt Logo" class="logo-img">
-        <span class="logo-bracket"></span>
-      </div>
-      <span class="logo-name">Code<span class="accent">Crypt</span></span>
-    </a>
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo" data-nav="home">
+        <div class="logo-box">
+          <span class="logo-bracket"></span>
+          <img src="logo.png" alt="Code Crypt Logo" class="logo-img">
+          <span class="logo-bracket"></span>
+        </div>
+        <span class="logo-name">Code<span class="accent">Crypt</span></span>
+      </a>
 
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
 
-    <ul class="nav-links" id="nav-links">
-      <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
-      <li><a href="#events" class="nav-link" data-section="events">Events</a></li>
-            <li><a href="#members" class="nav-link" data-section="members">Members</a></li>
-      <li><a href="#vision" class="nav-link" data-section="vision">Vision &amp; Mission</a></li>
-      <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
-    </ul>
-  </div>
-</nav>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+        <li><a href="#events" class="nav-link" data-section="events">Events</a></li>
+        <li><a href="#members" class="nav-link" data-section="members">Members</a></li>
+        <li><a href="#vision" class="nav-link" data-section="vision">Vision &amp; Mission</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
   <main>
 
     <!-- ===== HOME ===== -->
@@ -520,7 +687,7 @@
       </div>
     </section>
 
-   
+
 
     <!-- ===== EVENTS ===== -->
     <section id="events" class="section">
@@ -532,24 +699,6 @@
       <div class="events-grid reveal">
 
         <!-- ↓ Site Splash 2026 Event Card -->
-        <div class="event-card">
-          <div class="event-banner" style="--ec:160">
-            <i class="fa-solid fa-laptop-code event-icon"></i>
-            <div class="event-date-badge"><span class="eday">23</span><span class="emon">APR</span></div>
-          </div>
-          <div class="event-body">
-            <span class="event-tag">Project Expo · Python &amp; DBMS</span>
-            <h3 class="event-name">Site Splash 2026</h3>
-            <div class="event-meta">
-              <span><i class="fa-solid fa-calendar-days"></i> Apr 23, 2026</span>
-              <span><i class="fa-solid fa-location-dot"></i> Stanley College of Engineering</span>
-            </div>
-            <p class="event-desc">A Project Expo by CSE-B (2nd Year, 4th Semester) showcasing real-world applications built with Python and DBMS — bridging theory with practical innovation.</p>
-            <div style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.35);color:#f87171;font-family:'Orbitron',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.08em;padding:.55rem 1.2rem;border-radius:50px;">
-              <i class="fa-solid fa-lock"></i> Registration Closed
-            </div>
-          </div>
-        </div>
 
         <!-- ↓ clicking this card opens the EPL modal -->
         <div class="event-card" id="epl-trigger" title="Click to view full details">
@@ -564,82 +713,320 @@
               <span><i class="fa-solid fa-calendar-days"></i> Apr 2026 – Jun 2026</span>
               <span><i class="fa-solid fa-location-dot"></i> Seminar Hall B</span>
             </div>
-            <p class="event-desc">One Month to Build, One Day to Conquer. A month-long intensive tournament open to all branches (1st–3rd years) building real projects across Fintech, Cybersecurity, Healthcare, and EdTech tracks.</p>
+            <p class="event-desc">One Month to Build, One Day to Conquer. A month-long intensive tournament open to all
+              branches (1st–3rd years) building real projects across Fintech, Cybersecurity, Healthcare, and EdTech
+              tracks.</p>
             <div style="display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;">
               <div class="btn btn-primary btn-sm" style="display:inline-flex;align-items:center;gap:.5rem;">
                 <i class="fa-solid fa-circle-info"></i> View Full Details
               </div>
-              <a href="https://forms.gle/PDfxvC2tjuJoyisVA" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,#6366f1,#38bdf8);color:#fff;font-family:'Orbitron',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.08em;padding:.55rem 1.2rem;border-radius:50px;text-decoration:none;">
+              <a href="https://forms.gle/PDfxvC2tjuJoyisVA" target="_blank" rel="noopener"
+                style="display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,#6366f1,#38bdf8);color:#fff;font-family:'Orbitron',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.08em;padding:.55rem 1.2rem;border-radius:50px;text-decoration:none;">
                 <i class="fa-solid fa-arrow-right-to-bracket"></i> Register Now
               </a>
             </div>
           </div>
         </div>
+        <div class="event-card">
+          <div class="event-banner" style="--ec:160">
+            <i class="fa-solid fa-laptop-code event-icon"></i>
+            <div class="event-date-badge"><span class="eday">23</span><span class="emon">APR</span></div>
+          </div>
+          <div class="event-body">
+            <span class="event-tag">Project Expo · Python &amp; DBMS</span>
+            <h3 class="event-name">Site Splash 2026</h3>
+            <div class="event-meta">
+              <span><i class="fa-solid fa-calendar-days"></i> Apr 23, 2026</span>
+              <span><i class="fa-solid fa-location-dot"></i> Stanley College of Engineering</span>
+            </div>
+            <p class="event-desc">A Project Expo by CSE-B (2nd Year, 4th Semester) showcasing real-world applications
+              built with Python and DBMS — bridging theory with practical innovation.</p>
+            <div
+              style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.35);color:#f87171;font-family:'Orbitron',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.08em;padding:.55rem 1.2rem;border-radius:50px;">
+              <i class="fa-solid fa-lock"></i> Registration Closed
+            </div>
+          </div>
+        </div>
+        <!-- ↓ Code in Color: Poster Making Competition -->
+        <div class="event-card">
+          <div class="event-banner" style="--ec:300">
+            <i class="fa-solid fa-palette event-icon"></i>
+            <div class="event-date-badge"><span class="eday">2026</span><span class="emon">CSE</span></div>
+          </div>
+          <div class="event-body">
+            <span class="event-tag">Competition · Design &amp; Creativity</span>
+            <h3 class="event-name">Code in Color: Poster Making Competition</h3>
+            <div class="event-meta">
+              <span><i class="fa-solid fa-users"></i> All CSE Sections</span>
+              <span><i class="fa-solid fa-location-dot"></i> Stanley College of Engineering</span>
+            </div>
+            <p class="event-desc">Code Crypt's first-ever class-wise poster making competition — blending technical
+              concepts with creative art. Class winners competed for the Grand Winner title, whose poster became the
+              Official Club Poster for 2026.</p>
+            <div
+              style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.35);color:#f87171;font-family:'Orbitron',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.08em;padding:.55rem 1.2rem;border-radius:50px;">
+              <i class="fa-solid fa-lock"></i> Registration Closed
+            </div>
+          </div>
+        </div>
       </div>
     </section>
- <!-- ===== MEMBERS ===== -->
+
+    <!-- ===== MEMBERS ===== -->
     <div class="team-block" id="members"></div>
-      <h3 class="team-block-title reveal">
-        <i class="fa-solid fa-chalkboard-user"></i> Teacher Coordinators
-      </h3>
+    <h3 class="team-block-title reveal">
+      <i class="fa-solid fa-chalkboard-user"></i> Teacher Coordinators
+    </h3>
 
-      <div class="cards-grid cards-grid--2 reveal">
-        <div class="member-card">
-          <div class="card-glow"></div>
-          <div class="avatar-wrap">
-            <div class="avatar" style="--hue:250">
-              <img src="ANISHA MA'AM.jpeg" alt="Dr. P.R. Anisha">
-              <div class="avatar-ring"></div>
-            </div>
+    <div class="cards-grid cards-grid--2 reveal">
+      <div class="member-card">
+        <div class="card-glow"></div>
+        <div class="avatar-wrap">
+          <div class="avatar" style="--hue:250">
+            <img src="ANISHA MA'AM.jpeg" alt="Dr. P.R. Anisha">
+            <div class="avatar-ring"></div>
           </div>
-          <div class="card-body">
-            <h4>Dr. P.R. Anisha</h4>
-            <span class="role-badge role-teacher">Teacher Coordinator</span>
-            <p class="card-dept">Professor, CSE Dept.</p>
-          </div>
-          <div class="card-footer">2024–2028</div>
         </div>
-
-        <div class="member-card">
-          <div class="card-glow"></div>
-          <div class="avatar-wrap">
-            <div class="avatar" style="--hue:190">
-              <img src="HAFSA IUA MA'AM.jpeg" alt="Ms. Hafsa Ihteshamuddin Ahmed">
-              <div class="avatar-ring"></div>
-            </div>
-          </div>
-          <div class="card-body">
-            <h4>Ms. Hafsa Ihteshamuddin Ahmed</h4>
-            <span class="role-badge role-teacher">Teacher Coordinator</span>
-            <p class="card-dept">Asst. Professor, CSE Dept.</p>
-          </div>
-          <div class="card-footer">2024–2028</div>
+        <div class="card-body">
+          <h4>Dr. P.R. Anisha</h4>
+          <span class="role-badge role-teacher">Teacher Coordinator</span>
+          <p class="card-dept">Professor, CSE Dept.</p>
         </div>
+        <div class="card-footer">2024–2028</div>
       </div>
+
+      <div class="member-card">
+        <div class="card-glow"></div>
+        <div class="avatar-wrap">
+          <div class="avatar" style="--hue:190">
+            <img src="HAFSA IUA MA'AM.jpeg" alt="Ms. Hafsa Ihteshamuddin Ahmed">
+            <div class="avatar-ring"></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h4>Ms. Hafsa Ihteshamuddin Ahmed</h4>
+          <span class="role-badge role-teacher">Teacher Coordinator</span>
+          <p class="card-dept">Asst. Professor, CSE Dept.</p>
+        </div>
+        <div class="card-footer">2024–2028</div>
+      </div>
+    </div>
     </div>
 
     <h3 class="team-block-title reveal">
       <i class="fa-solid fa-chalkboard-user"></i> Student Coordinators
     </h3>
 
-    <div class="member-card"><div class="card-glow"></div><div class="avatar-wrap"><div class="avatar" style="--hue:280"><img src="1.jpeg" alt="Mudradi Pranavi"><div class="avatar-ring"></div></div></div><div class="card-body"><h4>Mudradi Pranavi</h4><span class="role-badge role-student">Senior Advisor</span><p class="card-dept">3rd Year CSE</p></div><div class="card-footer">2023–2027</div></div>
-    <div class="member-card"><div class="card-glow"></div><div class="avatar-wrap"><div class="avatar" style="--hue:160"><img src="2.jpeg" alt="Shreeja Kadarla"><div class="avatar-ring"></div></div></div><div class="card-body"><h4>Shreeja Kadarla</h4><span class="role-badge role-student">Deputy Advisor</span><p class="card-dept">3rd Year CSE</p></div><div class="card-footer">2023–2027</div></div>
-    <div class="member-card"><div class="card-glow"></div><div class="avatar-wrap"><div class="avatar" style="--hue:30"><img src="3.jpeg" alt="Lalitya T"><div class="avatar-ring"></div></div></div><div class="card-body"><h4>Lalitya T</h4><span class="role-badge role-student">Event Head</span><p class="card-dept">2nd Year CSE</p></div><div class="card-footer">2024–2028</div></div>
-    <div class="member-card"><div class="card-glow"></div><div class="avatar-wrap"><div class="avatar" style="--hue:330"><img src="azra.jpeg" alt="Azra Jabeen"><div class="avatar-ring"></div></div></div><div class="card-body"><h4>Azra Jabeen</h4><span class="role-badge role-student">Event Coordinator</span><p class="card-dept">2nd Year CSE</p></div><div class="card-footer">2024–2028</div></div>
-        <div class="member-card"><div class="card-glow"></div><div class="avatar-wrap"><div class="avatar" style="--hue:140"><img src="15.jpeg" alt="Safa Fatima"><div class="avatar-ring"></div></div></div><div class="card-body"><h4>Safa Fatima</h4><span class="role-badge role-student">Operational Head</span><p class="card-dept">2nd Year CSE</p></div><div class="card-footer">2024–2028</div></div>
-            <div class="member-card"><div class="card-glow"></div><div class="avatar-wrap"><div class="avatar" style="--hue:45"><img src="16.jpeg" alt="Atikha Ahmed"><div class="avatar-ring"></div></div></div><div class="card-body"><h4>Atikha Ahmed</h4><span class="role-badge role-student">Operation Coordinator</span><p class="card-dept">2nd Year CSE</p></div><div class="card-footer">2024–2028</div></div>
-                <div class="member-card"><div class="card-glow"></div><div class="avatar-wrap"><div class="avatar" style="--hue:300"><img src="/8.jpeg" alt="Nitha Reddy"><div class="avatar-ring"></div></div></div><div class="card-body"><h4>Nitha Reddy</h4><span class="role-badge role-student">SNS Head</span><p class="card-dept">2nd Year CSE</p></div><div class="card-footer">2024–2028</div></div>
-                    <div class="member-card"><div class="card-glow"></div><div class="avatar-wrap"><div class="avatar" style="--hue:130"><img src="7.jpeg" alt="Sanjana Vaddepally"><div class="avatar-ring"></div></div></div><div class="card-body"><h4>Sanjana Vaddepally</h4><span class="role-badge role-student">Social Media Networking Coordinator</span><p class="card-dept">2nd Year CSE</p></div><div class="card-footer">2024–2028</div></div>
-    <div class="member-card"><div class="card-glow"></div><div class="avatar-wrap"><div class="avatar" style="--hue:200"><img src="5.jpeg" alt="Gandhari Likhitha"><div class="avatar-ring"></div></div></div><div class="card-body"><h4>Gandhari Likhitha</h4><span class="role-badge role-student">Marketing Coordinator</span><p class="card-dept">3rd Year CSE</p></div><div class="card-footer">2023–2027</div></div>
-    <div class="member-card"><div class="card-glow"></div><div class="avatar-wrap"><div class="avatar" style="--hue:60"><img src="6.jpeg" alt="G.Rishitha Goud"><div class="avatar-ring"></div></div></div><div class="card-body"><h4>G.Rishitha Goud</h4><span class="role-badge role-student">Marketing Head</span><p class="card-dept">3rd Year CSE</p></div><div class="card-footer">2023–2027</div></div>
+    <div class="member-card">
+      <div class="card-glow"></div>
+      <div class="avatar-wrap">
+        <div class="avatar" style="--hue:280"><img src="1.jpeg" alt="Mudradi Pranavi">
+          <div class="avatar-ring"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4>Mudradi Pranavi</h4><span class="role-badge role-student">Senior Advisor</span>
+        <p class="card-dept">3rd Year CSE</p>
+      </div>
+      <div class="card-footer">2023–2027</div>
+    </div>
+    <div class="member-card">
+      <div class="card-glow"></div>
+      <div class="avatar-wrap">
+        <div class="avatar" style="--hue:160"><img src="2.jpeg" alt="Shreeja Kadarla">
+          <div class="avatar-ring"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4>Shreeja Kadarla</h4><span class="role-badge role-student">Deputy Advisor</span>
+        <p class="card-dept">3rd Year CSE</p>
+      </div>
+      <div class="card-footer">2023–2027</div>
+    </div>
+    <div class="member-card">
+      <div class="card-glow"></div>
+      <div class="avatar-wrap">
+        <div class="avatar" style="--hue:30"><img src="3.jpeg" alt="Lalitya T">
+          <div class="avatar-ring"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4>Lalitya T</h4><span class="role-badge role-student">Event Head</span>
+        <p class="card-dept">2nd Year CSE</p>
+      </div>
+      <div class="card-footer">2024–2028</div>
+    </div>
+    <div class="member-card">
+      <div class="card-glow"></div>
+      <div class="avatar-wrap">
+        <div class="avatar" style="--hue:330"><img src="azra.jpeg" alt="Azra Jabeen">
+          <div class="avatar-ring"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4>Azra Jabeen</h4><span class="role-badge role-student">Event Coordinator</span>
+        <p class="card-dept">2nd Year CSE</p>
+      </div>
+      <div class="card-footer">2024–2028</div>
+    </div>
+    <div class="member-card">
+      <div class="card-glow"></div>
+      <div class="avatar-wrap">
+        <div class="avatar" style="--hue:140"><img src="15.jpeg" alt="Safa Fatima">
+          <div class="avatar-ring"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4>Safa Fatima</h4><span class="role-badge role-student">Operational Head</span>
+        <p class="card-dept">2nd Year CSE</p>
+      </div>
+      <div class="card-footer">2024–2028</div>
+    </div>
+    <div class="member-card">
+      <div class="card-glow"></div>
+      <div class="avatar-wrap">
+        <div class="avatar" style="--hue:45"><img src="16.jpeg" alt="Atikha Ahmed">
+          <div class="avatar-ring"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4>Atikha Ahmed</h4><span class="role-badge role-student">Operation Coordinator</span>
+        <p class="card-dept">2nd Year CSE</p>
+      </div>
+      <div class="card-footer">2024–2028</div>
+    </div>
+    <div class="member-card">
+      <div class="card-glow"></div>
+      <div class="avatar-wrap">
+        <div class="avatar" style="--hue:300"><img src="/8.jpeg" alt="Nitha Reddy">
+          <div class="avatar-ring"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4>Nitha Reddy</h4><span class="role-badge role-student">SNS Head</span>
+        <p class="card-dept">2nd Year CSE</p>
+      </div>
+      <div class="card-footer">2024–2028</div>
+    </div>
+    <div class="member-card">
+      <div class="card-glow"></div>
+      <div class="avatar-wrap">
+        <div class="avatar" style="--hue:130"><img src="7.jpeg" alt="Sanjana Vaddepally">
+          <div class="avatar-ring"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4>Sanjana Vaddepally</h4><span class="role-badge role-student">Social Media Networking Coordinator</span>
+        <p class="card-dept">2nd Year CSE</p>
+      </div>
+      <div class="card-footer">2024–2028</div>
+    </div>
+    <div class="member-card">
+      <div class="card-glow"></div>
+      <div class="avatar-wrap">
+        <div class="avatar" style="--hue:200"><img src="5.jpeg" alt="Gandhari Likhitha">
+          <div class="avatar-ring"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4>Gandhari Likhitha</h4><span class="role-badge role-student">Marketing Coordinator</span>
+        <p class="card-dept">3rd Year CSE</p>
+      </div>
+      <div class="card-footer">2023–2027</div>
+    </div>
+    <div class="member-card">
+      <div class="card-glow"></div>
+      <div class="avatar-wrap">
+        <div class="avatar" style="--hue:60"><img src="6.jpeg" alt="G.Rishitha Goud">
+          <div class="avatar-ring"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4>G.Rishitha Goud</h4><span class="role-badge role-student">Marketing Head</span>
+        <p class="card-dept">3rd Year CSE</p>
+      </div>
+      <div class="card-footer">2023–2027</div>
+    </div>
 
 
-    <div class="member-card"><div class="card-glow"></div><div class="avatar-wrap"><div class="avatar" style="--hue:20"><img src="9.jpeg" alt="Mekalollu Nandika"><div class="avatar-ring"></div></div></div><div class="card-body"><h4>Mekalollu Nandika</h4><span class="role-badge role-student">Designing Co-ordinator</span><p class="card-dept">2nd Year CSE</p></div><div class="card-footer">2024–2028</div></div>
-    <div class="member-card"><div class="card-glow"></div><div class="avatar-wrap"><div class="avatar" style="--hue:170"><img src="/10.jpeg" alt="Vyshnavi Aluri"><div class="avatar-ring"></div></div></div><div class="card-body"><h4>Vyshnavi Aluri</h4><span class="role-badge role-student">Marketing Coordinator</span><p class="card-dept">2nd Year CSE</p></div><div class="card-footer">2024–2028</div></div>
-    <div class="member-card"><div class="card-glow"></div><div class="avatar-wrap"><div class="avatar" style="--hue:240"><img src="11.jpeg" alt="Nagireddy Neha Reddy"><div class="avatar-ring"></div></div></div><div class="card-body"><h4>Nagireddy Neha Reddy</h4><span class="role-badge role-student">Functional Member</span><p class="card-dept">2nd Year CSE</p></div><div class="card-footer">2024–2028</div></div>
-    <div class="member-card"><div class="card-glow"></div><div class="avatar-wrap"><div class="avatar" style="--hue:90"><img src="12.jpeg" alt="B.Bhumika Singh"><div class="avatar-ring"></div></div></div><div class="card-body"><h4>B.Bhumika Singh</h4><span class="role-badge role-student">Designing Head</span><p class="card-dept">3rd Year CSE</p></div><div class="card-footer">2023–2027</div></div>
-    <div class="member-card"><div class="card-glow"></div><div class="avatar-wrap"><div class="avatar" style="--hue:350"><img src="13.jpeg" alt="Thiruvaipati Harini"><div class="avatar-ring"></div></div></div><div class="card-body"><h4>Thiruvaipati Harini</h4><span class="role-badge role-student">External Head</span><p class="card-dept">3rd Year CSE</p></div><div class="card-footer">2023–2027</div></div>
-    <div class="member-card"><div class="card-glow"></div><div class="avatar-wrap"><div class="avatar" style="--hue:210"><img src="14.jpeg" alt="Gangidi Sai Sree Pradyugna Reddy"><div class="avatar-ring"></div></div></div><div class="card-body"><h4>Gangidi Sai Sree Pradyugna Reddy</h4><span class="role-badge role-student">External Coordinator</span><p class="card-dept">2nd Year CSE</p></div><div class="card-footer">2024–2028</div></div>
+    <div class="member-card">
+      <div class="card-glow"></div>
+      <div class="avatar-wrap">
+        <div class="avatar" style="--hue:20"><img src="9.jpeg" alt="Mekalollu Nandika">
+          <div class="avatar-ring"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4>Mekalollu Nandika</h4><span class="role-badge role-student">Designing Co-ordinator</span>
+        <p class="card-dept">2nd Year CSE</p>
+      </div>
+      <div class="card-footer">2024–2028</div>
+    </div>
+    <div class="member-card">
+      <div class="card-glow"></div>
+      <div class="avatar-wrap">
+        <div class="avatar" style="--hue:170"><img src="/10.jpeg" alt="Vyshnavi Aluri">
+          <div class="avatar-ring"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4>Vyshnavi Aluri</h4><span class="role-badge role-student">Marketing Coordinator</span>
+        <p class="card-dept">2nd Year CSE</p>
+      </div>
+      <div class="card-footer">2024–2028</div>
+    </div>
+    <div class="member-card">
+      <div class="card-glow"></div>
+      <div class="avatar-wrap">
+        <div class="avatar" style="--hue:240"><img src="11.jpeg" alt="Nagireddy Neha Reddy">
+          <div class="avatar-ring"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4>Nagireddy Neha Reddy</h4><span class="role-badge role-student">Functional Member</span>
+        <p class="card-dept">2nd Year CSE</p>
+      </div>
+      <div class="card-footer">2024–2028</div>
+    </div>
+    <div class="member-card">
+      <div class="card-glow"></div>
+      <div class="avatar-wrap">
+        <div class="avatar" style="--hue:90"><img src="12.jpeg" alt="B.Bhumika Singh">
+          <div class="avatar-ring"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4>B.Bhumika Singh</h4><span class="role-badge role-student">Designing Head</span>
+        <p class="card-dept">3rd Year CSE</p>
+      </div>
+      <div class="card-footer">2023–2027</div>
+    </div>
+    <div class="member-card">
+      <div class="card-glow"></div>
+      <div class="avatar-wrap">
+        <div class="avatar" style="--hue:350"><img src="13.jpeg" alt="Thiruvaipati Harini">
+          <div class="avatar-ring"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4>Thiruvaipati Harini</h4><span class="role-badge role-student">External Head</span>
+        <p class="card-dept">3rd Year CSE</p>
+      </div>
+      <div class="card-footer">2023–2027</div>
+    </div>
+    <div class="member-card">
+      <div class="card-glow"></div>
+      <div class="avatar-wrap">
+        <div class="avatar" style="--hue:210"><img src="14.jpeg" alt="Gangidi Sai Sree Pradyugna Reddy">
+          <div class="avatar-ring"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4>Gangidi Sai Sree Pradyugna Reddy</h4><span class="role-badge role-student">External Coordinator</span>
+        <p class="card-dept">2nd Year CSE</p>
+      </div>
+      <div class="card-footer">2024–2028</div>
+    </div>
 
     <!-- ===== VISION & MISSION ===== -->
     <section id="vision" class="section">
@@ -654,7 +1041,9 @@
             <div class="vm-icon-ring"></div>
           </div>
           <h3>Our Vision</h3>
-          <p>To build a generation of engineers who don't just write code — they think in systems, break boundaries, and architect the future. Code Crypt exists to transform curious students into confident technologists who lead, innovate, and inspire.</p>
+          <p>To build a generation of engineers who don't just write code — they think in systems, break boundaries, and
+            architect the future. Code Crypt exists to transform curious students into confident technologists who lead,
+            innovate, and inspire.</p>
           <ul class="vm-list">
             <li><i class="fa-solid fa-check-circle"></i> Foster a culture of curiosity and relentless learning</li>
             <li><i class="fa-solid fa-check-circle"></i> Bridge the gap between academics and industry</li>
@@ -668,7 +1057,9 @@
             <div class="vm-icon-ring"></div>
           </div>
           <h3>Our Mission</h3>
-          <p>To create a vibrant, inclusive community where every student — from a first-year beginner to a final-year expert — can collaborate, compete, and grow. We do this through hands-on events, open-source culture, and mentorship from peers and professionals.</p>
+          <p>To create a vibrant, inclusive community where every student — from a first-year beginner to a final-year
+            expert — can collaborate, compete, and grow. We do this through hands-on events, open-source culture, and
+            mentorship from peers and professionals.</p>
           <ul class="vm-list">
             <li><i class="fa-solid fa-check-circle"></i> Organize impactful workshops, hackathons &amp; CTFs</li>
             <li><i class="fa-solid fa-check-circle"></i> Mentor juniors through real-world project experience</li>
@@ -701,7 +1092,8 @@
         <div class="contact-card">
           <i class="fa-brands fa-linkedin-in contact-ico"></i>
           <h4>Connect on LinkedIn</h4>
-          <a href="https://www.linkedin.com/in/code-crypt-7498a5401" target="_blank" rel="noopener">linkedin.com/codecrypt</a>
+          <a href="https://www.linkedin.com/in/code-crypt-7498a5401" target="_blank"
+            rel="noopener">linkedin.com/codecrypt</a>
         </div>
         <div class="contact-card">
           <i class="fa-brands fa-instagram contact-ico"></i>
@@ -717,17 +1109,19 @@
   <footer id="footer">
     <div class="footer-inner">
       <div class="footer-brand">
-       <div class="logo-box sm">
-  <span class="logo-bracket"></span>
-  <img src="logo.png" alt="Logo" class="logo-img">
-  <span class="logo-bracket"></span>
-</div>
+        <div class="logo-box sm">
+          <span class="logo-bracket"></span>
+          <img src="logo.png" alt="Logo" class="logo-img">
+          <span class="logo-bracket"></span>
+        </div>
         <span class="logo-name">Code<span class="accent">Crypt</span></span>
       </div>
       <p class="footer-tagline">Decoding the future, one commit at a time.</p>
       <div class="footer-socials">
-        <a href="https://www.instagram.com/code_crypt_" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/code-crypt-7498a5401" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/code_crypt_" target="_blank" rel="noopener"><i
+            class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/code-crypt-7498a5401" target="_blank" rel="noopener"><i
+            class="fa-brands fa-linkedin-in"></i></a>
         <a href="mailto:codecrypt@college.edu"><i class="fa-solid fa-envelope"></i></a>
       </div>
       <p class="footer-copy">&copy; 2025 Code Crypt · CSE Dept · All Rights Reserved</p>
@@ -763,27 +1157,46 @@
       <div class="rules-grid">
         <div class="rule-card">
           <i class="fa-solid fa-clock"></i>
-          <div><h5>Duration</h5><p>One Month</p></div>
+          <div>
+            <h5>Duration</h5>
+            <p>One Month</p>
+          </div>
         </div>
         <div class="rule-card">
           <i class="fa-solid fa-graduation-cap"></i>
-          <div><h5>Eligibility</h5><p>BE students of all branches, any year</p></div>
+          <div>
+            <h5>Eligibility</h5>
+            <p>BE students of all branches, any year</p>
+          </div>
         </div>
         <div class="rule-card">
           <i class="fa-solid fa-layer-group"></i>
-          <div><h5>Tracks</h5><p><strong style="color:#818cf8">Junior:</strong> 1st Year &nbsp;|&nbsp; <strong style="color:#818cf8">Senior:</strong> 2nd &amp; 3rd Year</p></div>
+          <div>
+            <h5>Tracks</h5>
+            <p><strong style="color:#818cf8">Junior:</strong> 1st Year &nbsp;|&nbsp; <strong
+                style="color:#818cf8">Senior:</strong> 2nd &amp; 3rd Year</p>
+          </div>
         </div>
         <div class="rule-card">
           <i class="fa-solid fa-users"></i>
-          <div><h5>Team Size</h5><p>3 – 4 Members</p></div>
+          <div>
+            <h5>Team Size</h5>
+            <p>3 – 4 Members</p>
+          </div>
         </div>
         <div class="rule-card">
           <i class="fa-solid fa-trophy"></i>
-          <div><h5>Award</h5><p>MVP (Most Valuable Programming Team) per domain</p></div>
+          <div>
+            <h5>Award</h5>
+            <p>MVP (Most Valuable Programming Team) per domain</p>
+          </div>
         </div>
         <div class="rule-card">
           <i class="fa-solid fa-file-code"></i>
-          <div><h5>Requirements</h5><p>Working Model + Documentation + GitHub Link</p></div>
+          <div>
+            <h5>Requirements</h5>
+            <p>Working Model + Documentation + GitHub Link</p>
+          </div>
         </div>
       </div>
 
@@ -803,22 +1216,26 @@
         <div class="tl-item">
           <div class="tl-date">1ST WEEK OF MAY 2026</div>
           <div class="tl-event">📐 Phase 1 — Blueprint Blitz</div>
-          <div class="tl-desc">Submit your Architecture Diagram — UI/UX wireframe (software) or circuit schematic (hardware)</div>
+          <div class="tl-desc">Submit your Architecture Diagram — UI/UX wireframe (software) or circuit schematic
+            (hardware)</div>
         </div>
         <div class="tl-item">
           <div class="tl-date">2ND &amp; 3RD WEEKS OF MAY 2026</div>
           <div class="tl-event">⚡ Phase 2 — Development Powerplay</div>
-          <div class="tl-desc">Code Kickoff (Week 2): Initialize GitHub repo + first significant commit &amp; Teaser Trailer (Week 3): Post a 30–60 sec project teaser on social media</div>
+          <div class="tl-desc">Code Kickoff (Week 2): Initialize GitHub repo + first significant commit &amp; Teaser
+            Trailer (Week 3): Post a 30–60 sec project teaser on social media</div>
         </div>
         <div class="tl-item">
           <div class="tl-date">LAST WEEK OF MAY 2026</div>
           <div class="tl-event">🎬 Phase 3 — Video Qualifier Deadline</div>
-          <div class="tl-desc">Upload project video to Google Drive showing concept + near-finished demo. Shortlisted teams advance to Grand Finale</div>
+          <div class="tl-desc">Upload project video to Google Drive showing concept + near-finished demo. Shortlisted
+            teams advance to Grand Finale</div>
         </div>
         <div class="tl-item">
           <div class="tl-date">1ST WEEK OF JUNE 2026</div>
           <div class="tl-event">🏆 Grand Finale Expo &amp; Awards</div>
-          <div class="tl-desc">Present working prototype before expert judges — MVP certificates awarded per domain</div>
+          <div class="tl-desc">Present working prototype before expert judges — MVP certificates awarded per domain
+          </div>
         </div>
       </div>
 
@@ -850,18 +1267,58 @@
               </div>
               <div id="fintech-junior-hw">
                 <ul class="ps-list">
-                  <li><span class="ps-id">FF-01-H1</span><div><div>Digital Keypad Savings Box — unlocks with 4-digit code on 4x4 Matrix Keypad</div><div class="ps-sdg">SDG 8</div></div></li>
-                  <li><span class="ps-id">FF-01-H2</span><div><div>Smart Coin Counter — IR sensor counts and totals coin value on display</div><div class="ps-sdg">SDG 8</div></div></li>
-                  <li><span class="ps-id">FF-01-H3</span><div><div>RFID-Based "Pocket Money" Card — reads tag and shows balance on LCD</div><div class="ps-sdg">SDG 8, 9</div></div></li>
+                  <li><span class="ps-id">FF-01-H1</span>
+                    <div>
+                      <div>Digital Keypad Savings Box — unlocks with 4-digit code on 4x4 Matrix Keypad</div>
+                      <div class="ps-sdg">SDG 8</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">FF-01-H2</span>
+                    <div>
+                      <div>Smart Coin Counter — IR sensor counts and totals coin value on display</div>
+                      <div class="ps-sdg">SDG 8</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">FF-01-H3</span>
+                    <div>
+                      <div>RFID-Based "Pocket Money" Card — reads tag and shows balance on LCD</div>
+                      <div class="ps-sdg">SDG 8, 9</div>
+                    </div>
+                  </li>
                 </ul>
               </div>
               <div id="fintech-junior-sw" style="display:none">
                 <ul class="ps-list">
-                  <li><span class="ps-id">FF-01-S1</span><div><div>Smart Expense Tracker &amp; Budget Planner with visual charts and alerts</div><div class="ps-sdg">SDG 12</div></div></li>
-                  <li><span class="ps-id">FF-01-S2</span><div><div>Personalized Fixed Deposit (FD) Calculator comparing bank interest rates</div><div class="ps-sdg">SDG 4</div></div></li>
-                  <li><span class="ps-id">FF-01-S3</span><div><div>Basic Stock Market Learning Simulator with virtual currency</div><div class="ps-sdg">SDG 4</div></div></li>
-                  <li><span class="ps-id">FF-01-S4</span><div><div>Group Expense Splitter (Split-Bill) for shared costs</div><div class="ps-sdg">SDG 17</div></div></li>
-                  <li><span class="ps-id">FF-01-S5</span><div><div>Automated Invoice Generator for Small Businesses (PDF invoices)</div><div class="ps-sdg">SDG 8</div></div></li>
+                  <li><span class="ps-id">FF-01-S1</span>
+                    <div>
+                      <div>Smart Expense Tracker &amp; Budget Planner with visual charts and alerts</div>
+                      <div class="ps-sdg">SDG 12</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">FF-01-S2</span>
+                    <div>
+                      <div>Personalized Fixed Deposit (FD) Calculator comparing bank interest rates</div>
+                      <div class="ps-sdg">SDG 4</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">FF-01-S3</span>
+                    <div>
+                      <div>Basic Stock Market Learning Simulator with virtual currency</div>
+                      <div class="ps-sdg">SDG 4</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">FF-01-S4</span>
+                    <div>
+                      <div>Group Expense Splitter (Split-Bill) for shared costs</div>
+                      <div class="ps-sdg">SDG 17</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">FF-01-S5</span>
+                    <div>
+                      <div>Automated Invoice Generator for Small Businesses (PDF invoices)</div>
+                      <div class="ps-sdg">SDG 8</div>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -874,18 +1331,58 @@
               </div>
               <div id="fintech-senior-hw">
                 <ul class="ps-list">
-                  <li><span class="ps-id">FF-02-H1</span><div><div>Intrusion Alarm System using magnetic reed switches for door/window security</div><div class="ps-sdg">SDG 11</div></div></li>
-                  <li><span class="ps-id">FF-02-H2</span><div><div>USB Port Alert — buzzer if unauthorized device plugged in (detects 5V)</div><div class="ps-sdg">SDG 9</div></div></li>
-                  <li><span class="ps-id">FF-02-H3</span><div><div>Laser Tripwire Security using LDR and laser pointer for perimeter protection</div><div class="ps-sdg">SDG 11, 16</div></div></li>
+                  <li><span class="ps-id">FF-02-H1</span>
+                    <div>
+                      <div>Intrusion Alarm System using magnetic reed switches for door/window security</div>
+                      <div class="ps-sdg">SDG 11</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">FF-02-H2</span>
+                    <div>
+                      <div>USB Port Alert — buzzer if unauthorized device plugged in (detects 5V)</div>
+                      <div class="ps-sdg">SDG 9</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">FF-02-H3</span>
+                    <div>
+                      <div>Laser Tripwire Security using LDR and laser pointer for perimeter protection</div>
+                      <div class="ps-sdg">SDG 11, 16</div>
+                    </div>
+                  </li>
                 </ul>
               </div>
               <div id="fintech-senior-sw" style="display:none">
                 <ul class="ps-list">
-                  <li><span class="ps-id">FF-02-S1</span><div><div>AI-Based Credit Scoring System using alternative data for unbanked users</div><div class="ps-sdg">SDG 10</div></div></li>
-                  <li><span class="ps-id">FF-02-S2</span><div><div>Blockchain-Based Peer-to-Peer (P2P) Lending DApp with smart contracts</div><div class="ps-sdg">SDG 8</div></div></li>
-                  <li><span class="ps-id">FF-02-S3</span><div><div>Fraudulent Transaction Detection System using AI pattern analysis</div><div class="ps-sdg">SDG 16</div></div></li>
-                  <li><span class="ps-id">FF-02-S4</span><div><div>Automated Crypto-Portfolio Manager with live prices and RSI suggestions</div><div class="ps-sdg">SDG 9</div></div></li>
-                  <li><span class="ps-id">FF-02-S5</span><div><div>Micro-Insurance Portal for Gig Workers (daily/weekly plans)</div><div class="ps-sdg">SDG 8</div></div></li>
+                  <li><span class="ps-id">FF-02-S1</span>
+                    <div>
+                      <div>AI-Based Credit Scoring System using alternative data for unbanked users</div>
+                      <div class="ps-sdg">SDG 10</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">FF-02-S2</span>
+                    <div>
+                      <div>Blockchain-Based Peer-to-Peer (P2P) Lending DApp with smart contracts</div>
+                      <div class="ps-sdg">SDG 8</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">FF-02-S3</span>
+                    <div>
+                      <div>Fraudulent Transaction Detection System using AI pattern analysis</div>
+                      <div class="ps-sdg">SDG 16</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">FF-02-S4</span>
+                    <div>
+                      <div>Automated Crypto-Portfolio Manager with live prices and RSI suggestions</div>
+                      <div class="ps-sdg">SDG 9</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">FF-02-S5</span>
+                    <div>
+                      <div>Micro-Insurance Portal for Gig Workers (daily/weekly plans)</div>
+                      <div class="ps-sdg">SDG 8</div>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -915,18 +1412,58 @@
               </div>
               <div id="cyber-junior-hw">
                 <ul class="ps-list">
-                  <li><span class="ps-id">CC-01-H1</span><div><div>Keypad-Based Digital Deadbolt — servo motor unlocks on correct 4-digit PIN</div><div class="ps-sdg">SDG 16</div></div></li>
-                  <li><span class="ps-id">CC-01-H2</span><div><div>Laser Tripwire Security Alarm — LDR + laser beam; buzzer on breach</div><div class="ps-sdg">SDG 11, 16</div></div></li>
-                  <li><span class="ps-id">CC-01-H3</span><div><div>Magnetic Intrusion Detector — reed switch monitors doors/windows</div><div class="ps-sdg">SDG 11</div></div></li>
+                  <li><span class="ps-id">CC-01-H1</span>
+                    <div>
+                      <div>Keypad-Based Digital Deadbolt — servo motor unlocks on correct 4-digit PIN</div>
+                      <div class="ps-sdg">SDG 16</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">CC-01-H2</span>
+                    <div>
+                      <div>Laser Tripwire Security Alarm — LDR + laser beam; buzzer on breach</div>
+                      <div class="ps-sdg">SDG 11, 16</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">CC-01-H3</span>
+                    <div>
+                      <div>Magnetic Intrusion Detector — reed switch monitors doors/windows</div>
+                      <div class="ps-sdg">SDG 11</div>
+                    </div>
+                  </li>
                 </ul>
               </div>
               <div id="cyber-junior-sw" style="display:none">
                 <ul class="ps-list">
-                  <li><span class="ps-id">CC-01-S1</span><div><div>Smart Password Security Analyzer</div><div class="ps-sdg">SDG 16</div></div></li>
-                  <li><span class="ps-id">CC-01-S2</span><div><div>Basic Phishing URL Detection System</div><div class="ps-sdg">SDG 9</div></div></li>
-                  <li><span class="ps-id">CC-01-S3</span><div><div>Secure File Encryption &amp; Decryption Tool</div><div class="ps-sdg">SDG 16</div></div></li>
-                  <li><span class="ps-id">CC-01-S4</span><div><div>Multi-Factor Authentication Login System</div><div class="ps-sdg">SDG 9</div></div></li>
-                  <li><span class="ps-id">CC-01-S5</span><div><div>Educational Network Packet Analyzer</div><div class="ps-sdg">SDG 4</div></div></li>
+                  <li><span class="ps-id">CC-01-S1</span>
+                    <div>
+                      <div>Smart Password Security Analyzer</div>
+                      <div class="ps-sdg">SDG 16</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">CC-01-S2</span>
+                    <div>
+                      <div>Basic Phishing URL Detection System</div>
+                      <div class="ps-sdg">SDG 9</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">CC-01-S3</span>
+                    <div>
+                      <div>Secure File Encryption &amp; Decryption Tool</div>
+                      <div class="ps-sdg">SDG 16</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">CC-01-S4</span>
+                    <div>
+                      <div>Multi-Factor Authentication Login System</div>
+                      <div class="ps-sdg">SDG 9</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">CC-01-S5</span>
+                    <div>
+                      <div>Educational Network Packet Analyzer</div>
+                      <div class="ps-sdg">SDG 4</div>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -938,18 +1475,58 @@
               </div>
               <div id="cyber-senior-hw">
                 <ul class="ps-list">
-                  <li><span class="ps-id">CC-02-H1</span><div><div>Two-Factor (Keypad + RFID) Access Control — requires RFID tag + PIN</div><div class="ps-sdg">SDG 9, 16</div></div></li>
-                  <li><span class="ps-id">CC-02-H2</span><div><div>Hardware-Based Keylogger Detector — Arduino monitors keyboard-PC data</div><div class="ps-sdg">SDG 16</div></div></li>
-                  <li><span class="ps-id">CC-02-H3</span><div><div>ESP32 Deauth Detector — LED alert on Wi-Fi deauthentication attacks</div><div class="ps-sdg">SDG 9</div></div></li>
+                  <li><span class="ps-id">CC-02-H1</span>
+                    <div>
+                      <div>Two-Factor (Keypad + RFID) Access Control — requires RFID tag + PIN</div>
+                      <div class="ps-sdg">SDG 9, 16</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">CC-02-H2</span>
+                    <div>
+                      <div>Hardware-Based Keylogger Detector — Arduino monitors keyboard-PC data</div>
+                      <div class="ps-sdg">SDG 16</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">CC-02-H3</span>
+                    <div>
+                      <div>ESP32 Deauth Detector — LED alert on Wi-Fi deauthentication attacks</div>
+                      <div class="ps-sdg">SDG 9</div>
+                    </div>
+                  </li>
                 </ul>
               </div>
               <div id="cyber-senior-sw" style="display:none">
                 <ul class="ps-list">
-                  <li><span class="ps-id">CC-02-S1</span><div><div>AI-Based Phishing &amp; Fraud Detection System</div><div class="ps-sdg">SDG 9, 16</div></div></li>
-                  <li><span class="ps-id">CC-02-S2</span><div><div>Intelligent Network Intrusion Detection System (IDS)</div><div class="ps-sdg">SDG 9</div></div></li>
-                  <li><span class="ps-id">CC-02-S3</span><div><div>Secure Cloud Storage with End-to-End Encryption</div><div class="ps-sdg">SDG 16</div></div></li>
-                  <li><span class="ps-id">CC-02-S4</span><div><div>Blockchain-Based Secure Voting Platform</div><div class="ps-sdg">SDG 16</div></div></li>
-                  <li><span class="ps-id">CC-02-S5</span><div><div>Ransomware Detection &amp; Prevention System</div><div class="ps-sdg">SDG 8, 9</div></div></li>
+                  <li><span class="ps-id">CC-02-S1</span>
+                    <div>
+                      <div>AI-Based Phishing &amp; Fraud Detection System</div>
+                      <div class="ps-sdg">SDG 9, 16</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">CC-02-S2</span>
+                    <div>
+                      <div>Intelligent Network Intrusion Detection System (IDS)</div>
+                      <div class="ps-sdg">SDG 9</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">CC-02-S3</span>
+                    <div>
+                      <div>Secure Cloud Storage with End-to-End Encryption</div>
+                      <div class="ps-sdg">SDG 16</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">CC-02-S4</span>
+                    <div>
+                      <div>Blockchain-Based Secure Voting Platform</div>
+                      <div class="ps-sdg">SDG 16</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">CC-02-S5</span>
+                    <div>
+                      <div>Ransomware Detection &amp; Prevention System</div>
+                      <div class="ps-sdg">SDG 8, 9</div>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -979,18 +1556,58 @@
               </div>
               <div id="med-junior-hw">
                 <ul class="ps-list">
-                  <li><span class="ps-id">MM-01-H1</span><div><div>Touchless Sanitizer Dispenser — IR sensor + mini pump</div><div class="ps-sdg">SDG 3</div></div></li>
-                  <li><span class="ps-id">MM-01-H2</span><div><div>Smart Posture Alert — wearable tilt sensor vibrates on slouch detection</div><div class="ps-sdg">SDG 3</div></div></li>
-                  <li><span class="ps-id">MM-01-H3</span><div><div>Ambient Recovery Monitor — DHT11 tracks hospital room temp/humidity</div><div class="ps-sdg">SDG 3</div></div></li>
+                  <li><span class="ps-id">MM-01-H1</span>
+                    <div>
+                      <div>Touchless Sanitizer Dispenser — IR sensor + mini pump</div>
+                      <div class="ps-sdg">SDG 3</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">MM-01-H2</span>
+                    <div>
+                      <div>Smart Posture Alert — wearable tilt sensor vibrates on slouch detection</div>
+                      <div class="ps-sdg">SDG 3</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">MM-01-H3</span>
+                    <div>
+                      <div>Ambient Recovery Monitor — DHT11 tracks hospital room temp/humidity</div>
+                      <div class="ps-sdg">SDG 3</div>
+                    </div>
+                  </li>
                 </ul>
               </div>
               <div id="med-junior-sw" style="display:none">
                 <ul class="ps-list">
-                  <li><span class="ps-id">MM-01-S1</span><div><div>Personalized BMI &amp; Fitness Goal Tracker with hydration targets</div><div class="ps-sdg">SDG 3</div></div></li>
-                  <li><span class="ps-id">MM-01-S2</span><div><div>Interactive Digital First-Aid Assistant with nearby hospital mapping</div><div class="ps-sdg">SDG 3, 4</div></div></li>
-                  <li><span class="ps-id">MM-01-S3</span><div><div>Smart Prescription Digitizer — converts handwritten medicine names to digital</div><div class="ps-sdg">SDG 3</div></div></li>
-                  <li><span class="ps-id">MM-01-S4</span><div><div>Community Blood Donation Link — connects donors with patients by urgency</div><div class="ps-sdg">SDG 3, 17</div></div></li>
-                  <li><span class="ps-id">MM-01-S5</span><div><div>Daily Mental Health Mood Journal — visualize emotional well-being over time</div><div class="ps-sdg">SDG 3</div></div></li>
+                  <li><span class="ps-id">MM-01-S1</span>
+                    <div>
+                      <div>Personalized BMI &amp; Fitness Goal Tracker with hydration targets</div>
+                      <div class="ps-sdg">SDG 3</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">MM-01-S2</span>
+                    <div>
+                      <div>Interactive Digital First-Aid Assistant with nearby hospital mapping</div>
+                      <div class="ps-sdg">SDG 3, 4</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">MM-01-S3</span>
+                    <div>
+                      <div>Smart Prescription Digitizer — converts handwritten medicine names to digital</div>
+                      <div class="ps-sdg">SDG 3</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">MM-01-S4</span>
+                    <div>
+                      <div>Community Blood Donation Link — connects donors with patients by urgency</div>
+                      <div class="ps-sdg">SDG 3, 17</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">MM-01-S5</span>
+                    <div>
+                      <div>Daily Mental Health Mood Journal — visualize emotional well-being over time</div>
+                      <div class="ps-sdg">SDG 3</div>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -1002,18 +1619,58 @@
               </div>
               <div id="med-senior-hw">
                 <ul class="ps-list">
-                  <li><span class="ps-id">MM-02-H1</span><div><div>IoT Pulse &amp; Oximeter Hub — MAX30102 streams vitals to the cloud</div><div class="ps-sdg">SDG 3, 9</div></div></li>
-                  <li><span class="ps-id">MM-02-H2</span><div><div>Smart Pill Box — multi-compartment with buzzers and caregiver SMS alerts</div><div class="ps-sdg">SDG 3</div></div></li>
-                  <li><span class="ps-id">MM-02-H3</span><div><div>Saline Level Monitor — optical/weight sensor alerts nurses when IV bag is low</div><div class="ps-sdg">SDG 3</div></div></li>
+                  <li><span class="ps-id">MM-02-H1</span>
+                    <div>
+                      <div>IoT Pulse &amp; Oximeter Hub — MAX30102 streams vitals to the cloud</div>
+                      <div class="ps-sdg">SDG 3, 9</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">MM-02-H2</span>
+                    <div>
+                      <div>Smart Pill Box — multi-compartment with buzzers and caregiver SMS alerts</div>
+                      <div class="ps-sdg">SDG 3</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">MM-02-H3</span>
+                    <div>
+                      <div>Saline Level Monitor — optical/weight sensor alerts nurses when IV bag is low</div>
+                      <div class="ps-sdg">SDG 3</div>
+                    </div>
+                  </li>
                 </ul>
               </div>
               <div id="med-senior-sw" style="display:none">
                 <ul class="ps-list">
-                  <li><span class="ps-id">MM-02-S1</span><div><div>AI-Based Medical Imaging Diagnostic Tool — CNNs for pneumonia/fracture detection</div><div class="ps-sdg">SDG 3, 9</div></div></li>
-                  <li><span class="ps-id">MM-02-S2</span><div><div>Blockchain-Based Secure Health Record Vault — patient-controlled decentralized records</div><div class="ps-sdg">SDG 3, 16</div></div></li>
-                  <li><span class="ps-id">MM-02-S3</span><div><div>Predictive Analytics for Disease Outbreak — mathematical models for infection spread</div><div class="ps-sdg">SDG 3, 11</div></div></li>
-                  <li><span class="ps-id">MM-02-S4</span><div><div>Virtual Physiotherapy Assistant — camera tracks limb movement for rehab exercises</div><div class="ps-sdg">SDG 3</div></div></li>
-                  <li><span class="ps-id">MM-02-S5</span><div><div>Centralized Pharmacy Inventory Management — tracks stocks, expiry, auto-reorder</div><div class="ps-sdg">SDG 3, 12</div></div></li>
+                  <li><span class="ps-id">MM-02-S1</span>
+                    <div>
+                      <div>AI-Based Medical Imaging Diagnostic Tool — CNNs for pneumonia/fracture detection</div>
+                      <div class="ps-sdg">SDG 3, 9</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">MM-02-S2</span>
+                    <div>
+                      <div>Blockchain-Based Secure Health Record Vault — patient-controlled decentralized records</div>
+                      <div class="ps-sdg">SDG 3, 16</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">MM-02-S3</span>
+                    <div>
+                      <div>Predictive Analytics for Disease Outbreak — mathematical models for infection spread</div>
+                      <div class="ps-sdg">SDG 3, 11</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">MM-02-S4</span>
+                    <div>
+                      <div>Virtual Physiotherapy Assistant — camera tracks limb movement for rehab exercises</div>
+                      <div class="ps-sdg">SDG 3</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">MM-02-S5</span>
+                    <div>
+                      <div>Centralized Pharmacy Inventory Management — tracks stocks, expiry, auto-reorder</div>
+                      <div class="ps-sdg">SDG 3, 12</div>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -1032,7 +1689,8 @@
           </div>
           <div class="domain-body">
             <div class="track-tabs">
-              <button class="track-tab active" onclick="switchTrack(this,'academic','junior')">Junior (1st Year)</button>
+              <button class="track-tab active" onclick="switchTrack(this,'academic','junior')">Junior (1st
+                Year)</button>
               <button class="track-tab" onclick="switchTrack(this,'academic','senior')">Senior (2nd/3rd Year)</button>
             </div>
 
@@ -1043,18 +1701,58 @@
               </div>
               <div id="academic-junior-hw">
                 <ul class="ps-list">
-                  <li><span class="ps-id">AT-01-H1</span><div><div>Arduino-Based Quiz Buzzer System</div><div class="ps-sdg">SDG 4</div></div></li>
-                  <li><span class="ps-id">AT-01-H2</span><div><div>RFID-Based Smart Attendance System</div><div class="ps-sdg">SDG 4</div></div></li>
-                  <li><span class="ps-id">AT-01-H3</span><div><div>Voice-Controlled Learning Device for Disabled Students</div><div class="ps-sdg">SDG 4, 10</div></div></li>
+                  <li><span class="ps-id">AT-01-H1</span>
+                    <div>
+                      <div>Arduino-Based Quiz Buzzer System</div>
+                      <div class="ps-sdg">SDG 4</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">AT-01-H2</span>
+                    <div>
+                      <div>RFID-Based Smart Attendance System</div>
+                      <div class="ps-sdg">SDG 4</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">AT-01-H3</span>
+                    <div>
+                      <div>Voice-Controlled Learning Device for Disabled Students</div>
+                      <div class="ps-sdg">SDG 4, 10</div>
+                    </div>
+                  </li>
                 </ul>
               </div>
               <div id="academic-junior-sw" style="display:none">
                 <ul class="ps-list">
-                  <li><span class="ps-id">AT-01-S1</span><div><div>Resume Builder with Skill Suggestions</div><div class="ps-sdg">SDG 4, 8</div></div></li>
-                  <li><span class="ps-id">AT-01-S2</span><div><div>Smart Timetable Generator with Conflict Resolution</div><div class="ps-sdg">SDG 4</div></div></li>
-                  <li><span class="ps-id">AT-01-S3</span><div><div>Automatic Quiz Generator from Study Materials</div><div class="ps-sdg">SDG 4</div></div></li>
-                  <li><span class="ps-id">AT-01-S4</span><div><div>AI-Based Student Doubt Solving Chatbot (Basic)</div><div class="ps-sdg">SDG 4</div></div></li>
-                  <li><span class="ps-id">AT-01-S5</span><div><div>Gamified Learning Platform with Rewards</div><div class="ps-sdg">SDG 4</div></div></li>
+                  <li><span class="ps-id">AT-01-S1</span>
+                    <div>
+                      <div>Resume Builder with Skill Suggestions</div>
+                      <div class="ps-sdg">SDG 4, 8</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">AT-01-S2</span>
+                    <div>
+                      <div>Smart Timetable Generator with Conflict Resolution</div>
+                      <div class="ps-sdg">SDG 4</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">AT-01-S3</span>
+                    <div>
+                      <div>Automatic Quiz Generator from Study Materials</div>
+                      <div class="ps-sdg">SDG 4</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">AT-01-S4</span>
+                    <div>
+                      <div>AI-Based Student Doubt Solving Chatbot (Basic)</div>
+                      <div class="ps-sdg">SDG 4</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">AT-01-S5</span>
+                    <div>
+                      <div>Gamified Learning Platform with Rewards</div>
+                      <div class="ps-sdg">SDG 4</div>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -1066,18 +1764,58 @@
               </div>
               <div id="academic-senior-hw">
                 <ul class="ps-list">
-                  <li><span class="ps-id">AT-02-H1</span><div><div>Smart Pen for Digital Note Conversion</div><div class="ps-sdg">SDG 4</div></div></li>
-                  <li><span class="ps-id">AT-02-H2</span><div><div>Smart Exam Monitoring System (Anti-Cheating)</div><div class="ps-sdg">SDG 16</div></div></li>
-                  <li><span class="ps-id">AT-02-H3</span><div><div>IoT-Based Library Management &amp; Book Tracking</div><div class="ps-sdg">SDG 4, 9</div></div></li>
+                  <li><span class="ps-id">AT-02-H1</span>
+                    <div>
+                      <div>Smart Pen for Digital Note Conversion</div>
+                      <div class="ps-sdg">SDG 4</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">AT-02-H2</span>
+                    <div>
+                      <div>Smart Exam Monitoring System (Anti-Cheating)</div>
+                      <div class="ps-sdg">SDG 16</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">AT-02-H3</span>
+                    <div>
+                      <div>IoT-Based Library Management &amp; Book Tracking</div>
+                      <div class="ps-sdg">SDG 4, 9</div>
+                    </div>
+                  </li>
                 </ul>
               </div>
               <div id="academic-senior-sw" style="display:none">
                 <ul class="ps-list">
-                  <li><span class="ps-id">AT-02-S1</span><div><div>AI-Powered Personalized Learning Path Generator</div><div class="ps-sdg">SDG 4</div></div></li>
-                  <li><span class="ps-id">AT-02-S2</span><div><div>Student Performance Prediction using Machine Learning</div><div class="ps-sdg">SDG 4</div></div></li>
-                  <li><span class="ps-id">AT-02-S3</span><div><div>Smart Notes Generator using NLP</div><div class="ps-sdg">SDG 4</div></div></li>
-                  <li><span class="ps-id">AT-02-S4</span><div><div>Lecture Summarizer using Speech-to-Text &amp; NLP</div><div class="ps-sdg">SDG 4</div></div></li>
-                  <li><span class="ps-id">AT-02-S5</span><div><div>Voice-Based Learning Assistant for Visually Impaired</div><div class="ps-sdg">SDG 4, 10</div></div></li>
+                  <li><span class="ps-id">AT-02-S1</span>
+                    <div>
+                      <div>AI-Powered Personalized Learning Path Generator</div>
+                      <div class="ps-sdg">SDG 4</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">AT-02-S2</span>
+                    <div>
+                      <div>Student Performance Prediction using Machine Learning</div>
+                      <div class="ps-sdg">SDG 4</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">AT-02-S3</span>
+                    <div>
+                      <div>Smart Notes Generator using NLP</div>
+                      <div class="ps-sdg">SDG 4</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">AT-02-S4</span>
+                    <div>
+                      <div>Lecture Summarizer using Speech-to-Text &amp; NLP</div>
+                      <div class="ps-sdg">SDG 4</div>
+                    </div>
+                  </li>
+                  <li><span class="ps-id">AT-02-S5</span>
+                    <div>
+                      <div>Voice-Based Learning Assistant for Visually Impaired</div>
+                      <div class="ps-sdg">SDG 4, 10</div>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -1093,7 +1831,8 @@
           <i class="fa-solid fa-drafting-compass"></i>
           <div>
             <h5>Week 1 — Blueprint Blitz</h5>
-            <p>Submit a high-quality Architecture Diagram: UI/UX wireframe (software) or circuit schematic (hardware)</p>
+            <p>Submit a high-quality Architecture Diagram: UI/UX wireframe (software) or circuit schematic (hardware)
+            </p>
           </div>
         </div>
         <div class="rule-card">
@@ -1122,12 +1861,24 @@
       <!-- ── Guidelines ── -->
       <p class="epl-section-title"><i class="fa-solid fa-clipboard-list"></i> Guidelines</p>
       <ul class="guidelines-list">
-        <li><i class="fa-solid fa-file-lines"></i><span><strong style="color:#e2e8f0">Documentation:</strong> All projects must clearly state which SDG they address. Documentation must follow the official blueprint but can be presented creatively.</span></li>
-        <li><i class="fa-brands fa-github"></i><span><strong style="color:#e2e8f0">GitHub Repository:</strong> All code, circuit designs, and documentation must be uploaded to a <em>public</em> GitHub repository upon completion.</span></li>
-        <li><i class="fa-solid fa-certificate"></i><span><strong style="color:#e2e8f0">Certification:</strong> MVP Team certificates awarded per domain based on live demo, documentation quality, and GitHub submission.</span></li>
-        <li><i class="fa-solid fa-microchip"></i><span><strong style="color:#e2e8f0">Component Sourcing:</strong> The college/club will not provide hardware components or kits. Teams must source their own materials.</span></li>
-        <li><i class="fa-solid fa-plug"></i><span><strong style="color:#e2e8f0">Infrastructure:</strong> Basic power sockets provided at venue. Teams are strongly encouraged to bring their own extension boards/spike busters.</span></li>
-        <li><i class="fa-solid fa-triangle-exclamation"></i><span><strong style="color:#e2e8f0">Safety &amp; Compliance:</strong> All hardware must be safe and properly insulated. High-voltage components or flammable materials require prior faculty approval.</span></li>
+        <li><i class="fa-solid fa-file-lines"></i><span><strong style="color:#e2e8f0">Documentation:</strong> All
+            projects must clearly state which SDG they address. Documentation must follow the official blueprint but can
+            be presented creatively.</span></li>
+        <li><i class="fa-brands fa-github"></i><span><strong style="color:#e2e8f0">GitHub Repository:</strong> All code,
+            circuit designs, and documentation must be uploaded to a <em>public</em> GitHub repository upon
+            completion.</span></li>
+        <li><i class="fa-solid fa-certificate"></i><span><strong style="color:#e2e8f0">Certification:</strong> MVP Team
+            certificates awarded per domain based on live demo, documentation quality, and GitHub submission.</span>
+        </li>
+        <li><i class="fa-solid fa-microchip"></i><span><strong style="color:#e2e8f0">Component Sourcing:</strong> The
+            college/club will not provide hardware components or kits. Teams must source their own materials.</span>
+        </li>
+        <li><i class="fa-solid fa-plug"></i><span><strong style="color:#e2e8f0">Infrastructure:</strong> Basic power
+            sockets provided at venue. Teams are strongly encouraged to bring their own extension boards/spike
+            busters.</span></li>
+        <li><i class="fa-solid fa-triangle-exclamation"></i><span><strong style="color:#e2e8f0">Safety &amp;
+              Compliance:</strong> All hardware must be safe and properly insulated. High-voltage components or
+            flammable materials require prior faculty approval.</span></li>
       </ul>
 
       <!-- ── Contact ── -->
@@ -1138,7 +1889,7 @@
           <div>
             <div class="cc-role">Faculty Coordinator</div>
             <div class="cc-name">Dr. P.R. Anisha</div>
-            <div class="cc-name" >Ms. Hafsa IUA</div>
+            <div class="cc-name">Ms. Hafsa IUA</div>
           </div>
         </div>
         <div class="epl-contact-card">
@@ -1164,7 +1915,8 @@
         <a href="https://forms.gle/PDfxvC2tjuJoyisVA" target="_blank" rel="noopener" class="epl-register-btn">
           <i class="fa-solid fa-arrow-right-to-bracket"></i> REGISTER NOW
         </a>
-        <p style="font-family:'JetBrains Mono',monospace; font-size:.72rem; color:#475569; margin-top:.8rem;">Registration closes end of April 2026</p>
+        <p style="font-family:'JetBrains Mono',monospace; font-size:.72rem; color:#475569; margin-top:.8rem;">
+          Registration closes end of April 2026</p>
       </div>
 
     </div><!-- /epl-wrap -->
@@ -1176,9 +1928,9 @@
   <script src="script.js"></script>
   <script>
     /* ── Modal open / close ───────────────────────────────── */
-    const modal   = document.getElementById('epl-modal');
+    const modal = document.getElementById('epl-modal');
     const trigger = document.getElementById('epl-trigger');
-    const closeBtn= document.getElementById('epl-close');
+    const closeBtn = document.getElementById('epl-close');
 
     trigger.addEventListener('click', () => {
       modal.classList.add('open');
@@ -1228,4 +1980,5 @@
     }
   </script>
 </body>
+
 </html>
