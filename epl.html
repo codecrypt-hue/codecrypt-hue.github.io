@@ -164,6 +164,22 @@
       box-shadow: 0 0 45px rgba(99, 102, 241, 0.7);
     }
 
+    /* ── Registration Closed badge ────────────────────────── */
+    .epl-closed-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #f87171;
+      font-family: 'Orbitron', sans-serif;
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      padding: .9rem 2.2rem;
+      border-radius: 50px;
+    }
+
     /* ── Section headings ─────────────────────────────────── */
     .epl-section-title {
       font-family: 'Orbitron', sans-serif;
@@ -643,10 +659,10 @@
       </div>
       <h1>Engineers Prototyping League</h1>
       <p class="hero-tagline">One Month to Build &nbsp;·&nbsp; 4 Domains &nbsp;·&nbsp; One Day to Conquer</p>
-      <p class="hero-cta-text">Pick a problem statement and register.</p>
-      <a href="https://forms.gle/PDfxvC2tjuJoyisVA" target="_blank" rel="noopener" class="epl-register-btn">
-        <i class="fa-solid fa-arrow-right-to-bracket"></i> REGISTER HERE
-      </a>
+      <p class="hero-cta-text">Registration for EPL '26 is now closed.</p>
+      <span class="epl-closed-badge">
+        <i class="fa-solid fa-lock"></i> REGISTRATION CLOSED
+      </span>
     </div>
 
     <!-- ── Rules ── -->
@@ -1407,11 +1423,11 @@
 
     <!-- bottom register CTA -->
     <div style="text-align:center; margin-top: 2.5rem;">
-      <a href="https://forms.gle/PDfxvC2tjuJoyisVA" target="_blank" rel="noopener" class="epl-register-btn">
-        <i class="fa-solid fa-arrow-right-to-bracket"></i> REGISTER NOW
-      </a>
+      <span class="epl-closed-badge">
+        <i class="fa-solid fa-lock"></i> REGISTRATION CLOSED
+      </span>
       <p style="font-family:'JetBrains Mono',monospace; font-size:.72rem; color:#475569; margin-top:.8rem;">
-        Registration closes end of April 2026</p>
+        Registration for EPL '26 is now closed</p>
     </div>
 
   </div><!-- /epl-wrap -->
