@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tech Tiranga — Independence Day Tech Fest | Code Crypt</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Syne:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ── Tricolor palette ─────────────────────────────────── */
+    :root {
+      --saffron: #ff9933;
+      --tri-white: #f1f5f9;
+      --india-green: #22c55e;
+      --chakra: #3b82f6;
+    }
+
+    /* ── Page Base ────────────────────────────────────────── */
+    body {
+      background: #05050f;
+      color: #e2e8f0;
+      min-height: 100vh;
+    }
+
+    /* ── Back Bar ─────────────────────────────────────────── */
+    .tt-back-bar {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(5, 5, 15, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 153, 51, 0.25);
+      padding: .75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .tt-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--saffron);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .8rem;
+      text-decoration: none;
+      letter-spacing: .04em;
+      transition: color 0.2s;
+    }
+
+    .tt-back-btn:hover { color: #fff; }
+
+    .tt-back-bar .bar-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: .78rem;
+      color: #475569;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-left: auto;
+    }
+
+    /* ── Page canvas ──────────────────────────────────────── */
+    #particle-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Inner wrapper ────────────────────────────────────── */
+    .tt-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 6rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Hero Banner ──────────────────────────────────────── */
+    .tt-hero {
+      text-align: center;
+      padding: 3.5rem 1rem 3rem;
+      background: linear-gradient(135deg, rgba(255, 153, 51, 0.14) 0%, rgba(241, 245, 249, 0.05) 50%, rgba(34, 197, 94, 0.14) 100%);
+      border: 1px solid rgba(255, 153, 51, 0.28);
+      border-radius: 20px;
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tt-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(255, 153, 51, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* tricolor top ribbon */
+    .tt-hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--saffron) 0%, var(--saffron) 33%, var(--tri-white) 33%, var(--tri-white) 66%, var(--india-green) 66%, var(--india-green) 100%);
+    }
+
+    .tt-org-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(255, 153, 51, 0.14);
+      border: 1px solid rgba(255, 153, 51, 0.4);
+      border-radius: 50px;
+      padding: .35rem 1rem;
+      font-size: .78rem;
+      color: var(--saffron);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: .04em;
+      margin-bottom: 1.2rem;
+    }
+
+    .tt-hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      background: linear-gradient(90deg, #ff9933, #ffffff, #22c55e, #ff9933);
+      background-size: 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 3s linear infinite;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes shimmer {
+      to { background-position: 200% center; }
+    }
+
+    .tt-hero .hero-tagline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .95rem;
+      color: #94a3b8;
+      margin-bottom: 1rem;
+      letter-spacing: .03em;
+    }
+
+    .tt-hero .hero-desc {
+      font-family: 'Syne', sans-serif;
+      font-size: .95rem;
+      font-weight: 500;
+      color: #cbd5e1;
+      max-width: 620px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.6;
+    }
+
+    .tt-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      justify-content: center;
+    }
+
+    .tt-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem;
+      padding: .35rem .9rem;
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #cbd5e1;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .tt-chip i { color: var(--saffron); margin-right: .35rem; }
+
+    /* ── Section headings ─────────────────────────────────── */
+    .tt-section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #e2e8f0;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin: 2.5rem 0 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+    }
+
+    .tt-section-title i { color: var(--saffron); font-size: 1rem; }
+
+    .tt-section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255, 153, 51, 0.5), transparent);
+    }
+
+    /* ── Details Grid ─────────────────────────────────────── */
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .detail-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 14px;
+      padding: 1.1rem 1.2rem;
+      display: flex;
+      gap: .9rem;
+      align-items: flex-start;
+    }
+
+    .detail-card i {
+      font-size: 1.2rem;
+      color: var(--saffron);
+      margin-top: .1rem;
+      flex-shrink: 0;
+    }
+
+    .detail-card h5 {
+      font-family: 'Syne', sans-serif;
+      font-size: .8rem;
+      font-weight: 600;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: .3rem;
+    }
+
+    .detail-card p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .82rem;
+      color: #e2e8f0;
+      line-height: 1.5;
+    }
+
+    .tbd {
+      color: var(--saffron);
+      background: rgba(255, 153, 51, 0.1);
+      border: 1px solid rgba(255, 153, 51, 0.3);
+      border-radius: 5px;
+      padding: 0 .4rem;
+      font-size: .72rem;
+    }
+
+    /* ── Competitions (Accordion) ─────────────────────────── */
+    .comp-list {
+      display: flex;
+      flex-direction: column;
+      gap: .8rem;
+    }
+
+    .comp-accordion {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid;
+      transition: box-shadow 0.3s;
+    }
+
+    .comp-accordion:hover { box-shadow: 0 0 20px var(--comp-glow); }
+
+    .comp-canvas {
+      --comp-color: #ff9933;
+      --comp-glow: rgba(255, 153, 51, 0.3);
+      border-color: rgba(255, 153, 51, 0.35);
+    }
+
+    .comp-quiz {
+      --comp-color: #3b82f6;
+      --comp-glow: rgba(59, 130, 246, 0.3);
+      border-color: rgba(59, 130, 246, 0.35);
+    }
+
+    .comp-sketch {
+      --comp-color: #22c55e;
+      --comp-glow: rgba(34, 197, 94, 0.3);
+      border-color: rgba(34, 197, 94, 0.35);
+    }
+
+    .comp-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.3rem;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.03);
+      user-select: none;
+      transition: background 0.2s;
+    }
+
+    .comp-header:hover { background: rgba(255, 255, 255, 0.06); }
+
+    .comp-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--comp-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--comp-color);
+      flex-shrink: 0;
+    }
+
+    .comp-meta { flex: 1; }
+
+    .comp-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--comp-color);
+      letter-spacing: .05em;
+    }
+
+    .comp-tagline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .73rem;
+      color: #64748b;
+      margin-top: .15rem;
+    }
+
+    .comp-toggle {
+      color: var(--comp-color);
+      font-size: .85rem;
+      transition: transform 0.3s;
+    }
+
+    .comp-accordion.active .comp-toggle { transform: rotate(180deg); }
+
+    .comp-body {
+      display: none;
+      background: rgba(0, 0, 0, 0.2);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 1.2rem 1.3rem;
+    }
+
+    .comp-accordion.active .comp-body { display: block; }
+
+    .comp-desc {
+      font-family: 'Syne', sans-serif;
+      font-size: .9rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .comp-facts {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: .6rem;
+      margin-bottom: 1rem;
+    }
+
+    .comp-fact {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-left: 3px solid var(--comp-color);
+      border-radius: 8px;
+      padding: .55rem .8rem;
+    }
+
+    .comp-fact .cf-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .65rem;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .comp-fact .cf-val {
+      font-family: 'Syne', sans-serif;
+      font-size: .85rem;
+      color: #e2e8f0;
+      font-weight: 600;
+      margin-top: .15rem;
+    }
+
+    .comp-themes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    .comp-theme-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem;
+      color: var(--comp-color);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--comp-color);
+      border-radius: 6px;
+      padding: .2rem .6rem;
+    }
+
+    .comp-awards {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .78rem;
+      color: #cbd5e1;
+      margin-top: 1rem;
+      padding-top: .8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .comp-awards i { color: var(--comp-color); }
+
+    /* ── Learning Outcomes ────────────────────────────────── */
+    .outcomes-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .outcomes-list li {
+      display: flex;
+      gap: .8rem;
+      align-items: flex-start;
+      padding: .7rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-family: 'Syne', sans-serif;
+      font-size: .88rem;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+
+    .outcomes-list li:last-child { border-bottom: none; }
+
+    .outcomes-list li i {
+      color: var(--india-green);
+      margin-top: .15rem;
+      flex-shrink: 0;
+      font-size: .9rem;
+    }
+
+    .sdg-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .62rem;
+      color: #475569;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      padding: .12rem .4rem;
+      white-space: nowrap;
+      margin-left: auto;
+      flex-shrink: 0;
+      align-self: center;
+    }
+
+    /* ── Contacts ─────────────────────────────────────────── */
+    .tt-contacts {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: .8rem;
+    }
+
+    .tt-contact-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 12px;
+      padding: 1rem;
+      display: flex;
+      gap: .8rem;
+      align-items: flex-start;
+    }
+
+    .tt-contact-card i {
+      color: var(--saffron);
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: .15rem;
+    }
+
+    .tt-contact-card .cc-role {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .68rem;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .tt-contact-card .cc-name {
+      font-family: 'Syne', sans-serif;
+      font-size: .85rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin: .1rem 0;
+    }
+
+    .tt-contact-card .cc-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem;
+      color: #64748b;
+    }
+
+    /* ── Responsive ───────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .tt-wrap { padding: 1rem 1rem 5rem; }
+      .details-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Particle Canvas -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Back Bar -->
+  <div class="tt-back-bar">
+    <a href="index.html" class="tt-back-btn">
+      <i class="fa-solid fa-arrow-left"></i> Back to CodeCrypt
+    </a>
+    <span class="bar-title">Tech Tiranga</span>
+  </div>
+
+  <div class="tt-wrap">
+
+    <!-- ── Hero ── -->
+    <div class="tt-hero">
+      <div class="tt-org-badge">
+        <i class="fa-solid fa-flag"></i>
+        Code Crypt Club &nbsp;·&nbsp; Department of CSE
+      </div>
+      <h1>Tech Tiranga</h1>
+      <p class="hero-tagline">Poster &nbsp;·&nbsp; Quiz &nbsp;·&nbsp; Pictionary &nbsp;—&nbsp; Celebrating Tech &amp; Independence</p>
+      <p class="hero-desc">An Independence Day themed technical celebration featuring three exciting competitions —
+        encouraging technical knowledge, creativity, teamwork, and communication in a fun, engaging environment.</p>
+      <div class="tt-chips">
+        <span class="tt-chip"><i class="fa-solid fa-graduation-cap"></i>III Semester · CSE</span>
+        <span class="tt-chip"><i class="fa-solid fa-users"></i>Class-wise</span>
+        <span class="tt-chip"><i class="fa-solid fa-trophy"></i>Certificates &amp; Prizes</span>
+      </div>
+    </div>
+
+    <!-- ── Event Details ── -->
+    <p class="tt-section-title"><i class="fa-solid fa-circle-info"></i> Event Details</p>
+    <div class="details-grid">
+      <div class="detail-card">
+        <i class="fa-solid fa-building-columns"></i>
+        <div>
+          <h5>Organized By</h5>
+          <p>Dept. of CSE · Code Crypt Technical Club</p>
+        </div>
+      </div>
+      <div class="detail-card">
+        <i class="fa-solid fa-chalkboard-user"></i>
+        <div>
+          <h5>Faculty Coordinators</h5>
+          <p>Ms. Soujanya &amp; Ms. Hafsa IUA</p>
+        </div>
+      </div>
+      <div class="detail-card">
+        <i class="fa-solid fa-location-dot"></i>
+        <div>
+          <h5>Venue</h5>
+          <p>B-Block Lab 1 &amp; Lab 2, Computer Labs</p>
+        </div>
+      </div>
+      <div class="detail-card">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <div>
+          <h5>Eligibility</h5>
+          <p>III Semester CSE Students (Class-wise)</p>
+        </div>
+      </div>
+      <div class="detail-card">
+        <i class="fa-solid fa-layer-group"></i>
+        <div>
+          <h5>Format</h5>
+          <p>3 Competitions — Poster, Quiz &amp; Pictionary</p>
+        </div>
+      </div>
+      <div class="detail-card">
+        <i class="fa-solid fa-calendar-days"></i>
+        <div>
+          <h5>Date &amp; Duration</h5>
+          <p><span class="tbd">TBD</span> — to be announced</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Competitions ── -->
+    <p class="tt-section-title"><i class="fa-solid fa-trophy"></i> The Three Competitions</p>
+    <div class="comp-list">
+
+      <!-- ── TECH CANVAS ── -->
+      <div class="comp-accordion comp-canvas" id="acc-canvas">
+        <div class="comp-header" onclick="toggleComp('acc-canvas')">
+          <div class="comp-icon"><i class="fa-solid fa-palette"></i></div>
+          <div class="comp-meta">
+            <div class="comp-name">Tech Canvas</div>
+            <div class="comp-tagline">"Design · Innovate · Inspire" — Poster Presentation</div>
+          </div>
+          <i class="fa-solid fa-chevron-down comp-toggle"></i>
+        </div>
+        <div class="comp-body">
+          <p class="comp-desc">Participants design a creative and informative poster showcasing how technology
+            contributes to India's growth — innovation, cybersecurity, Digital India, AI, space technology,
+            sustainability, and national development. Posters are evaluated on creativity, technical relevance,
+            originality, visual appeal, and presentation.</p>
+          <div class="comp-facts">
+            <div class="comp-fact">
+              <div class="cf-label">Team Size</div>
+              <div class="cf-val">3 Members</div>
+            </div>
+            <div class="comp-fact">
+              <div class="cf-label">Eligibility</div>
+              <div class="cf-val">III Sem (Class-wise)</div>
+            </div>
+            <div class="comp-fact">
+              <div class="cf-label">Submission Deadline</div>
+              <div class="cf-val">TBD</div>
+            </div>
+          </div>
+          <div class="comp-themes">
+            <span class="comp-theme-pill">Technology for a Developed India</span>
+            <span class="comp-theme-pill">Digital India: Innovating for the Nation</span>
+            <span class="comp-theme-pill">Technology &amp; Independence</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── TECH QUIZ ── -->
+      <div class="comp-accordion comp-quiz" id="acc-quiz">
+        <div class="comp-header" onclick="toggleComp('acc-quiz')">
+          <div class="comp-icon"><i class="fa-solid fa-lightbulb"></i></div>
+          <div class="comp-meta">
+            <div class="comp-name">Tech Quiz</div>
+            <div class="comp-tagline">"Think Fast · Know More" — Kahoot Challenge</div>
+          </div>
+          <i class="fa-solid fa-chevron-down comp-toggle"></i>
+        </div>
+        <div class="comp-body">
+          <p class="comp-desc">A live technical quiz featuring questions on Computer Science fundamentals, emerging
+            technologies, India's achievements in science &amp; technology, famous innovators, cybersecurity, AI, ISRO,
+            Digital India, and Independence Day trivia.</p>
+          <div class="comp-facts">
+            <div class="comp-fact">
+              <div class="cf-label">Platform</div>
+              <div class="cf-val">Kahoot</div>
+            </div>
+            <div class="comp-fact">
+              <div class="cf-label">Eligibility</div>
+              <div class="cf-val">III Semester</div>
+            </div>
+            <div class="comp-fact">
+              <div class="cf-label">Format</div>
+              <div class="cf-val">Class-wise</div>
+            </div>
+          </div>
+          <div class="comp-awards">
+            <i class="fa-solid fa-medal"></i> One Winner from each class · Certificates &amp; Prizes
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CODE SKETCH ── -->
+      <div class="comp-accordion comp-sketch" id="acc-sketch">
+        <div class="comp-header" onclick="toggleComp('acc-sketch')">
+          <div class="comp-icon"><i class="fa-solid fa-pen-nib"></i></div>
+          <div class="comp-meta">
+            <div class="comp-name">Code Sketch</div>
+            <div class="comp-tagline">"Draw · Guess · Win" — Tech Pictionary</div>
+          </div>
+          <i class="fa-solid fa-chevron-down comp-toggle"></i>
+        </div>
+        <div class="comp-body">
+          <p class="comp-desc">Teams guess technical terms based on drawings created by their teammates within a limited
+            time. Words include programming languages, computer hardware, software concepts, networking, AI,
+            cybersecurity, famous technologies, and Independence Day-themed technical concepts. The activity promotes
+            quick thinking, teamwork, technical vocabulary, and communication skills.</p>
+          <div class="comp-facts">
+            <div class="comp-fact">
+              <div class="cf-label">Eligibility</div>
+              <div class="cf-val">III Semester</div>
+            </div>
+            <div class="comp-fact">
+              <div class="cf-label">Format</div>
+              <div class="cf-val">Team-based</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /comp-list -->
+
+    <!-- ── Learning Outcomes ── -->
+    <p class="tt-section-title"><i class="fa-solid fa-lightbulb"></i> Event Learning Outcomes</p>
+    <ul class="outcomes-list">
+      <li><i class="fa-solid fa-check-circle"></i><span>Develop technical knowledge by exploring and presenting
+          engineering concepts through creative posters.</span><span class="sdg-pill">SDG 4</span></li>
+      <li><i class="fa-solid fa-check-circle"></i><span>Strengthen analytical thinking and problem-solving skills
+          through participation in the technical quiz.</span><span class="sdg-pill">SDG 9</span></li>
+      <li><i class="fa-solid fa-check-circle"></i><span>Enhance communication, teamwork, and visual interpretation
+          skills through the Pictionary competition.</span><span class="sdg-pill">SDG 17</span></li>
+      <li><i class="fa-solid fa-check-circle"></i><span>Improve creativity, confidence, and presentation abilities
+          while expressing technical ideas effectively.</span><span class="sdg-pill">SDG 4</span></li>
+      <li><i class="fa-solid fa-check-circle"></i><span>Encourage active participation, healthy competition, and
+          collaborative learning among students.</span><span class="sdg-pill">SDG 8</span></li>
+    </ul>
+
+    <!-- ── Coordinators ── -->
+    <p class="tt-section-title"><i class="fa-solid fa-address-book"></i> Coordinators</p>
+    <div class="tt-contacts">
+      <div class="tt-contact-card">
+        <i class="fa-solid fa-chalkboard-user"></i>
+        <div>
+          <div class="cc-role">Faculty Coordinators</div>
+          <div class="cc-name">Ms. Soujanya</div>
+          <div class="cc-name">Ms. Hafsa IUA</div>
+        </div>
+      </div>
+      <div class="tt-contact-card">
+        <i class="fa-solid fa-user-tie"></i>
+        <div>
+          <div class="cc-role">Student Coordinators</div>
+          <div class="cc-name">K. Pranathi</div>
+          <div class="cc-sub">160623733039</div>
+          <div class="cc-name">Azra Jabeen</div>
+          <div class="cc-sub">160624733028</div>
+        </div>
+      </div>
+      <div class="tt-contact-card">
+        <i class="fa-solid fa-user-graduate"></i>
+        <div>
+          <div class="cc-role">Head of Department</div>
+          <div class="cc-name">Dr. R. Madana Mohana</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /tt-wrap -->
+
+  <!-- Particle Canvas Script (standalone, tricolor tint) -->
+  <script>
+    (function initParticles() {
+      const canvas = document.getElementById('particle-canvas');
+      const ctx = canvas.getContext('2d');
+      let W, H, particles;
+      const COUNT = 60;
+
+      function resize() {
+        W = canvas.width  = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+      }
+
+      class Particle {
+        constructor() { this.reset(true); }
+        reset(init = false) {
+          this.x = Math.random() * W;
+          this.y = init ? Math.random() * H : H + 10;
+          this.r = Math.random() * 1.5 + 0.3;
+          this.speed = Math.random() * 0.4 + 0.1;
+          this.alpha = Math.random() * 0.5 + 0.1;
+          // saffron (30), light (0/low-sat), green (130)
+          const roll = Math.random();
+          this.hue = roll < 0.45 ? 30 : (roll < 0.75 ? 130 : 210);
+          this.twinkle = Math.random() * Math.PI * 2;
+        }
+        update() {
+          this.y -= this.speed;
+          this.twinkle += 0.03;
+          this.alpha = (Math.sin(this.twinkle) * 0.2 + 0.3);
+          if (this.y < -5) this.reset();
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+          ctx.fillStyle = `hsla(${this.hue}, 85%, 65%, ${this.alpha})`;
+          ctx.fill();
+        }
+      }
+
+      function init() {
+        resize();
+        particles = Array.from({ length: COUNT }, () => new Particle());
+      }
+
+      function loop() {
+        ctx.clearRect(0, 0, W, H);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(loop);
+      }
+
+      window.addEventListener('resize', resize);
+      init();
+      loop();
+    })();
+
+    /* ── Competition accordion toggle ─────────────────────── */
+    function toggleComp(id) {
+      document.getElementById(id).classList.toggle('active');
+    }
+  </script>
+</body>
+
+</html>
