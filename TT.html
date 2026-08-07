@@ -255,6 +255,58 @@
       font-size: .72rem;
     }
 
+    /* ── Schedule Table ───────────────────────────────────── */
+    .sched-wrap {
+      overflow-x: auto;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      margin-bottom: 1rem;
+    }
+
+    .sched-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 520px;
+    }
+
+    .sched-table th {
+      font-family: 'Orbitron', sans-serif;
+      font-size: .72rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      background: rgba(255, 153, 51, 0.08);
+      padding: .8rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 153, 51, 0.25);
+    }
+
+    .sched-table td {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .78rem;
+      color: #e2e8f0;
+      padding: .7rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .sched-table tr:last-child td { border-bottom: none; }
+    .sched-table tr:hover td { background: rgba(255, 255, 255, 0.03); }
+
+    .sched-class {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      color: #cbd5e1;
+    }
+
+    .sched-alt {
+      color: var(--saffron);
+      background: rgba(255, 153, 51, 0.1);
+      border: 1px solid rgba(255, 153, 51, 0.3);
+      border-radius: 5px;
+      padding: .1rem .5rem;
+      font-size: .7rem;
+    }
+
     /* ── Competitions (Accordion) ─────────────────────────── */
     .comp-list {
       display: flex;
@@ -536,7 +588,7 @@
         Code Crypt Club &nbsp;·&nbsp; Department of CSE
       </div>
       <h1>Tech Tiranga</h1>
-      <p class="hero-tagline">Poster &nbsp;·&nbsp; Quiz &nbsp;·&nbsp; Pictionary &nbsp;—&nbsp; Celebrating Tech &amp; Independence</p>
+      <p class="hero-tagline">Poster &nbsp;·&nbsp; Trivia &nbsp;·&nbsp; Pictionary &nbsp;—&nbsp; Celebrating Tech &amp; Independence</p>
       <p class="hero-desc">An Independence Day themed technical celebration featuring three exciting competitions —
         encouraging technical knowledge, creativity, teamwork, and communication in a fun, engaging environment.</p>
       <div class="tt-chips">
@@ -560,8 +612,7 @@
         <i class="fa-solid fa-chalkboard-user"></i>
         <div>
           <h5>Faculty Coordinators</h5>
-          <p> Dr. PR Anisha
-&amp;  Ms. Hafsa Ihteshamuddin Ahmed</p>
+          <p>Ms. Hafsa Ihteshamuddin Ahmed · Dr. Sumayya Afreen · Mrs. R. Sirisha</p>
         </div>
       </div>
       <div class="detail-card">
@@ -582,16 +633,53 @@
         <i class="fa-solid fa-layer-group"></i>
         <div>
           <h5>Format</h5>
-          <p>3 Competitions — Poster, Quiz &amp; Pictionary</p>
+          <p>3 Competitions — Poster, Trivia &amp; Pictionary</p>
         </div>
       </div>
       <div class="detail-card">
         <i class="fa-solid fa-calendar-days"></i>
         <div>
-          <h5>Date &amp; Duration</h5>
-          <p><span class="tbd">TBD</span> — to be announced</p>
+          <h5>Dates</h5>
+          <p>8 – 14 August 2026 (Class-wise)</p>
         </div>
       </div>
+    </div>
+
+    <!-- ── Schedule ── -->
+    <p class="tt-section-title"><i class="fa-solid fa-calendar-check"></i> Competition Schedule</p>
+
+    <p style="font-family:'JetBrains Mono',monospace;font-size:.8rem;color:#94a3b8;margin-bottom:.6rem;">Tech Trivia</p>
+    <div class="sched-wrap">
+      <table class="sched-table">
+        <thead>
+          <tr><th>Class</th><th>Day</th><th>Date</th><th>Time</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="sched-class">CSE-A</td><td>Thursday</td><td>13/8/26</td><td>12:10 – 1:10</td></tr>
+          <tr><td class="sched-class">CSE-B</td><td>Saturday</td><td>8/8/26</td><td>10:00 – 11:00</td></tr>
+          <tr><td class="sched-class">CSE-C</td><td>Friday</td><td>14/8/26</td><td>11:10 – 12:10</td></tr>
+          <tr><td class="sched-class">CSE-D</td><td>Saturday</td><td>8/8/26</td><td>1:50 – 2:50</td></tr>
+          <tr><td class="sched-class">CSE-E</td><td>Tuesday</td><td>11/8/26</td><td>12:10 – 1:10</td></tr>
+          <tr><td class="sched-class">CSE-F</td><td>Friday</td><td>14/8/26</td><td>12:10 – 1:10</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="font-family:'JetBrains Mono',monospace;font-size:.8rem;color:#94a3b8;margin:1.2rem 0 .6rem;">Code Sketch</p>
+    <div class="sched-wrap">
+      <table class="sched-table">
+        <thead>
+          <tr><th>Class</th><th>Day</th><th>Date</th><th>Time</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="sched-class">CSE-A</td><td>Saturday</td><td>8/8/26</td><td>10:00 – 11:00</td></tr>
+          <tr><td class="sched-class">CSE-B</td><td>Friday</td><td>14/8/26</td><td>12:10 – 1:10</td></tr>
+          <tr><td class="sched-class">CSE-C</td><td>Wednesday</td><td>12/8/26</td><td>12:10 – 1:10</td></tr>
+          <tr><td class="sched-class">CSE-D</td><td>Tuesday</td><td>11/8/26</td><td>10:00 – 11:00</td></tr>
+          <tr><td class="sched-class">CSE-E</td><td colspan="3"><span class="sched-alt">TBD</span></td></tr>
+          <tr><td class="sched-class">CSE-F</td><td>Saturday</td><td>8/8/26</td><td>1:50 – 2:50</td></tr>
+        </tbody>
+      </table>
     </div>
 
     <!-- ── Competitions ── -->
@@ -604,7 +692,7 @@
           <div class="comp-icon"><i class="fa-solid fa-palette"></i></div>
           <div class="comp-meta">
             <div class="comp-name">Tech Canvas</div>
-            <div class="comp-tagline">"Design · Innovate · Inspire" — Poster Presentation</div>
+            <div class="comp-tagline">"Design · Innovate · Inspire" — Poster Presentation · Online</div>
           </div>
           <i class="fa-solid fa-chevron-down comp-toggle"></i>
         </div>
@@ -614,6 +702,10 @@
             sustainability, and national development. Posters are evaluated on creativity, technical relevance,
             originality, visual appeal, and presentation.</p>
           <div class="comp-facts">
+            <div class="comp-fact">
+              <div class="cf-label">Mode</div>
+              <div class="cf-val">Online</div>
+            </div>
             <div class="comp-fact">
               <div class="cf-label">Team Size</div>
               <div class="cf-val">3 Members</div>
@@ -633,17 +725,17 @@
             <span class="comp-theme-pill">Technology &amp; Independence</span>
           </div>
           <div class="comp-awards">
-            <i class="fa-solid fa-medal"></i> 3 Winners from each class · Certificates &amp; Prizes
+            <i class="fa-solid fa-medal"></i> 3 Winners · Certificates &amp; Prizes
           </div>
         </div>
       </div>
 
-      <!-- ── TECH QUIZ ── -->
+      <!-- ── TECH TRIVIA ── -->
       <div class="comp-accordion comp-quiz" id="acc-quiz">
         <div class="comp-header" onclick="toggleComp('acc-quiz')">
           <div class="comp-icon"><i class="fa-solid fa-lightbulb"></i></div>
           <div class="comp-meta">
-            <div class="comp-name">Tech Quiz</div>
+            <div class="comp-name">Tech Trivia</div>
             <div class="comp-tagline">"Think Fast · Know More" — Kahoot Challenge</div>
           </div>
           <i class="fa-solid fa-chevron-down comp-toggle"></i>
@@ -667,7 +759,7 @@
             </div>
           </div>
           <div class="comp-awards">
-            <i class="fa-solid fa-medal"></i> 3 Winners from each class · Certificates &amp; Prizes
+            <i class="fa-solid fa-medal"></i> 3 Winners · Certificates &amp; Prizes
           </div>
         </div>
       </div>
@@ -698,7 +790,7 @@
             </div>
           </div>
           <div class="comp-awards">
-            <i class="fa-solid fa-medal"></i> 3 Winners from each class · Certificates &amp; Prizes
+            <i class="fa-solid fa-medal"></i> 3 Winners · Certificates &amp; Prizes
           </div>
         </div>
       </div>
@@ -727,8 +819,9 @@
         <i class="fa-solid fa-chalkboard-user"></i>
         <div>
           <div class="cc-role">Faculty Coordinators</div>
-          <div class="cc-name">Dr. PR Anisha</div>
-          <div class="cc-name">Ms. Hafsa IUA</div>
+          <div class="cc-name">Ms. Hafsa Ihteshamuddin Ahmed</div>
+          <div class="cc-name">Dr. Sumayya Afreen</div>
+          <div class="cc-name">Mrs. R. Sirisha</div>
         </div>
       </div>
       <div class="tt-contact-card">
