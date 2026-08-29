@@ -313,11 +313,11 @@
       line-height: 1.55;
     }
 
-    /* ── Themes: quest cartridges ─────────────────────────── */
-    .quest-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
-      gap: 1rem;
+    /* ── Themes: quest cartridges (accordion) ─────────────── */
+    .quest-list {
+      display: flex;
+      flex-direction: column;
+      gap: .9rem;
     }
 
     .quest-card {
@@ -325,8 +325,8 @@
       background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 14px;
-      padding: 1.3rem 1.1rem 1.1rem;
       overflow: hidden;
+      transition: box-shadow .3s;
     }
 
     .quest-card::before {
@@ -334,38 +334,106 @@
       content: '';
       position: absolute;
       top: -1px; left: -1px;
-      width: 34px; height: 34px;
+      width: 30px; height: 30px;
       background: var(--void);
       border-right: 1px solid rgba(255, 255, 255, 0.1);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 0 0 14px 0;
+      z-index: 1;
     }
 
-    .quest-card .qc-icon {
-      font-size: 1.3rem;
-      margin-bottom: .7rem;
+    .quest-card.active { box-shadow: 0 0 22px var(--q-glow, rgba(236, 72, 153, 0.25)); }
+
+    .quest-card:nth-child(1) { --q-color: var(--pink); --q-glow: rgba(236, 72, 153, 0.25); }
+    .quest-card:nth-child(2) { --q-color: var(--yellow); --q-glow: rgba(251, 191, 36, 0.25); }
+    .quest-card:nth-child(3) { --q-color: var(--cyan); --q-glow: rgba(34, 211, 238, 0.25); }
+    .quest-card:nth-child(4) { --q-color: var(--violet); --q-glow: rgba(139, 92, 246, 0.25); }
+    .quest-card:nth-child(5) { --q-color: #34d399; --q-glow: rgba(52, 211, 153, 0.25); }
+
+    .quest-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.15rem 1.2rem 1.15rem 2.6rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .quest-header:hover { background: rgba(255, 255, 255, 0.03); }
+
+    .quest-header .qc-icon {
+      font-size: 1.1rem;
       color: var(--q-color, var(--pink));
+      width: 34px; height: 34px;
+      border-radius: 9px;
+      border: 1px solid var(--q-color, var(--pink));
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
     }
 
-    .quest-card:nth-child(1) { --q-color: var(--pink); }
-    .quest-card:nth-child(2) { --q-color: var(--yellow); }
-    .quest-card:nth-child(3) { --q-color: var(--cyan); }
-    .quest-card:nth-child(4) { --q-color: var(--violet); }
-    .quest-card:nth-child(5) { --q-color: #34d399; }
+    .quest-meta { flex: 1; min-width: 0; }
 
-    .quest-card h5 {
+    .quest-meta h5 {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
       font-size: .92rem;
       color: #fff;
-      margin-bottom: .3rem;
+      margin-bottom: .15rem;
     }
 
-    .quest-card p {
+    .quest-meta p {
       font-family: 'JetBrains Mono', monospace;
-      font-size: .72rem;
+      font-size: .7rem;
       color: var(--ink-dim);
-      line-height: 1.5;
+      line-height: 1.4;
+    }
+
+    .quest-toggle {
+      color: var(--q-color, var(--pink));
+      font-size: .8rem;
+      flex-shrink: 0;
+      transition: transform .3s;
+    }
+
+    .quest-card.active .quest-toggle { transform: rotate(180deg); }
+
+    .quest-body {
+      display: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(0, 0, 0, 0.18);
+      padding: 1rem 1.2rem 1.15rem 2.6rem;
+    }
+
+    .quest-card.active .quest-body { display: block; }
+
+    .quest-idea {
+      padding: .6rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .quest-idea:last-child { border-bottom: none; padding-bottom: 0; }
+    .quest-idea:first-child { padding-top: 0; }
+
+    .quest-idea .qi-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: .84rem;
+      color: var(--q-color, var(--pink));
+      margin-bottom: .2rem;
+    }
+
+    .quest-idea .qi-desc {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: .8rem;
+      color: var(--ink-dim);
+      line-height: 1.55;
+    }
+
+    .quest-empty {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: .8rem;
+      color: var(--ink-dim);
+      font-style: italic;
     }
 
     /* ── Team formation banner ────────────────────────────── */
@@ -637,32 +705,141 @@
 
     <!-- ── Themes ── -->
     <p class="cc-section-title"><i class="fa-solid fa-dice"></i> Choose Your Quest</p>
-    <div class="quest-grid">
-      <div class="quest-card">
-        <div class="qc-icon"><i class="fa-solid fa-fire"></i></div>
-        <h5>The Rage-Bait Challenge</h5>
-        <p>Build something so relatable it's almost annoying.</p>
+    <p style="font-family:'Space Grotesk',sans-serif;font-size:.86rem;color:var(--ink-dim);margin:-.6rem 0 1.2rem;">
+      Tap a theme to see sample problem statements — these are starting points, not the only options.</p>
+
+    <div class="quest-list">
+
+      <!-- 1. The Rage-Bait Challenge -->
+      <div class="quest-card" id="q-rage">
+        <div class="quest-header" onclick="toggleQuest('q-rage')">
+          <div class="qc-icon"><i class="fa-solid fa-fire"></i></div>
+          <div class="quest-meta">
+            <h5>The Rage-Bait Challenge</h5>
+            <p>Build a simple 1-page app that works, but makes basic interactions an absolute nightmare.</p>
+          </div>
+          <i class="fa-solid fa-chevron-down quest-toggle"></i>
+        </div>
+        <div class="quest-body">
+          <div class="quest-idea">
+            <div class="qi-name">Rage Meter</div>
+            <div class="qi-desc">Create a system that assigns a Rage Score (0–100) to a piece of online content,
+              based on factors like emotional language, provocation, exaggeration, and engagement-bait patterns.</div>
+          </div>
+          <div class="quest-idea">
+            <div class="qi-name">Petty Complaint Box</div>
+            <div class="qi-desc">A platform where students post tiny everyday annoyances — AC not working, canteen
+              out of samosas — and it auto-generates dramatic "official complaints."</div>
+          </div>
+        </div>
       </div>
-      <div class="quest-card">
-        <div class="qc-icon"><i class="fa-solid fa-sack-dollar"></i></div>
-        <h5>FinDisaster</h5>
-        <p>Money problems, gamified and (kind of) solved.</p>
+
+      <!-- 2. FinDisaster -->
+      <div class="quest-card" id="q-fin">
+        <div class="quest-header" onclick="toggleQuest('q-fin')">
+          <div class="qc-icon"><i class="fa-solid fa-sack-dollar"></i></div>
+          <div class="quest-meta">
+            <h5>FinDisaster</h5>
+            <p>Money problems, gamified and (kind of) solved.</p>
+          </div>
+          <i class="fa-solid fa-chevron-down quest-toggle"></i>
+        </div>
+        <div class="quest-body">
+          <div class="quest-idea">
+            <div class="qi-name">Broke Till Payday</div>
+            <div class="qi-desc">An expense tracker for students that roasts bad spending habits instead of just
+              showing boring graphs.</div>
+          </div>
+          <div class="quest-idea">
+            <div class="qi-name">Fake Rich Calculator</div>
+            <div class="qi-desc">Enter your pocket money and it shows, in funny comparisons, how "rich" or "broke"
+              you really are — e.g. "you can afford 3 momos and emotional damage."</div>
+          </div>
+        </div>
       </div>
-      <div class="quest-card">
-        <div class="qc-icon"><i class="fa-solid fa-paw"></i></div>
-        <h5>Campus Connect: Campus Life</h5>
-        <p>Fix the small chaos of everyday campus life.</p>
+
+      <!-- 3. Campus Connect: Campus Life -->
+      <div class="quest-card" id="q-campus">
+        <div class="quest-header" onclick="toggleQuest('q-campus')">
+          <div class="qc-icon"><i class="fa-solid fa-paw"></i></div>
+          <div class="quest-meta">
+            <h5>Campus Connect: Campus Life</h5>
+            <p>Fix the small chaos of everyday campus life.</p>
+          </div>
+          <i class="fa-solid fa-chevron-down quest-toggle"></i>
+        </div>
+        <div class="quest-body">
+          <div class="quest-idea">
+            <div class="qi-name">Campus Lost &amp; Found Detective</div>
+            <div class="qi-desc">Matches lost-item reports with found-item reports using descriptions, images,
+              locations, or semantic similarity.</div>
+          </div>
+          <div class="quest-idea">
+            <div class="qi-name">Club Event Radar</div>
+            <div class="qi-desc">One place showing all club events happening on campus that week, so students stop
+              missing them.</div>
+          </div>
+          <div class="quest-idea">
+            <div class="qi-name">Choose Your Own Adventure</div>
+            <div class="qi-desc">A branching interactive story where every decision leads to increasingly chaotic
+              consequences.</div>
+          </div>
+          <div class="quest-idea">
+            <div class="qi-name">Hostel Survival Simulator</div>
+            <div class="qi-desc">A game/simulator where students try to survive hostel life.</div>
+          </div>
+        </div>
       </div>
-      <div class="quest-card">
-        <div class="qc-icon"><i class="fa-solid fa-robot"></i></div>
-        <h5>Quirky AI &amp; Wholesome Automation</h5>
-        <p>Automation with a personality, not a threat.</p>
+
+      <!-- 4. Quirky AI & Wholesome Automation -->
+      <div class="quest-card" id="q-ai">
+        <div class="quest-header" onclick="toggleQuest('q-ai')">
+          <div class="qc-icon"><i class="fa-solid fa-robot"></i></div>
+          <div class="quest-meta">
+            <h5>Quirky AI &amp; Wholesome Automation</h5>
+            <p>Automation with a personality, not a threat.</p>
+          </div>
+          <i class="fa-solid fa-chevron-down quest-toggle"></i>
+        </div>
+        <div class="quest-body">
+          <div class="quest-idea">
+            <div class="qi-name">What Should I Do First?</div>
+            <div class="qi-desc">Uses deadlines, importance, effort, and dependencies to turn a chaotic task list
+              into a sensible priority order.</div>
+          </div>
+          <div class="quest-idea">
+            <div class="qi-name">AI Excuse Generator</div>
+            <div class="qi-desc">Generates funny, believable excuses for missed deadlines or classes — built as a
+              joke tool, not for real misuse.</div>
+          </div>
+          <div class="quest-idea">
+            <div class="qi-name">Superhero LinkedIn</div>
+            <div class="qi-desc">Heroes and villains create profiles, endorsements, achievements, and questionable
+              career histories.</div>
+          </div>
+          <div class="quest-idea">
+            <div class="qi-name">Villain Dating App</div>
+            <div class="qi-desc">Match supervillains based on evil compatibility.</div>
+          </div>
+        </div>
       </div>
-      <div class="quest-card">
-        <div class="qc-icon"><i class="fa-solid fa-computer"></i></div>
-        <h5>Retro / Web 1.0</h5>
-        <p>Bring back the internet's most chaotic era.</p>
+
+      <!-- 5. Retro / Web 1.0 -->
+      <div class="quest-card" id="q-retro">
+        <div class="quest-header" onclick="toggleQuest('q-retro')">
+          <div class="qc-icon"><i class="fa-solid fa-computer"></i></div>
+          <div class="quest-meta">
+            <h5>Retro / Web 1.0</h5>
+            <p>Bring back the internet's most chaotic era.</p>
+          </div>
+          <i class="fa-solid fa-chevron-down quest-toggle"></i>
+        </div>
+        <div class="quest-body">
+          <p class="quest-empty">No fixed problem statements for this one — go full 90s/2000s web: guestbooks,
+            marquee tags, dial-up sound effects, glitter GIFs, hit counters. Surprise us.</p>
+        </div>
       </div>
+
     </div>
 
     <!-- ── Team Formation ── -->
@@ -816,6 +993,11 @@
       init();
       loop();
     })();
+
+    /* ── Quest accordion toggle ────────────────────────────── */
+    function toggleQuest(id) {
+      document.getElementById(id).classList.toggle('active');
+    }
   </script>
 </body>
 
