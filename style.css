@@ -1279,13 +1279,14 @@ main {
 }
 
 /* =========================================================
-   GALLERY
+   GALLERY — 3D tilt cards
    ========================================================= */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
-  gap: 1rem;
+  gap: 1.1rem;
+  perspective: 1200px;
 }
 
 .gallery-item {
@@ -1297,36 +1298,76 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  font-size: 2.5rem;
-  color: rgba(40, 75, 99, 0.5);
+  gap: 0.6rem;
+  font-size: 2.2rem;
+  color: rgba(40, 75, 99, 0.45);
   cursor: pointer;
   overflow: hidden;
   position: relative;
-  transition: all var(--transition);
+  box-shadow: 0 4px 16px rgba(21, 50, 67, 0.06);
+  transform-style: preserve-3d;
+  transition: transform 0.12s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+}
+
+/* moving glare that follows the cursor — the "3D" light-catch effect */
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%),
+      rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.08) 35%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.gallery-item > * {
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-item .gallery-slot-icon {
+  transform: translateZ(30px);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item .gallery-slot-label {
+  transform: translateZ(20px);
 }
 
 .gallery-item span {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--text-muted);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+  text-align: center;
+  padding: 0 .6rem;
   opacity: 0;
   transition: opacity var(--transition);
 }
 
 .gallery-item:hover {
-  transform: scale(1.03);
   border-color: var(--border-glow);
-  box-shadow: var(--shadow);
+  box-shadow: 0 20px 40px rgba(21, 50, 67, 0.16);
+}
+
+.gallery-item:hover::after {
+  opacity: 1;
 }
 
 .gallery-item:hover span {
   opacity: 1;
 }
 
-.gallery-item:hover {
+.gallery-item:hover .gallery-slot-icon {
   color: var(--yale-blue);
+  transform: translateZ(40px) scale(1.08);
+}
+
+.gallery-item.dragging-off {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
 }
 
 .gi-tall {
@@ -1338,6 +1379,11 @@ main {
   grid-column: span 2;
   aspect-ratio: unset;
   min-height: 150px;
+}
+
+@media (max-width: 700px) {
+  .gallery-grid { perspective: none; }
+  .gallery-item { transform: none !important; }
 }
 
 /* =========================================================
