@@ -56,6 +56,7 @@
       <ul class="nav-links" id="nav-links">
         <li><a href="#home" class="nav-link active" data-section="home">Home  </a></li>
         <li><a href="#events" class="nav-link" data-section="events">Events</a></li>
+        <li><a href="#gallery" class="nav-link" data-section="gallery">Gallery</a></li>
         <li><a href="#members" class="nav-link" data-section="members">Members</a></li>
         <li><a href="#vision" class="nav-link" data-section="vision">Vision &amp; Mission</a></li>
         <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
@@ -233,6 +234,55 @@
               <i class="fa-solid fa-lock"></i> Registration Closed
             </span>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GALLERY ===== -->
+    <section id="gallery" class="section">
+      <div class="section-header reveal">
+        <h2 class="section-title">Moments <span class="accent-glow">Captured</span></h2>
+        <p class="section-sub">A look back at our events, workshops, and the people behind Code Crypt.</p>
+      </div>
+
+      <!--
+        GALLERY PLACEHOLDERS — replace when you have real photos.
+        For each tile below, just swap the <i class="gallery-slot-icon">...</i>
+        for an <img src="your-photo.jpg" alt="..."> — the 3D tilt/glare
+        effect and sizing will keep working automatically.
+      -->
+      <div class="gallery-grid reveal">
+        <div class="gallery-item gi-wide" style="--gc:0">
+          <i class="fa-solid fa-image gallery-slot-icon"></i>
+          <span class="gallery-slot-label">Photo slot — hero/event highlight</span>
+        </div>
+        <div class="gallery-item" style="--gc:0">
+          <i class="fa-solid fa-camera gallery-slot-icon"></i>
+          <span class="gallery-slot-label">Photo slot</span>
+        </div>
+        <div class="gallery-item gi-tall" style="--gc:0">
+          <i class="fa-solid fa-image gallery-slot-icon"></i>
+          <span class="gallery-slot-label">Photo slot — portrait</span>
+        </div>
+        <div class="gallery-item" style="--gc:0">
+          <i class="fa-solid fa-camera gallery-slot-icon"></i>
+          <span class="gallery-slot-label">Photo slot</span>
+        </div>
+        <div class="gallery-item" style="--gc:0">
+          <i class="fa-solid fa-camera gallery-slot-icon"></i>
+          <span class="gallery-slot-label">Photo slot</span>
+        </div>
+        <div class="gallery-item gi-wide" style="--gc:0">
+          <i class="fa-solid fa-image gallery-slot-icon"></i>
+          <span class="gallery-slot-label">Photo slot — group/team</span>
+        </div>
+        <div class="gallery-item" style="--gc:0">
+          <i class="fa-solid fa-camera gallery-slot-icon"></i>
+          <span class="gallery-slot-label">Photo slot</span>
+        </div>
+        <div class="gallery-item" style="--gc:0">
+          <i class="fa-solid fa-camera gallery-slot-icon"></i>
+          <span class="gallery-slot-label">Photo slot</span>
         </div>
       </div>
     </section>
@@ -595,6 +645,46 @@
 
   <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
 
+
+  <!-- Gallery 3D tilt effect (self-contained, doesn't touch script.js) -->
+  <script>
+    (function () {
+      const cards = document.querySelectorAll('.gallery-item');
+      const MAX_TILT = 8; // degrees — kept subtle for a professional feel
+
+      cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const px = x / rect.width;   // 0 → 1
+          const py = y / rect.height;  // 0 → 1
+
+          const rotateY = (px - 0.5) * MAX_TILT * 2;
+          const rotateX = (0.5 - py) * MAX_TILT * 2;
+
+          card.style.transform =
+            `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03,1.03,1.03)`;
+          card.style.setProperty('--mx', `${px * 100}%`);
+          card.style.setProperty('--my', `${py * 100}%`);
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.classList.add('dragging-off');
+          card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+          setTimeout(() => card.classList.remove('dragging-off'), 500);
+        });
+
+        // Touch devices: skip tilt math, just a gentle tap scale
+        card.addEventListener('touchstart', () => {
+          card.style.transform = 'scale3d(0.98,0.98,0.98)';
+        }, { passive: true });
+        card.addEventListener('touchend', () => {
+          card.style.transform = 'scale3d(1,1,1)';
+        }, { passive: true });
+      });
+    })();
+  </script>
 
   <!-- SCRIPTS -->
   <script src="script.js"></script>
