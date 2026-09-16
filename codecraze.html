@@ -8,983 +8,191 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800;9..144,900&family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
   <style>
-    /* ── Arcade / fest palette ────────────────────────────── */
-    :root {
-      --void: #0d0618;
-      --void-2: #150a24;
-      --violet: #8b5cf6;
-      --pink: #ec4899;
-      --cyan: #22d3ee;
-      --yellow: #fbbf24;
-      --ink: #ece6f7;
-      --ink-dim: #a698c4;
+    .register-band {
+      border: 2px solid var(--ink); border-radius: var(--radius); background: var(--paper-2);
+      box-shadow: var(--sticker); padding: 2rem; display: flex; align-items: center;
+      justify-content: space-between; gap: 1.6rem; flex-wrap: wrap;
     }
-
-    body {
-      background: var(--void);
-      color: var(--ink);
-      min-height: 100vh;
-      overflow-x: hidden;
+    .register-band h3 { font-family: var(--font-display); font-weight: 800; font-size: 1.4rem; margin-bottom: .8rem; }
+    .register-band .eyebrow { font-family: var(--font-mono); font-size: .74rem; font-weight: 700; color: var(--accent); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; }
+    .register-qr { text-align: center; flex-shrink: 0; }
+    .register-qr img { width: 140px; height: 140px; border: 2px solid var(--ink); border-radius: var(--radius-sm); padding: 6px; background: #fff; }
+    .register-qr span { display: block; font-family: var(--font-mono); font-size: .66rem; color: var(--ink-soft); margin-top: .5rem; }
+    .team-band {
+      display: flex; align-items: center; gap: 1.4rem; border: 2px solid var(--ink); border-radius: var(--radius);
+      background: var(--paper-2); padding: 1.4rem 1.6rem; flex-wrap: wrap;
     }
-
-    /* ── Back Bar ─────────────────────────────────────────── */
-    .cc-back-bar {
-      position: sticky;
-      top: 0;
-      z-index: 200;
-      background: rgba(13, 6, 24, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(139, 92, 246, 0.3);
-      padding: .75rem 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .cc-back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      color: var(--cyan);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .8rem;
-      text-decoration: none;
-      letter-spacing: .04em;
-      transition: color 0.2s;
-    }
-
-    .cc-back-btn:hover { color: #fff; }
-
-    .cc-back-bar .bar-title {
-      font-family: 'Bungee', cursive;
-      font-size: .8rem;
-      color: #4c3a6b;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      margin-left: auto;
-    }
-
-    /* ── Backdrop canvas: drifting arcade sparks ─────────── */
-    #particle-canvas {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .cc-wrap {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem 6rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ── Hero: arcade marquee ─────────────────────────────── */
-    .cc-hero {
-      text-align: center;
-      padding: 3.5rem 1.2rem 3rem;
-      background:
-        radial-gradient(ellipse at 20% 0%, rgba(236, 72, 153, 0.16) 0%, transparent 55%),
-        radial-gradient(ellipse at 80% 10%, rgba(34, 211, 238, 0.14) 0%, transparent 55%),
-        linear-gradient(180deg, rgba(139, 92, 246, 0.1) 0%, rgba(21, 10, 36, 0.4) 100%);
-      border: 2px solid rgba(139, 92, 246, 0.35);
-      border-radius: 24px;
-      margin-bottom: 2.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cc-hero::before {
-      /* scanline texture, arcade-screen feel */
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.025) 0px, rgba(255, 255, 255, 0.025) 1px, transparent 1px, transparent 3px);
-      pointer-events: none;
-    }
-
-    .cc-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      background: rgba(236, 72, 153, 0.12);
-      border: 1px solid rgba(236, 72, 153, 0.45);
-      border-radius: 50px;
-      padding: .35rem 1rem;
-      font-size: .74rem;
-      color: var(--pink);
-      font-family: 'JetBrains Mono', monospace;
-      letter-spacing: .05em;
-      margin-bottom: 1.4rem;
-      position: relative;
-    }
-
-    .cc-hero h1 {
-      font-family: 'Bungee', cursive;
-      font-size: clamp(2.6rem, 11vw, 5.6rem);
-      line-height: 1;
-      letter-spacing: .01em;
-      color: #fff;
-      text-shadow:
-        3px 3px 0 var(--pink),
-        6px 6px 0 var(--violet),
-        0 0 40px rgba(34, 211, 238, 0.35);
-      transform: rotate(-2deg);
-      display: inline-block;
-      margin-bottom: 1.1rem;
-      animation: flicker 6s ease-in-out infinite;
-    }
-
-    @keyframes flicker {
-      0%, 92%, 100% { opacity: 1; }
-      93% { opacity: .82; }
-      94% { opacity: 1; }
-      95% { opacity: .7; }
-      96% { opacity: 1; }
-    }
-
-    .cc-hero .hero-tagline {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 600;
-      font-size: clamp(1.05rem, 2.4vw, 1.4rem);
-      background: linear-gradient(90deg, var(--pink), var(--violet), var(--cyan));
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1.1rem;
-    }
-
-    .cc-hero .hero-desc {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: .96rem;
-      color: var(--ink-dim);
-      max-width: 560px;
-      margin: 0 auto 1.6rem;
-      line-height: 1.65;
-    }
-
-    .cc-event-strip {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: .8rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .cc-event-chip {
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .78rem;
-      padding: .55rem 1rem;
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--ink);
-    }
-
-    .cc-event-chip i { color: var(--yellow); }
-
-    /* ── Section headings ─────────────────────────────────── */
-    .cc-section-title {
-      font-family: 'Bungee', cursive;
-      font-size: 1rem;
-      color: #fff;
-      letter-spacing: .04em;
-      margin: 3rem 0 1.3rem;
-      display: flex;
-      align-items: center;
-      gap: .7rem;
-    }
-
-    .cc-section-title i { color: var(--pink); font-size: .95rem; }
-
-    .cc-section-title::after {
-      content: '';
-      flex: 1;
-      height: 2px;
-      background: repeating-linear-gradient(90deg, var(--violet) 0, var(--violet) 6px, transparent 6px, transparent 12px);
-      opacity: .5;
-    }
-
-    /* ── Quick info grid ──────────────────────────────────── */
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-      gap: 1rem;
-    }
-
-    .info-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      border-left: 3px solid var(--violet);
-      border-radius: 12px;
-      padding: 1.05rem 1.15rem;
-      display: flex;
-      gap: .85rem;
-      align-items: flex-start;
-    }
-
-    .info-card i { font-size: 1.1rem; color: var(--cyan); margin-top: .1rem; flex-shrink: 0; }
-
-    .info-card h5 {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .7rem;
-      color: var(--ink-dim);
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      margin-bottom: .3rem;
-    }
-
-    .info-card p {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 600;
-      font-size: .9rem;
-      color: var(--ink);
-      line-height: 1.4;
-    }
-
-    /* ── How it works: level ladder ───────────────────────── */
-    .level-track {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      position: relative;
-    }
-
-    .level-row {
-      display: flex;
-      gap: 1.3rem;
-      align-items: flex-start;
-      padding: 1.1rem 0;
-      position: relative;
-    }
-
-    .level-row:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      left: 26px;
-      top: 62px;
-      bottom: -10px;
-      width: 2px;
-      background: repeating-linear-gradient(180deg, var(--violet) 0, var(--violet) 5px, transparent 5px, transparent 10px);
-      opacity: .55;
-    }
-
-    .level-badge {
-      width: 54px;
-      height: 54px;
-      border-radius: 14px;
-      background: var(--void-2);
-      border: 2px solid var(--pink);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Bungee', cursive;
-      font-size: .95rem;
-      color: var(--pink);
-      flex-shrink: 0;
-      box-shadow: 0 0 18px rgba(236, 72, 153, 0.25);
-    }
-
-    .level-row:nth-child(2) .level-badge { border-color: var(--violet); color: var(--violet); box-shadow: 0 0 18px rgba(139, 92, 246, 0.25); }
-    .level-row:nth-child(3) .level-badge { border-color: var(--cyan); color: var(--cyan); box-shadow: 0 0 18px rgba(34, 211, 238, 0.25); }
-
-    .level-content h4 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.02rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: .3rem;
-    }
-
-    .level-content p {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: .87rem;
-      color: var(--ink-dim);
-      line-height: 1.55;
-    }
-
-    /* ── Themes: quest cartridges (accordion) ─────────────── */
-    .quest-list {
-      display: flex;
-      flex-direction: column;
-      gap: .9rem;
-    }
-
-    .quest-card {
-      position: relative;
-      background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 14px;
-      overflow: hidden;
-      transition: box-shadow .3s;
-    }
-
-    .quest-card::before {
-      /* cartridge notch */
-      content: '';
-      position: absolute;
-      top: -1px; left: -1px;
-      width: 30px; height: 30px;
-      background: var(--void);
-      border-right: 1px solid rgba(255, 255, 255, 0.1);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 0 0 14px 0;
-      z-index: 1;
-    }
-
-    .quest-card.active { box-shadow: 0 0 22px var(--q-glow, rgba(236, 72, 153, 0.25)); }
-
-    .quest-card:nth-child(1) { --q-color: var(--pink); --q-glow: rgba(236, 72, 153, 0.25); }
-    .quest-card:nth-child(2) { --q-color: var(--yellow); --q-glow: rgba(251, 191, 36, 0.25); }
-    .quest-card:nth-child(3) { --q-color: var(--cyan); --q-glow: rgba(34, 211, 238, 0.25); }
-    .quest-card:nth-child(4) { --q-color: var(--violet); --q-glow: rgba(139, 92, 246, 0.25); }
-    .quest-card:nth-child(5) { --q-color: #34d399; --q-glow: rgba(52, 211, 153, 0.25); }
-
-    .quest-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1.15rem 1.2rem 1.15rem 2.6rem;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .quest-header:hover { background: rgba(255, 255, 255, 0.03); }
-
-    .quest-header .qc-icon {
-      font-size: 1.1rem;
-      color: var(--q-color, var(--pink));
-      width: 34px; height: 34px;
-      border-radius: 9px;
-      border: 1px solid var(--q-color, var(--pink));
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .quest-meta { flex: 1; min-width: 0; }
-
-    .quest-meta h5 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: .92rem;
-      color: #fff;
-      margin-bottom: .15rem;
-    }
-
-    .quest-meta p {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .7rem;
-      color: var(--ink-dim);
-      line-height: 1.4;
-    }
-
-    .quest-toggle {
-      color: var(--q-color, var(--pink));
-      font-size: .8rem;
-      flex-shrink: 0;
-      transition: transform .3s;
-    }
-
-    .quest-card.active .quest-toggle { transform: rotate(180deg); }
-
-    .quest-body {
-      display: none;
-      border-top: 1px solid rgba(255, 255, 255, 0.07);
-      background: rgba(0, 0, 0, 0.18);
-      padding: 1rem 1.2rem 1.15rem 2.6rem;
-    }
-
-    .quest-card.active .quest-body { display: block; }
-
-    .quest-idea {
-      padding: .6rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .quest-idea:last-child { border-bottom: none; padding-bottom: 0; }
-    .quest-idea:first-child { padding-top: 0; }
-
-    .quest-idea .qi-name {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: .84rem;
-      color: var(--q-color, var(--pink));
-      margin-bottom: .2rem;
-    }
-
-    .quest-idea .qi-desc {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: .8rem;
-      color: var(--ink-dim);
-      line-height: 1.55;
-    }
-
-    .quest-empty {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: .8rem;
-      color: var(--ink-dim);
-      font-style: italic;
-    }
-
-    /* ── Team formation banner ────────────────────────────── */
-    .team-banner {
-      display: flex;
-      align-items: center;
-      gap: 1.4rem;
-      background: linear-gradient(90deg, rgba(139, 92, 246, 0.12), rgba(236, 72, 153, 0.08));
-      border: 1px solid rgba(139, 92, 246, 0.3);
-      border-radius: 16px;
-      padding: 1.4rem 1.6rem;
-      flex-wrap: wrap;
-    }
-
+    .team-band p { font-size: .92rem; flex: 1; min-width: 220px; }
     .team-icons { display: flex; }
-    .team-icons i {
-      font-size: 1.6rem;
-      width: 42px; height: 42px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      background: var(--void-2);
-      border: 2px solid var(--void);
-      margin-left: -12px;
-    }
-    .team-icons i:first-child { margin-left: 0; color: var(--pink); }
-    .team-icons i:nth-child(2) { color: var(--violet); }
-    .team-icons i:nth-child(3) { color: var(--cyan); }
-    .team-icons i:nth-child(4) { color: var(--yellow); }
-    .team-icons i:nth-child(5) { color: #34d399; }
-
-    .team-banner p {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: .92rem;
-      color: var(--ink);
-      line-height: 1.6;
-      flex: 1;
-      min-width: 220px;
-    }
-
-    .team-banner strong { color: #fff; }
-
-    /* ── Register CTA ─────────────────────────────────────── */
-    .register-cta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      background: var(--void-2);
-      border: 2px dashed rgba(251, 191, 36, 0.5);
-      border-radius: 20px;
-      padding: 2rem;
-      margin-top: 1rem;
-    }
-
-    .register-text .rt-eyebrow {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .75rem;
-      color: var(--yellow);
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      margin-bottom: .5rem;
-    }
-
-    .register-text h3 {
-      font-family: 'Bungee', cursive;
-      font-size: 1.4rem;
-      color: #fff;
-      margin-bottom: .6rem;
-    }
-
-    .register-text a.reg-link {
-      display: inline-block;
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: .88rem;
-      color: var(--void);
-      background: var(--yellow);
-      padding: .65rem 1.3rem;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: transform .2s;
-    }
-
-    .register-text a.reg-link:hover { transform: translateY(-2px); }
-
-    .register-qr {
-      text-align: center;
-      flex-shrink: 0;
-    }
-
-    .register-qr img {
-      width: 150px;
-      height: 150px;
-      border-radius: 12px;
-      border: 3px solid var(--yellow);
-      background: #fff;
-      padding: 6px;
-    }
-
-    .register-qr span {
-      display: block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .68rem;
-      color: var(--ink-dim);
-      margin-top: .5rem;
-    }
-
-    .no-pressure {
-      text-align: center;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: .92rem;
-      color: var(--ink-dim);
-      margin: 2.2rem 0 0;
-    }
-
-    .no-pressure strong { color: var(--cyan); }
-
-    /* ── Coordinators ─────────────────────────────────────── */
-    .cc-contacts {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: .85rem;
-    }
-
-    .cc-contact-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      border-radius: 12px;
-      padding: 1rem 1.1rem;
-      display: flex;
-      gap: .8rem;
-      align-items: flex-start;
-    }
-
-    .cc-contact-card i { color: var(--pink); font-size: 1rem; margin-top: .15rem; flex-shrink: 0; }
-
-    .cc-contact-card .role {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .66rem;
-      color: var(--ink-dim);
-      text-transform: uppercase;
-      letter-spacing: .05em;
-    }
-
-    .cc-contact-card .name {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: .85rem;
-      font-weight: 600;
-      color: var(--ink);
-      margin: .12rem 0;
-    }
-
-    .cc-contact-card .sub {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .7rem;
-      color: #6d5c8f;
-    }
-
-    /* ── Footer ───────────────────────────────────────────── */
-    .cc-footer {
-      text-align: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .75rem;
-      color: #4c3a6b;
-      margin-top: 3rem;
-    }
-
-    @media (max-width: 600px) {
-      .cc-wrap { padding: 1.5rem 1rem 5rem; }
-      .register-cta { flex-direction: column; text-align: center; }
-      .register-text a.reg-link { width: 100%; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .cc-hero h1 { animation: none; }
-    }
+    .team-icons i { font-size: 1.2rem; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--paper); border: 2px solid var(--ink); margin-left: -10px; color: var(--accent); }
+    .team-icons i:first-child { margin-left: 0; }
+    .no-pressure { text-align: center; font-size: .92rem; color: var(--ink-soft); margin-top: 1.6rem; }
   </style>
 </head>
 
-<body>
+<body class="theme-codecraze">
 
-  <canvas id="particle-canvas"></canvas>
+  <nav class="subnav">
+    <div class="nav-inner">
+      <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to CodeCrypt</a>
+      <span class="subnav-tag">CodeCraze</span>
+    </div>
+  </nav>
 
-  <div class="cc-back-bar">
-    <a href="index.html" class="cc-back-btn">
-      <i class="fa-solid fa-arrow-left"></i> Back to CodeCrypt
-    </a>
-    <span class="bar-title">CodeCraze</span>
-  </div>
+  <div class="wrap">
 
-  <div class="cc-wrap">
-
-    <!-- ── Hero ── -->
-    <div class="cc-hero">
-      <div class="cc-badge">
-        <i class="fa-solid fa-bolt"></i>
-        CodeCrypt Club Presents &nbsp;·&nbsp; Dept. of CSE
-      </div>
+    <div class="page-hero">
+      <span class="pill pill--accent"><i class="fa-solid fa-bolt"></i> CodeCrypt Club Presents · Dept. of CSE</span>
       <h1>CODECRAZE</h1>
-      <p class="hero-tagline">Where Crazy Ideas Come to Life.</p>
-      <p class="hero-desc">A different kind of hackathon where creativity meets technology. Get ready for a
-        fast-paced, gamified challenge full of unexpected themes, wild ideas, teamwork, and problem-solving.</p>
-
-      <div class="cc-event-strip">
-        <span class="cc-event-chip"><i class="fa-solid fa-calendar-days"></i> Sat, 29 Aug 2026</span>
-        <span class="cc-event-chip"><i class="fa-solid fa-clock"></i> 9:30 AM – 12:30 PM</span>
-        <span class="cc-event-chip"><i class="fa-solid fa-location-dot"></i> B-Block Seminar Hall</span>
-        <span class="cc-event-chip"><i class="fa-solid fa-users"></i> Teams of 2–5</span>
+      <p class="tagline">Where Crazy Ideas Come to Life.</p>
+      <p class="desc">A different kind of hackathon where creativity meets technology. Get ready for a fast-paced,
+        gamified challenge full of unexpected themes, wild ideas, teamwork, and problem-solving.</p>
+      <div class="chips">
+        <span class="pill"><i class="fa-solid fa-calendar-days"></i> Sat, 29 Aug 2026</span>
+        <span class="pill"><i class="fa-solid fa-clock"></i> 9:30 AM – 12:30 PM</span>
+        <span class="pill"><i class="fa-solid fa-location-dot"></i> B-Block Seminar Hall</span>
+        <span class="pill"><i class="fa-solid fa-users"></i> Teams of 2–5</span>
       </div>
     </div>
 
-    <!-- ── Quick Info ── -->
-    <p class="cc-section-title"><i class="fa-solid fa-circle-info"></i> Event Info</p>
-    <div class="info-grid">
-      <div class="info-card">
-        <i class="fa-solid fa-building-columns"></i>
-        <div><h5>Organized By</h5><p>CodeCrypt Club, Dept. of CSE</p></div>
+    <section class="sect">
+      <div class="sect-label reveal"><span class="num">01</span><h2>Event Info</h2><span class="rule"></span></div>
+      <div class="tiles reveal">
+        <div class="tile"><i class="fa-solid fa-building-columns"></i><div><div class="tile-label">Organized By</div><div class="tile-value">CodeCrypt Club, Dept. of CSE</div></div></div>
+        <div class="tile"><i class="fa-solid fa-layer-group"></i><div><div class="tile-label">Format</div><div class="tile-value">Gamified mini-hackathon</div></div></div>
+        <div class="tile"><i class="fa-solid fa-graduation-cap"></i><div><div class="tile-label">Eligibility</div><div class="tile-value">Semesters III, V &amp; VII</div></div></div>
+        <div class="tile"><i class="fa-solid fa-people-group"></i><div><div class="tile-label">Team Size</div><div class="tile-value">2 – 5 members</div></div></div>
+        <div class="tile"><i class="fa-solid fa-location-dot"></i><div><div class="tile-label">Venue</div><div class="tile-value">B-Block Seminar Hall</div></div></div>
+        <div class="tile"><i class="fa-solid fa-calendar-check"></i><div><div class="tile-label">Date &amp; Time</div><div class="tile-value">29 Aug 2026 · 9:30–12:30</div></div></div>
       </div>
-      <div class="info-card">
-        <i class="fa-solid fa-layer-group"></i>
-        <div><h5>Format</h5><p>Gamified mini-hackathon</p></div>
-      </div>
-      <div class="info-card">
-        <i class="fa-solid fa-graduation-cap"></i>
-        <div><h5>Eligibility</h5><p>Semesters III, V &amp; VII</p></div>
-      </div>
-      <div class="info-card">
-        <i class="fa-solid fa-people-group"></i>
-        <div><h5>Team Size</h5><p>2 – 5 members</p></div>
-      </div>
-      <div class="info-card">
-        <i class="fa-solid fa-location-dot"></i>
-        <div><h5>Venue</h5><p>B-Block Seminar Hall</p></div>
-      </div>
-      <div class="info-card">
-        <i class="fa-solid fa-calendar-check"></i>
-        <div><h5>Date &amp; Time</h5><p>29 Aug 2026 · 9:30–12:30</p></div>
-      </div>
-    </div>
+    </section>
 
-    <!-- ── How It Works: levels ── -->
-    <p class="cc-section-title"><i class="fa-solid fa-gamepad"></i> How It Works</p>
-    <div class="level-track">
-      <div class="level-row">
-        <div class="level-badge">LV1</div>
-        <div class="level-content">
-          <h4>Get a Theme</h4>
-          <p>Every team is handed a trendy, unconventional theme at the start — no picking, no planning ahead. That's
-            the fun part.</p>
-        </div>
+    <section class="sect">
+      <div class="sect-label reveal"><span class="num">02</span><h2>How It Works</h2><span class="rule"></span></div>
+      <div class="timeline reveal">
+        <div class="tl-item"><div class="tl-date">LEVEL 1</div><div class="tl-event">Get a Theme</div><div class="tl-desc">Every team is handed a trendy, unconventional theme at the start — no picking, no planning ahead. That's the fun part.</div></div>
+        <div class="tl-item"><div class="tl-date">LEVEL 2</div><div class="tl-event">Choose Your Problem Statement</div><div class="tl-desc">Based on your theme, lock in a problem statement that your team wants to tackle within the time limit.</div></div>
+        <div class="tl-item"><div class="tl-date">LEVEL 3</div><div class="tl-event">Brainstorm · Build · Present</div><div class="tl-desc">Race against the clock to ideate, build, and present — all within the 3-hour window. No intense rules, just momentum.</div></div>
       </div>
-      <div class="level-row">
-        <div class="level-badge">LV2</div>
-        <div class="level-content">
-          <h4>Choose Your Problem Statement</h4>
-          <p>Based on your theme, lock in a problem statement that your team wants to tackle within the time limit.</p>
-        </div>
-      </div>
-      <div class="level-row">
-        <div class="level-badge">LV3</div>
-        <div class="level-content">
-          <h4>Brainstorm · Build · Present</h4>
-          <p>Race against the clock to ideate, build, and present — all within the 3-hour window. No intense rules,
-            just momentum.</p>
-        </div>
-      </div>
-    </div>
+    </section>
 
-    <!-- ── Themes ── -->
-    <p class="cc-section-title"><i class="fa-solid fa-dice"></i> Choose Your Quest</p>
-    <p style="font-family:'Space Grotesk',sans-serif;font-size:.86rem;color:var(--ink-dim);margin:-.6rem 0 1.2rem;">
-      Tap a theme to see sample problem statements — these are starting points, not the only options.</p>
+    <section class="sect">
+      <div class="sect-label reveal"><span class="num">03</span><h2>Choose Your Quest</h2><span class="rule"></span></div>
+      <p class="sect-sub reveal">Tap a theme to see sample problem statements — these are starting points, not the only options.</p>
 
-    <div class="quest-list">
+      <div class="accordion-list reveal">
 
-      <!-- 1. The Rage-Bait Challenge -->
-      <div class="quest-card" id="q-rage">
-        <div class="quest-header" onclick="toggleQuest('q-rage')">
-          <div class="qc-icon"><i class="fa-solid fa-fire"></i></div>
-          <div class="quest-meta">
-            <h5>The Rage-Bait Challenge</h5>
-            <p>Build a simple 1-page app that works, but makes basic interactions an absolute nightmare.</p>
+        <div class="accordion" id="q-rage">
+          <div class="accordion-head" onclick="toggleAcc('q-rage')">
+            <div class="accordion-icon"><i class="fa-solid fa-fire"></i></div>
+            <div class="accordion-meta"><div class="accordion-name">The Rage-Bait Challenge</div><div class="accordion-tagline">Build a simple 1-page app that works, but makes basic interactions an absolute nightmare.</div></div>
+            <i class="fa-solid fa-chevron-down accordion-toggle"></i>
           </div>
-          <i class="fa-solid fa-chevron-down quest-toggle"></i>
-        </div>
-        <div class="quest-body">
-          <div class="quest-idea">
-            <div class="qi-name">Rage Meter</div>
-            <div class="qi-desc">Create a system that assigns a Rage Score (0–100) to a piece of online content,
-              based on factors like emotional language, provocation, exaggeration, and engagement-bait patterns.</div>
-          </div>
-          <div class="quest-idea">
-            <div class="qi-name">Petty Complaint Box</div>
-            <div class="qi-desc">A platform where students post tiny everyday annoyances — AC not working, canteen
-              out of samosas — and it auto-generates dramatic "official complaints."</div>
+          <div class="accordion-body accordion-body-pad">
+            <ul class="line-list">
+              <li><span><strong>Rage Meter</strong> — Create a system that assigns a Rage Score (0–100) to a piece of online content, based on factors like emotional language, provocation, exaggeration, and engagement-bait patterns.</span></li>
+              <li><span><strong>Petty Complaint Box</strong> — A platform where students post tiny everyday annoyances — AC not working, canteen out of samosas — and it auto-generates dramatic "official complaints."</span></li>
+            </ul>
           </div>
         </div>
-      </div>
 
-      <!-- 2. FinDisaster -->
-      <div class="quest-card" id="q-fin">
-        <div class="quest-header" onclick="toggleQuest('q-fin')">
-          <div class="qc-icon"><i class="fa-solid fa-sack-dollar"></i></div>
-          <div class="quest-meta">
-            <h5>FinDisaster</h5>
-            <p>Money problems, gamified and (kind of) solved.</p>
+        <div class="accordion" id="q-fin">
+          <div class="accordion-head" onclick="toggleAcc('q-fin')">
+            <div class="accordion-icon"><i class="fa-solid fa-sack-dollar"></i></div>
+            <div class="accordion-meta"><div class="accordion-name">FinDisaster</div><div class="accordion-tagline">Money problems, gamified and (kind of) solved.</div></div>
+            <i class="fa-solid fa-chevron-down accordion-toggle"></i>
           </div>
-          <i class="fa-solid fa-chevron-down quest-toggle"></i>
-        </div>
-        <div class="quest-body">
-          <div class="quest-idea">
-            <div class="qi-name">Broke Till Payday</div>
-            <div class="qi-desc">An expense tracker for students that roasts bad spending habits instead of just
-              showing boring graphs.</div>
-          </div>
-          <div class="quest-idea">
-            <div class="qi-name">Fake Rich Calculator</div>
-            <div class="qi-desc">Enter your pocket money and it shows, in funny comparisons, how "rich" or "broke"
-              you really are — e.g. "you can afford 3 momos and emotional damage."</div>
+          <div class="accordion-body accordion-body-pad">
+            <ul class="line-list">
+              <li><span><strong>Broke Till Payday</strong> — An expense tracker for students that roasts bad spending habits instead of just showing boring graphs.</span></li>
+              <li><span><strong>Fake Rich Calculator</strong> — Enter your pocket money and it shows, in funny comparisons, how "rich" or "broke" you really are — e.g. "you can afford 3 momos and emotional damage."</span></li>
+            </ul>
           </div>
         </div>
-      </div>
 
-      <!-- 3. Campus Connect: Campus Life -->
-      <div class="quest-card" id="q-campus">
-        <div class="quest-header" onclick="toggleQuest('q-campus')">
-          <div class="qc-icon"><i class="fa-solid fa-paw"></i></div>
-          <div class="quest-meta">
-            <h5>Campus Connect: Campus Life</h5>
-            <p>Fix the small chaos of everyday campus life.</p>
+        <div class="accordion" id="q-campus">
+          <div class="accordion-head" onclick="toggleAcc('q-campus')">
+            <div class="accordion-icon"><i class="fa-solid fa-paw"></i></div>
+            <div class="accordion-meta"><div class="accordion-name">Campus Connect: Campus Life</div><div class="accordion-tagline">Fix the small chaos of everyday campus life.</div></div>
+            <i class="fa-solid fa-chevron-down accordion-toggle"></i>
           </div>
-          <i class="fa-solid fa-chevron-down quest-toggle"></i>
-        </div>
-        <div class="quest-body">
-          <div class="quest-idea">
-            <div class="qi-name">Campus Lost &amp; Found Detective</div>
-            <div class="qi-desc">Matches lost-item reports with found-item reports using descriptions, images,
-              locations, or semantic similarity.</div>
-          </div>
-          <div class="quest-idea">
-            <div class="qi-name">Club Event Radar</div>
-            <div class="qi-desc">One place showing all club events happening on campus that week, so students stop
-              missing them.</div>
-          </div>
-          <div class="quest-idea">
-            <div class="qi-name">Choose Your Own Adventure</div>
-            <div class="qi-desc">A branching interactive story where every decision leads to increasingly chaotic
-              consequences.</div>
-          </div>
-          <div class="quest-idea">
-            <div class="qi-name">Hostel Survival Simulator</div>
-            <div class="qi-desc">A game/simulator where students try to survive hostel life.</div>
+          <div class="accordion-body accordion-body-pad">
+            <ul class="line-list">
+              <li><span><strong>Campus Lost &amp; Found Detective</strong> — Matches lost-item reports with found-item reports using descriptions, images, locations, or semantic similarity.</span></li>
+              <li><span><strong>Club Event Radar</strong> — One place showing all club events happening on campus that week, so students stop missing them.</span></li>
+              <li><span><strong>Choose Your Own Adventure</strong> — A branching interactive story where every decision leads to increasingly chaotic consequences.</span></li>
+              <li><span><strong>Hostel Survival Simulator</strong> — A game/simulator where students try to survive hostel life.</span></li>
+            </ul>
           </div>
         </div>
-      </div>
 
-      <!-- 4. Quirky AI & Wholesome Automation -->
-      <div class="quest-card" id="q-ai">
-        <div class="quest-header" onclick="toggleQuest('q-ai')">
-          <div class="qc-icon"><i class="fa-solid fa-robot"></i></div>
-          <div class="quest-meta">
-            <h5>Quirky AI &amp; Wholesome Automation</h5>
-            <p>Automation with a personality, not a threat.</p>
+        <div class="accordion" id="q-ai">
+          <div class="accordion-head" onclick="toggleAcc('q-ai')">
+            <div class="accordion-icon"><i class="fa-solid fa-robot"></i></div>
+            <div class="accordion-meta"><div class="accordion-name">Quirky AI &amp; Wholesome Automation</div><div class="accordion-tagline">Automation with a personality, not a threat.</div></div>
+            <i class="fa-solid fa-chevron-down accordion-toggle"></i>
           </div>
-          <i class="fa-solid fa-chevron-down quest-toggle"></i>
-        </div>
-        <div class="quest-body">
-          <div class="quest-idea">
-            <div class="qi-name">What Should I Do First?</div>
-            <div class="qi-desc">Uses deadlines, importance, effort, and dependencies to turn a chaotic task list
-              into a sensible priority order.</div>
-          </div>
-          <div class="quest-idea">
-            <div class="qi-name">AI Excuse Generator</div>
-            <div class="qi-desc">Generates funny, believable excuses for missed deadlines or classes — built as a
-              joke tool, not for real misuse.</div>
-          </div>
-          <div class="quest-idea">
-            <div class="qi-name">Superhero LinkedIn</div>
-            <div class="qi-desc">Heroes and villains create profiles, endorsements, achievements, and questionable
-              career histories.</div>
-          </div>
-          <div class="quest-idea">
-            <div class="qi-name">Villain Dating App</div>
-            <div class="qi-desc">Match supervillains based on evil compatibility.</div>
+          <div class="accordion-body accordion-body-pad">
+            <ul class="line-list">
+              <li><span><strong>What Should I Do First?</strong> — Uses deadlines, importance, effort, and dependencies to turn a chaotic task list into a sensible priority order.</span></li>
+              <li><span><strong>AI Excuse Generator</strong> — Generates funny, believable excuses for missed deadlines or classes — built as a joke tool, not for real misuse.</span></li>
+              <li><span><strong>Superhero LinkedIn</strong> — Heroes and villains create profiles, endorsements, achievements, and questionable career histories.</span></li>
+              <li><span><strong>Villain Dating App</strong> — Match supervillains based on evil compatibility.</span></li>
+            </ul>
           </div>
         </div>
+
       </div>
+    </section>
 
-     
-     
-
-    </div>
-
-    <!-- ── Team Formation ── -->
-    <p class="cc-section-title"><i class="fa-solid fa-people-roof"></i> Team Formation</p>
-    <div class="team-banner">
-      <div class="team-icons">
-        <i class="fa-solid fa-user"></i>
-        <i class="fa-solid fa-user"></i>
-        <i class="fa-solid fa-user"></i>
-        <i class="fa-solid fa-user"></i>
-        <i class="fa-solid fa-user"></i>
+    <section class="sect">
+      <div class="sect-label reveal"><span class="num">04</span><h2>Team Formation</h2><span class="rule"></span></div>
+      <div class="team-band reveal">
+        <div class="team-icons">
+          <i class="fa-solid fa-user"></i><i class="fa-solid fa-user"></i><i class="fa-solid fa-user"></i><i class="fa-solid fa-user"></i><i class="fa-solid fa-user"></i>
+        </div>
+        <p>Teams of <strong>2–5 members</strong>, with students from <strong>Semesters III, V &amp; VII</strong> — cross-semester teams are welcome and encouraged for fresh perspectives.</p>
       </div>
-      <p>Teams of <strong>2–5 members</strong>, with students from <strong>Semesters III, V &amp; VII</strong> —
-        cross-semester teams are welcome and encouraged for fresh perspectives.</p>
-    </div>
+    </section>
 
-    <!-- ── Register ── -->
-    <p class="cc-section-title"><i class="fa-solid fa-ticket"></i> Register</p>
-    <div class="register-cta">
-      <div class="register-text">
-        <div class="rt-eyebrow">Insert Coin To Continue</div>
-        <h3>Scan or Tap to Register</h3>
-        <a class="reg-link" href="https://forms.gle/vhYko4os3o6hY12L7" target="_blank" rel="noopener">
-          Register Now <i class="fa-solid fa-arrow-right-long"></i>
-        </a>
-      </div>
-      <div class="register-qr">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://forms.gle/vhYko4os3o6hY12L7"
-          alt="QR code to register for CodeCraze" />
-        <span>Scan to Register</span>
-      </div>
-    </div>
-
-    <p class="no-pressure">No pressure. No intense rules. Just <strong>ideas, teamwork, creativity</strong>, and a
-      whole lot of tech. 💜</p>
-
-    <!-- ── Coordinators ── -->
-    <p class="cc-section-title"><i class="fa-solid fa-address-book"></i> Coordinators</p>
-    <div class="cc-contacts">
-      <div class="cc-contact-card">
-        <i class="fa-solid fa-users"></i>
+    <section class="sect">
+      <div class="sect-label reveal"><span class="num">05</span><h2>Register</h2><span class="rule"></span></div>
+      <div class="register-band reveal">
         <div>
-          <div class="role">Club Coordinators</div>
-          <div class="name">Safa Fatima</div>
-          <div class="name">Lalitya Turlapati</div>
-          <div class="name">Atikha Ahmed</div>
-          <div class="name">Azra Jabeen</div>
+          <div class="eyebrow">Insert Coin To Continue</div>
+          <h3>Scan or Tap to Register</h3>
+          <a class="btn btn-accent" href="https://forms.gle/vhYko4os3o6hY12L7" target="_blank" rel="noopener">Register Now <i class="fa-solid fa-arrow-right-long"></i></a>
+        </div>
+        <div class="register-qr">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://forms.gle/vhYko4os3o6hY12L7" alt="QR code to register for CodeCraze" />
+          <span>Scan to Register</span>
         </div>
       </div>
-      <div class="cc-contact-card">
-        <i class="fa-solid fa-chalkboard-user"></i>
-        <div>
-          <div class="role">Faculty Coordinators</div>
-          <div class="name">Ms. Hafsa IUA</div>
-          <div class="name">Mrs. R. Sirisha</div>
-        </div>
-      </div>
-      <div class="cc-contact-card">
-        <i class="fa-solid fa-user-tie"></i>
-        <div>
-          <div class="role">HOD, CSE</div>
-          <div class="name">Dr. R. Madana Mohana</div>
-        </div>
-      </div>
-      <div class="cc-contact-card">
-        <i class="fa-solid fa-user-graduate"></i>
-        <div>
-          <div class="role">II Year Coordinator</div>
-          <div class="name">Dr. Sumayya Afreen</div>
-        </div>
-      </div>
-      <div class="cc-contact-card">
-        <i class="fa-solid fa-user-graduate"></i>
-        <div>
-          <div class="role">III Year Coordinator</div>
-          <div class="name">Dr. M. Sowmya</div>
-        </div>
-      </div>
-      <div class="cc-contact-card">
-        <i class="fa-solid fa-user-graduate"></i>
-        <div>
-          <div class="role">IV Year Coordinator</div>
-          <div class="name">Dr. P. Narayana</div>
-        </div>
-      </div>
-      <div class="cc-contact-card">
-        <i class="fa-solid fa-clipboard-check"></i>
-        <div>
-          <div class="role">Score Coordinator</div>
-          <div class="name">Dr. D. Radhika</div>
-        </div>
-      </div>
-    </div>
+      <p class="no-pressure reveal">No pressure. No intense rules. Just <strong>ideas, teamwork, creativity</strong>, and a whole lot of tech.</p>
+    </section>
 
-    <p class="cc-footer">&lt;/&gt; Organized by CodeCrypt Club &nbsp;|&nbsp; Department of Computer Science &amp;
-      Engineering, STLW</p>
+    <section class="sect">
+      <div class="sect-label reveal"><span class="num">06</span><h2>Coordinators</h2><span class="rule"></span></div>
+      <div class="tiles reveal" style="padding-bottom: 4rem;">
+        <div class="tile"><i class="fa-solid fa-users"></i><div><div class="tile-label">Club Coordinators</div><div class="tile-value">Safa Fatima<br>Lalitya Turlapati<br>Atikha Ahmed<br>Azra Jabeen</div></div></div>
+        <div class="tile"><i class="fa-solid fa-chalkboard-user"></i><div><div class="tile-label">Faculty Coordinators</div><div class="tile-value">Ms. Hafsa IUA<br>Mrs. R. Sirisha</div></div></div>
+        <div class="tile"><i class="fa-solid fa-user-tie"></i><div><div class="tile-label">HOD, CSE</div><div class="tile-value">Dr. R. Madana Mohana</div></div></div>
+        <div class="tile"><i class="fa-solid fa-user-graduate"></i><div><div class="tile-label">II Year Coordinator</div><div class="tile-value">Dr. Sumayya Afreen</div></div></div>
+        <div class="tile"><i class="fa-solid fa-user-graduate"></i><div><div class="tile-label">III Year Coordinator</div><div class="tile-value">Dr. M. Sowmya</div></div></div>
+        <div class="tile"><i class="fa-solid fa-user-graduate"></i><div><div class="tile-label">IV Year Coordinator</div><div class="tile-value">Dr. P. Narayana</div></div></div>
+        <div class="tile"><i class="fa-solid fa-clipboard-check"></i><div><div class="tile-label">Score Coordinator</div><div class="tile-value">Dr. D. Radhika</div></div></div>
+      </div>
+    </section>
 
   </div>
 
+  <script src="script.js"></script>
   <script>
-    (function initParticles() {
-      const canvas = document.getElementById('particle-canvas');
-      const ctx = canvas.getContext('2d');
-      let W, H, particles;
-      const COUNT = 55;
-
-      function resize() {
-        W = canvas.width = window.innerWidth;
-        H = canvas.height = window.innerHeight;
-      }
-
-      class Particle {
-        constructor() { this.reset(true); }
-        reset(init = false) {
-          this.x = Math.random() * W;
-          this.y = init ? Math.random() * H : H + 10;
-          this.r = Math.random() * 1.6 + 0.3;
-          this.speed = Math.random() * 0.35 + 0.1;
-          this.alpha = Math.random() * 0.5 + 0.1;
-          // violet, pink, cyan mix — arcade sparks
-          const roll = Math.random();
-          this.hue = roll < 0.4 ? 265 : (roll < 0.75 ? 330 : 190);
-          this.twinkle = Math.random() * Math.PI * 2;
-        }
-        update() {
-          this.y -= this.speed;
-          this.twinkle += 0.03;
-          this.alpha = (Math.sin(this.twinkle) * 0.2 + 0.3);
-          if (this.y < -5) this.reset();
-        }
-        draw() {
-          ctx.beginPath();
-          ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-          ctx.fillStyle = `hsla(${this.hue}, 85%, 68%, ${this.alpha})`;
-          ctx.fill();
-        }
-      }
-
-      function init() {
-        resize();
-        particles = Array.from({ length: COUNT }, () => new Particle());
-      }
-
-      function loop() {
-        ctx.clearRect(0, 0, W, H);
-        particles.forEach(p => { p.update(); p.draw(); });
-        requestAnimationFrame(loop);
-      }
-
-      window.addEventListener('resize', resize);
-      init();
-      loop();
-    })();
-
-    /* ── Quest accordion toggle ────────────────────────────── */
-    function toggleQuest(id) {
-      document.getElementById(id).classList.toggle('active');
-    }
+    function toggleAcc(id) { document.getElementById(id).classList.toggle('active'); }
   </script>
 </body>
 
