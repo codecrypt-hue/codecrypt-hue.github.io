@@ -8,53 +8,36 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800;9..144,900&family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
 </head>
 
 <body>
 
-  <!-- Loading Screeeen -->
   <div id="loader">
     <div class="loader-inner">
       <div class="loader-logo">
-        <span class="bracket">{</span>
-        <span class="loader-cc">CC</span>
-        <span class="bracket">}</span>
+        <span class="bracket">{</span><span class="loader-cc">CC</span><span class="bracket">}</span>
       </div>
-      <div class="loader-bar-wrap">
-        <div class="loader-bar"></div>
-      </div>
-      <p class="loader-text">Decrypting Access...</p>
+      <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+      <p class="loader-text">Decrypting Access…</p>
     </div>
   </div>
 
-  <!-- Scroll Progress Bar -->
   <div id="scroll-progress"></div>
 
-  <!-- Particle Canvas -->
-  <canvas id="particle-canvas"></canvas>
-
-  <!-- NAVBAR -->
   <nav id="navbar">
     <div class="nav-inner">
-      <a href="#home" class="nav-logo" data-nav="home">
-        <div class="logo-box">
-          <span class="logo-bracket"></span>
-          <img src="logo.png" alt="Code Crypt Logo" class="logo-img">
-          <span class="logo-bracket"></span>
-        </div>
-        <span class="logo-name">Code<span class="accent">Crypt</span></span>
+      <a href="#home" class="brand">
+        <span class="brand-mark">{ }</span>
+        <span class="brand-name">Code<em>Crypt</em></span>
       </a>
-
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
-
       <ul class="nav-links" id="nav-links">
-        <li><a href="#home" class="nav-link active" data-section="home">Home  </a></li>
+        <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
         <li><a href="#events" class="nav-link" data-section="events">Events</a></li>
         <li><a href="#gallery" class="nav-link" data-section="gallery">Gallery</a></li>
         <li><a href="#members" class="nav-link" data-section="members">Members</a></li>
@@ -63,580 +46,376 @@
       </ul>
     </div>
   </nav>
+
   <main>
 
     <!-- ===== HOME ===== -->
-    <section id="home" class="section hero-section">
-      <div class="hero-content">
-        <div class="hero-badge reveal">
-          <i class="fa-solid fa-shield-halved"></i>&nbsp; Est. 2025 · CSE Department
-        </div>
-        <h1 class="hero-title reveal">
-          <span class="title-line">Code</span>
-          <span class="title-line accent-glow">Crypt</span>
-        </h1>
-        <p class="hero-tagline reveal">
-          <span class="type-text" id="typewriter"></span><span class="cursor">|</span>
-        </p>
+    <section id="home" class="wrap hero">
+      <div>
+        <div class="hero-eyebrow reveal">Est. 2025 · CSE Department, Stanley College</div>
+        <h1 class="reveal">Code<br><em>Crypt</em></h1>
+        <p class="hero-tagline reveal"><span id="typewriter"></span><span class="cursor">|</span></p>
         <div class="hero-cta reveal">
-          <a href="#events" class="btn btn-primary">
-            <i class="fa-solid fa-rocket"></i> Explore Events
-          </a>
-          <a href="#members" class="btn btn-ghost">
-            <i class="fa-solid fa-users"></i> Meet the Team
-          </a>
+          <a href="#events" class="btn btn-accent"><i class="fa-solid fa-arrow-right"></i> Explore Events</a>
+          <a href="#members" class="btn btn-outline"><i class="fa-solid fa-users"></i> Meet the Team</a>
+        </div>
+        <div class="hero-stats reveal">
+          <div class="stat"><span class="stat-num">5+</span><span class="stat-label">Events Run</span></div>
+          <div class="stat"><span class="stat-num">4</span><span class="stat-label">Hackathon Domains</span></div>
+          <div class="stat"><span class="stat-num">18</span><span class="stat-label">Core Team</span></div>
         </div>
       </div>
-      <div class="hero-visual">
-        <div class="hex-grid">
-          <div class="hex h1"><i class="fa-brands fa-python"></i></div>
-          <div class="hex h2"><i class="fa-brands fa-js"></i></div>
-          <div class="hex h3"><i class="fa-solid fa-code"></i></div>
-          <div class="hex h4"><i class="fa-solid fa-brain"></i></div>
-          <div class="hex h5"><i class="fa-solid fa-lock"></i></div>
-          <div class="hex h6"><i class="fa-solid fa-microchip"></i></div>
-          <div class="hex h7"><i class="fa-brands fa-git-alt"></i></div>
+      <div class="hero-panel reveal">
+        <div class="hero-panel-head">Stack we speak</div>
+        <div class="stamp-grid">
+          <div class="stamp"><i class="fa-brands fa-python"></i></div>
+          <div class="stamp"><i class="fa-brands fa-js"></i></div>
+          <div class="stamp"><i class="fa-solid fa-code"></i></div>
+          <div class="stamp"><i class="fa-solid fa-brain"></i></div>
+          <div class="stamp"><i class="fa-solid fa-lock"></i></div>
+          <div class="stamp"><i class="fa-solid fa-microchip"></i></div>
+          <div class="stamp"><i class="fa-brands fa-git-alt"></i></div>
+          <div class="stamp"><i class="fa-solid fa-shield-halved"></i></div>
         </div>
-      </div>
-      <div class="scroll-hint">
-        <span>Scroll</span>
-        <div class="scroll-arrow"><i class="fa-solid fa-chevron-down"></i></div>
       </div>
     </section>
 
-
-
     <!-- ===== EVENTS ===== -->
-    <section id="events" class="section">
-      <div class="section-header reveal">
-        <h2 class="section-title">Upcoming <span class="accent-glow">Events</span></h2>
-        <p class="section-sub">Hack, learn, compete, and grow — our events are built to push limits.</p>
-      </div>
+    <section id="events" class="sect">
+      <div class="wrap">
+        <div class="sect-label reveal"><span class="num">01</span><h2>Events</h2><span class="rule"></span></div>
+        <p class="sect-sub reveal">Hack, learn, compete, and grow — our events are built to push limits.</p>
 
-      <div class="events-grid reveal">
+        <div class="tickets reveal">
 
-        <!-- ↓ CodeCraze card — links to dedicated page -->
-        <div class="event-card" onclick="window.location.href='codecraze.html'" title="Click to view full details" style="cursor:pointer;">
-          <div class="event-banner">
-            <i class="fa-solid fa-gamepad event-icon"></i>
-            <div class="event-date-badge"><span class="eday">29</span><span class="emon">AUG</span></div>
-          </div>
-          <div class="event-body">
-            <span class="event-tag">Gamified Mini-Hackathon</span>
-            <h3 class="event-name">CodeCraze</h3>
-            <div class="event-meta">
-              <span><i class="fa-solid fa-calendar-days"></i> Aug 29, 2026 · 9:30 AM</span>
-              <span><i class="fa-solid fa-location-dot"></i> B-Block Seminar Hall</span>
+          <div class="ticket" onclick="window.location.href='codecraze.html'">
+            <div class="ticket-idx">29<span class="idx-mon">AUG</span></div>
+            <div class="ticket-body">
+              <span class="ticket-tag">Gamified Mini-Hackathon</span>
+              <h3 class="ticket-name">CodeCraze</h3>
+              <div class="ticket-meta">
+                <span><i class="fa-solid fa-calendar-days"></i> Aug 29, 2026 · 9:30 AM</span>
+                <span><i class="fa-solid fa-location-dot"></i> B-Block Seminar Hall</span>
+              </div>
+              <p class="ticket-desc">"Where Crazy Ideas Come to Life" — a fast-paced, gamified hackathon for teams of
+                2–5 across Semesters III, V &amp; VII. Get handed a trendy theme, pick your problem statement, and
+                race the clock to brainstorm, build, and present.</p>
             </div>
-            <p class="event-desc">"Where Crazy Ideas Come to Life" — a fast-paced, gamified hackathon for teams of 2–5
-              across Semesters III, V &amp; VII. Get handed a trendy theme, pick your problem statement, and race the
-              clock to brainstorm, build, and present.</p>
-            <div style="display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;">
-              <a href="codecraze.html"
-                style="display:inline-flex;align-items:center;gap:.5rem;background:#FAF7F0;border:1px solid #A9791E;color:#6E0F1F;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.04em;padding:.55rem 1.2rem;border-radius:50px;text-decoration:none;">
-                <i class="fa-solid fa-circle-info"></i> View Full Details
-              </a>
-              <a href="https://forms.gle/vhYko4os3o6hY12L7" target="_blank" rel="noopener" onclick="event.stopPropagation()"
-                style="display:inline-flex;align-items:center;gap:.5rem;background:#6E0F1F;color:#fff;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.04em;padding:.55rem 1.2rem;border-radius:50px;text-decoration:none;">
-                <i class="fa-solid fa-ticket"></i> Register Now
-              </a>
+            <div class="ticket-actions">
+              <a href="codecraze.html" class="btn btn-outline btn-sm"><i class="fa-solid fa-circle-info"></i> Details</a>
+              <a href="https://forms.gle/vhYko4os3o6hY12L7" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="btn btn-solid btn-sm"><i class="fa-solid fa-ticket"></i> Register</a>
             </div>
           </div>
-        </div>
 
-        <!-- ↓ Tech Tiranga card — links to dedicated page -->
-         <div class="event-card" onclick="window.location.href='TT.html'" title="Click to view full details" style="cursor:pointer;">
-          <div class="event-banner">
-            <i class="fa-solid fa-flag event-icon"></i>
-            <div class="event-date-badge"><span class="eday">2026</span><span class="emon">CSE</span></div>
-          </div>
-          <div class="event-body">
-            <span class="event-tag">Tech Fest · 3 Events</span>
-            <h3 class="event-name">Tech Tiranga</h3>
-            <div class="event-meta">
-              <span><i class="fa-solid fa-calendar-days"></i> Date TBD</span>
-              <span><i class="fa-solid fa-location-dot"></i> B-Block Lab 1 &amp; 2</span>
+          <div class="ticket" onclick="window.location.href='TT.html'">
+            <div class="ticket-idx">'26<span class="idx-mon">CSE</span></div>
+            <div class="ticket-body">
+              <span class="ticket-tag">Tech Fest · 3 Events</span>
+              <h3 class="ticket-name">Tech Tiranga</h3>
+              <div class="ticket-meta">
+                <span><i class="fa-solid fa-calendar-days"></i> Date TBD</span>
+                <span><i class="fa-solid fa-location-dot"></i> B-Block Lab 1 &amp; 2</span>
+              </div>
+              <p class="ticket-desc">An Independence Day themed tech celebration under Code Crypt — featuring Tech
+                Canvas (poster presentation), Tech Quiz (Kahoot challenge), and Code Sketch (tech pictionary).
+                Encouraging technical knowledge, creativity, teamwork, and communication.</p>
             </div>
-            <p class="event-desc">An Independence Day themed tech celebration under Code Crypt — featuring Tech Canvas
-              (poster presentation), Tech Quiz (Kahoot challenge), and Code Sketch (tech pictionary). Encouraging
-              technical knowledge, creativity, teamwork, and communication.</p>
-            <div style="display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;">
-              <a href="TT.html"
-                style="display:inline-flex;align-items:center;gap:.5rem;background:#FAF7F0;border:1px solid #A9791E;color:#6E0F1F;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.04em;padding:.55rem 1.2rem;border-radius:50px;text-decoration:none;">
-                <i class="fa-solid fa-circle-info"></i> View Full Details
-              </a>
+            <div class="ticket-actions">
+              <a href="TT.html" class="btn btn-outline btn-sm"><i class="fa-solid fa-circle-info"></i> Details</a>
             </div>
           </div>
-        </div>
-        <div class="event-card">
-          <div class="event-banner">
-            <i class="fa-solid fa-laptop-code event-icon"></i>
-            <div class="event-date-badge"><span class="eday">23</span><span class="emon">APR</span></div>
-          </div>
-          <div class="event-body">
-            <span class="event-tag">Project Expo · Python &amp; DBMS</span>
-            <h3 class="event-name">Site Splash 2026</h3>
-            <div class="event-meta">
-              <span><i class="fa-solid fa-calendar-days"></i> Apr 23, 2026</span>
-              <span><i class="fa-solid fa-location-dot"></i> Stanley College of Engineering</span>
+
+          <div class="ticket">
+            <div class="ticket-idx">23<span class="idx-mon">APR</span></div>
+            <div class="ticket-body">
+              <span class="ticket-tag">Project Expo · Python &amp; DBMS</span>
+              <h3 class="ticket-name">Site Splash 2026</h3>
+              <div class="ticket-meta">
+                <span><i class="fa-solid fa-calendar-days"></i> Apr 23, 2026</span>
+                <span><i class="fa-solid fa-location-dot"></i> Stanley College of Engineering</span>
+              </div>
+              <p class="ticket-desc">A Project Expo by CSE-B (2nd Year, 4th Semester) showcasing real-world
+                applications built with Python and DBMS — bridging theory with practical innovation.</p>
             </div>
-            <p class="event-desc">A Project Expo by CSE-B (2nd Year, 4th Semester) showcasing real-world applications
-              built with Python and DBMS — bridging theory with practical innovation.</p>
-            <span class="status-closed">
-              <i class="fa-solid fa-lock"></i> Registration Closed
-            </span>
-          </div>
-        </div>
-        <!-- ↓ EPL card — links to dedicated page -->
-        <div class="event-card" onclick="window.location.href='epl.html'" title="Click to view full details" style="cursor:pointer;">
-          <div class="event-banner">
-            <i class="fa-solid fa-shield-halved event-icon"></i>
-            <div class="event-date-badge"><span class="eday">15</span><span class="emon">APR</span></div>
-          </div>
-          <div class="event-body">
-            <span class="event-tag">Hackathon · 4 Domains</span>
-            <h3 class="event-name">Engineers Prototyping League (EPL '26)</h3>
-            <div class="event-meta">
-              <span><i class="fa-solid fa-calendar-days"></i> Apr 2026 – Jun 2026</span>
-              <span><i class="fa-solid fa-location-dot"></i> Seminar Hall B</span>
-            </div>
-            <p class="event-desc">One Month to Build, One Day to Conquer. A month-long intensive tournament open to all
-              branches (1st–3rd years) building real projects across Fintech, Cybersecurity, Healthcare, and EdTech
-              tracks.</p>
-            <div style="display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;">
-              <a href="epl.html"
-                style="display:inline-flex;align-items:center;gap:.5rem;background:#FAF7F0;border:1px solid #A9791E;color:#6E0F1F;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.04em;padding:.55rem 1.2rem;border-radius:50px;text-decoration:none;">
-                <i class="fa-solid fa-circle-info"></i> View Full Details
-              </a>
-              <span onclick="event.stopPropagation()" class="status-closed">
-                <i class="fa-solid fa-lock"></i> Registration Closed
-              </span>
+            <div class="ticket-actions">
+              <span class="pill pill--closed"><i class="fa-solid fa-lock"></i> Registration Closed</span>
             </div>
           </div>
-        </div>
-        <!-- ↓ Code in Color: Poster Making Competition -->
-        <div class="event-card">
-          <div class="event-banner">
-            <i class="fa-solid fa-palette event-icon"></i>
-            <div class="event-date-badge"><span class="eday">7-14</span><span class="emon">AUG</span></div>
-          </div>
-          <div class="event-body">
-            <span class="event-tag">Competition · Design &amp; Creativity</span>
-            <h3 class="event-name">DesignDuel : Poster Making Competition</h3>
-            <div class="event-meta">
-              <span><i class="fa-solid fa-users"></i> All CSE Sections</span>
-              <span><i class="fa-solid fa-location-dot"></i> Stanley College of Engineering</span>
+
+          <div class="ticket" onclick="window.location.href='epl.html'">
+            <div class="ticket-idx">15<span class="idx-mon">APR</span></div>
+            <div class="ticket-body">
+              <span class="ticket-tag">Hackathon · 4 Domains</span>
+              <h3 class="ticket-name">Engineers Prototyping League (EPL '26)</h3>
+              <div class="ticket-meta">
+                <span><i class="fa-solid fa-calendar-days"></i> Apr 2026 – Jun 2026</span>
+                <span><i class="fa-solid fa-location-dot"></i> Seminar Hall B</span>
+              </div>
+              <p class="ticket-desc">One Month to Build, One Day to Conquer. A month-long intensive tournament open
+                to all branches (1st–3rd years) building real projects across Fintech, Cybersecurity, Healthcare,
+                and EdTech tracks.</p>
             </div>
-            <p class="event-desc">Code Crypt's first-ever class-wise poster making competition — blending technical
-              concepts with creative art. Class winners competed for the Grand Winner title, whose poster became the
-              Official Club Poster for 2026.</p>
-            <span class="status-closed">
-              <i class="fa-solid fa-lock"></i> Registration Closed
-            </span>
+            <div class="ticket-actions">
+              <a href="epl.html" class="btn btn-outline btn-sm"><i class="fa-solid fa-circle-info"></i> Details</a>
+              <span onclick="event.stopPropagation()" class="pill pill--closed"><i class="fa-solid fa-lock"></i> Registration Closed</span>
+            </div>
           </div>
+
+          <div class="ticket">
+            <div class="ticket-idx">7–14<span class="idx-mon">AUG</span></div>
+            <div class="ticket-body">
+              <span class="ticket-tag">Competition · Design &amp; Creativity</span>
+              <h3 class="ticket-name">DesignDuel : Poster Making Competition</h3>
+              <div class="ticket-meta">
+                <span><i class="fa-solid fa-users"></i> All CSE Sections</span>
+                <span><i class="fa-solid fa-location-dot"></i> Stanley College of Engineering</span>
+              </div>
+              <p class="ticket-desc">Code Crypt's first-ever class-wise poster making competition — blending
+                technical concepts with creative art. Class winners competed for the Grand Winner title, whose
+                poster became the Official Club Poster for 2026.</p>
+            </div>
+            <div class="ticket-actions">
+              <span class="pill pill--closed"><i class="fa-solid fa-lock"></i> Registration Closed</span>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
     <!-- ===== GALLERY ===== -->
-    <section id="gallery" class="section">
-      <div class="section-header reveal">
-        <h2 class="section-title">Moments <span class="accent-glow">Captured</span></h2>
-        <p class="section-sub">A look back at our events, workshops, and the people behind Code Crypt.</p>
-      </div>
+    <section id="gallery" class="sect sect--tint">
+      <div class="wrap">
+        <div class="sect-label reveal"><span class="num">02</span><h2>Gallery</h2><span class="rule"></span></div>
+        <p class="sect-sub reveal">A look back at our events, workshops, and the people behind Code Crypt.</p>
 
-      <!--
-        GALLERY PLACEHOLDERS — replace when you have real photos.
-        For each tile below, just swap the <i class="gallery-slot-icon">...</i>
-        for an <img src="your-photo.jpg" alt="..."> — the 3D tilt/glare
-        effect and sizing will keep working automatically.
-      -->
-      <div class="gallery-grid reveal">
-        <div class="gallery-item gi-wide" style="--gc:0">
-          <i class="fa-solid fa-image gallery-slot-icon"></i>
-          <span class="gallery-slot-label">Photo slot — hero/event highlight</span>
-        </div>
-        <div class="gallery-item" style="--gc:0">
-          <i class="fa-solid fa-camera gallery-slot-icon"></i>
-          <span class="gallery-slot-label">Photo slot</span>
-        </div>
-        <div class="gallery-item gi-tall" style="--gc:0">
-          <i class="fa-solid fa-image gallery-slot-icon"></i>
-          <span class="gallery-slot-label">Photo slot — portrait</span>
-        </div>
-        <div class="gallery-item" style="--gc:0">
-          <i class="fa-solid fa-camera gallery-slot-icon"></i>
-          <span class="gallery-slot-label">Photo slot</span>
-        </div>
-        <div class="gallery-item" style="--gc:0">
-          <i class="fa-solid fa-camera gallery-slot-icon"></i>
-          <span class="gallery-slot-label">Photo slot</span>
-        </div>
-        <div class="gallery-item gi-wide" style="--gc:0">
-          <i class="fa-solid fa-image gallery-slot-icon"></i>
-          <span class="gallery-slot-label">Photo slot — group/team</span>
-        </div>
-        <div class="gallery-item" style="--gc:0">
-          <i class="fa-solid fa-camera gallery-slot-icon"></i>
-          <span class="gallery-slot-label">Photo slot</span>
-        </div>
-        <div class="gallery-item" style="--gc:0">
-          <i class="fa-solid fa-camera gallery-slot-icon"></i>
-          <span class="gallery-slot-label">Photo slot</span>
+        <!--
+          GALLERY PLACEHOLDERS — swap the <i class="fa-solid ..."> inside
+          .polaroid-frame for an <img src="your-photo.jpg" alt="..."> when
+          real photos are ready. Sizing keeps working automatically.
+        -->
+        <div class="scrapbook reveal">
+          <div class="polaroid gi-wide"><div class="polaroid-frame"><i class="fa-solid fa-image"></i></div><div class="polaroid-cap">hero / event highlight</div></div>
+          <div class="polaroid"><div class="polaroid-frame"><i class="fa-solid fa-camera"></i></div><div class="polaroid-cap">photo slot</div></div>
+          <div class="polaroid gi-tall"><div class="polaroid-frame"><i class="fa-solid fa-image"></i></div><div class="polaroid-cap">portrait</div></div>
+          <div class="polaroid"><div class="polaroid-frame"><i class="fa-solid fa-camera"></i></div><div class="polaroid-cap">photo slot</div></div>
+          <div class="polaroid"><div class="polaroid-frame"><i class="fa-solid fa-camera"></i></div><div class="polaroid-cap">photo slot</div></div>
+          <div class="polaroid gi-wide"><div class="polaroid-frame"><i class="fa-solid fa-image"></i></div><div class="polaroid-cap">group / team</div></div>
+          <div class="polaroid"><div class="polaroid-frame"><i class="fa-solid fa-camera"></i></div><div class="polaroid-cap">photo slot</div></div>
+          <div class="polaroid"><div class="polaroid-frame"><i class="fa-solid fa-camera"></i></div><div class="polaroid-cap">photo slot</div></div>
         </div>
       </div>
     </section>
 
     <!-- ===== MEMBERS ===== -->
-    <div class="team-block" id="members"></div>
-    <h3 class="team-block-title reveal">
-      <i class="fa-solid fa-chalkboard-user"></i> Teacher Coordinators
-    </h3>
+    <section id="members" class="sect">
+      <div class="wrap">
+        <div class="sect-label reveal"><span class="num">03</span><h2>Members</h2><span class="rule"></span></div>
+        <p class="sect-sub reveal">The people who plan, build, and run Code Crypt.</p>
 
-    <div class="cards-grid cards-grid--2 reveal">
-      <div class="member-card">
-        <div class="card-glow"></div>
-        <div class="avatar-wrap">
-          <div class="avatar">
-            <img src="ANISHA MA'AM.jpeg" alt="Dr. P.R. Anisha">
-            <div class="avatar-ring"></div>
+        <div class="dir-group reveal">
+          <div class="dir-head"><i class="fa-solid fa-chalkboard-user"></i> Teacher Coordinators<span class="rule"></span></div>
+          <div class="dir-list">
+            <div class="dir-row">
+              <div class="dir-photo"><img src="ANISHA MA'AM.jpeg" alt="Dr. P.R. Anisha"></div>
+              <div><div class="dir-name">Dr. P.R. Anisha</div><div class="dir-dept">Professor, CSE Dept.</div></div>
+              <div class="dir-role is-teacher">Teacher Coordinator</div>
+              <div class="dir-years">2024–2028</div>
+            </div>
+            <div class="dir-row">
+              <div class="dir-photo"><img src="HAFSA IUA MA'AM.jpeg" alt="Ms. Hafsa Ihteshamuddin Ahmed"></div>
+              <div><div class="dir-name">Ms. Hafsa Ihteshamuddin Ahmed</div><div class="dir-dept">Asst. Professor, CSE Dept.</div></div>
+              <div class="dir-role is-teacher">Teacher Coordinator</div>
+              <div class="dir-years">2024–2028</div>
+            </div>
           </div>
         </div>
-        <div class="card-body">
-          <h4>Dr. P.R. Anisha</h4>
-          <span class="role-badge role-teacher">Teacher Coordinator</span>
-          <p class="card-dept">Professor, CSE Dept.</p>
-        </div>
-        <div class="card-footer">2024–2028</div>
-      </div>
 
-      <div class="member-card">
-        <div class="card-glow"></div>
-        <div class="avatar-wrap">
-          <div class="avatar">
-            <img src="HAFSA IUA MA'AM.jpeg" alt="Ms. Hafsa Ihteshamuddin Ahmed">
-            <div class="avatar-ring"></div>
+        <div class="dir-group reveal">
+          <div class="dir-head"><i class="fa-solid fa-users"></i> Student Coordinators<span class="rule"></span></div>
+          <div class="dir-list">
+            <div class="dir-row">
+              <div class="dir-photo"><img src="1.jpeg" alt="Mudradi Pranavi"></div>
+              <div><div class="dir-name">Mudradi Pranavi</div><div class="dir-dept">3rd Year CSE</div></div>
+              <div class="dir-role">Senior Advisor</div>
+              <div class="dir-years">2023–2027</div>
+            </div>
+            <div class="dir-row">
+              <div class="dir-photo"><img src="2.jpeg" alt="Shreeja Kadarla"></div>
+              <div><div class="dir-name">Shreeja Kadarla</div><div class="dir-dept">3rd Year CSE</div></div>
+              <div class="dir-role">Deputy Advisor</div>
+              <div class="dir-years">2023–2027</div>
+            </div>
+            <div class="dir-row">
+              <div class="dir-photo"><img src="3.jpeg" alt="Lalitya T"></div>
+              <div><div class="dir-name">Lalitya T</div><div class="dir-dept">2nd Year CSE</div></div>
+              <div class="dir-role">Event Head</div>
+              <div class="dir-years">2024–2028</div>
+            </div>
+            <div class="dir-row">
+              <div class="dir-photo"><img src="azra.jpeg" alt="Azra Jabeen"></div>
+              <div><div class="dir-name">Azra Jabeen</div><div class="dir-dept">2nd Year CSE</div></div>
+              <div class="dir-role">Event Coordinator</div>
+              <div class="dir-years">2024–2028</div>
+            </div>
+            <div class="dir-row">
+              <div class="dir-photo"><img src="15.jpeg" alt="Safa Fatima"></div>
+              <div><div class="dir-name">Safa Fatima</div><div class="dir-dept">2nd Year CSE</div></div>
+              <div class="dir-role">Operational Head</div>
+              <div class="dir-years">2024–2028</div>
+            </div>
+            <div class="dir-row">
+              <div class="dir-photo"><img src="16.jpeg" alt="Atikha Ahmed"></div>
+              <div><div class="dir-name">Atikha Ahmed</div><div class="dir-dept">2nd Year CSE</div></div>
+              <div class="dir-role">Operation Coordinator</div>
+              <div class="dir-years">2024–2028</div>
+            </div>
+            <div class="dir-row">
+              <div class="dir-photo"><img src="/8.jpeg" alt="Nitha Reddy"></div>
+              <div><div class="dir-name">Nitha Reddy</div><div class="dir-dept">2nd Year CSE</div></div>
+              <div class="dir-role">SNS Head</div>
+              <div class="dir-years">2024–2028</div>
+            </div>
+            <div class="dir-row">
+              <div class="dir-photo"><img src="7.jpeg" alt="Sanjana Vaddepally"></div>
+              <div><div class="dir-name">Sanjana Vaddepally</div><div class="dir-dept">2nd Year CSE</div></div>
+              <div class="dir-role">Social Media Networking Coordinator</div>
+              <div class="dir-years">2024–2028</div>
+            </div>
+            <div class="dir-row">
+              <div class="dir-photo"><img src="5.jpeg" alt="Gandhari Likhitha"></div>
+              <div><div class="dir-name">Gandhari Likhitha</div><div class="dir-dept">3rd Year CSE</div></div>
+              <div class="dir-role">Marketing Coordinator</div>
+              <div class="dir-years">2023–2027</div>
+            </div>
+            <div class="dir-row">
+              <div class="dir-photo"><img src="6.jpeg" alt="G.Rishitha Goud"></div>
+              <div><div class="dir-name">G.Rishitha Goud</div><div class="dir-dept">3rd Year CSE</div></div>
+              <div class="dir-role">Marketing Head</div>
+              <div class="dir-years">2023–2027</div>
+            </div>
+            <div class="dir-row">
+              <div class="dir-photo"><img src="9.jpeg" alt="Mekalollu Nandika"></div>
+              <div><div class="dir-name">Mekalollu Nandika</div><div class="dir-dept">2nd Year CSE</div></div>
+              <div class="dir-role">Designing Co-ordinator</div>
+              <div class="dir-years">2024–2028</div>
+            </div>
+            <div class="dir-row">
+              <div class="dir-photo"><img src="/10.jpeg" alt="Vyshnavi Aluri"></div>
+              <div><div class="dir-name">Vyshnavi Aluri</div><div class="dir-dept">2nd Year CSE</div></div>
+              <div class="dir-role">Marketing Coordinator</div>
+              <div class="dir-years">2024–2028</div>
+            </div>
+            <div class="dir-row">
+              <div class="dir-photo"><img src="11.jpeg" alt="Nagireddy Neha Reddy"></div>
+              <div><div class="dir-name">Nagireddy Neha Reddy</div><div class="dir-dept">2nd Year CSE</div></div>
+              <div class="dir-role">Functional Member</div>
+              <div class="dir-years">2024–2028</div>
+            </div>
+            <div class="dir-row">
+              <div class="dir-photo"><img src="12.jpeg" alt="B.Bhumika Singh"></div>
+              <div><div class="dir-name">B.Bhumika Singh</div><div class="dir-dept">3rd Year CSE</div></div>
+              <div class="dir-role">Designing Head</div>
+              <div class="dir-years">2023–2027</div>
+            </div>
+            <div class="dir-row">
+              <div class="dir-photo"><img src="13.jpeg" alt="Thiruvaipati Harini"></div>
+              <div><div class="dir-name">Thiruvaipati Harini</div><div class="dir-dept">3rd Year CSE</div></div>
+              <div class="dir-role">External Head</div>
+              <div class="dir-years">2023–2027</div>
+            </div>
+            <div class="dir-row">
+              <div class="dir-photo"><img src="14.jpeg" alt="Gangidi Sai Sree Pradyugna Reddy"></div>
+              <div><div class="dir-name">Gangidi Sai Sree Pradyugna Reddy</div><div class="dir-dept">2nd Year CSE</div></div>
+              <div class="dir-role">External Coordinator</div>
+              <div class="dir-years">2024–2028</div>
+            </div>
           </div>
         </div>
-        <div class="card-body">
-          <h4>Ms. Hafsa Ihteshamuddin Ahmed</h4>
-          <span class="role-badge role-teacher">Teacher Coordinator</span>
-          <p class="card-dept">Asst. Professor, CSE Dept.</p>
-        </div>
-        <div class="card-footer">2024–2028</div>
       </div>
-    </div>
-    </div>
-
-    <h3 class="team-block-title reveal">
-      <i class="fa-solid fa-chalkboard-user"></i> Student Coordinators
-    </h3>
-
-    <div class="member-card">
-      <div class="card-glow"></div>
-      <div class="avatar-wrap">
-        <div class="avatar"><img src="1.jpeg" alt="Mudradi Pranavi">
-          <div class="avatar-ring"></div>
-        </div>
-      </div>
-      <div class="card-body">
-        <h4>Mudradi Pranavi</h4><span class="role-badge role-student">Senior Advisor</span>
-        <p class="card-dept">3rd Year CSE</p>
-      </div>
-      <div class="card-footer">2023–2027</div>
-    </div>
-    <div class="member-card">
-      <div class="card-glow"></div>
-      <div class="avatar-wrap">
-        <div class="avatar"><img src="2.jpeg" alt="Shreeja Kadarla">
-          <div class="avatar-ring"></div>
-        </div>
-      </div>
-      <div class="card-body">
-        <h4>Shreeja Kadarla</h4><span class="role-badge role-student">Deputy Advisor</span>
-        <p class="card-dept">3rd Year CSE</p>
-      </div>
-      <div class="card-footer">2023–2027</div>
-    </div>
-    <div class="member-card">
-      <div class="card-glow"></div>
-      <div class="avatar-wrap">
-        <div class="avatar"><img src="3.jpeg" alt="Lalitya T">
-          <div class="avatar-ring"></div>
-        </div>
-      </div>
-      <div class="card-body">
-        <h4>Lalitya T</h4><span class="role-badge role-student">Event Head</span>
-        <p class="card-dept">2nd Year CSE</p>
-      </div>
-      <div class="card-footer">2024–2028</div>
-    </div>
-    <div class="member-card">
-      <div class="card-glow"></div>
-      <div class="avatar-wrap">
-        <div class="avatar"><img src="azra.jpeg" alt="Azra Jabeen">
-          <div class="avatar-ring"></div>
-        </div>
-      </div>
-      <div class="card-body">
-        <h4>Azra Jabeen</h4><span class="role-badge role-student">Event Coordinator</span>
-        <p class="card-dept">2nd Year CSE</p>
-      </div>
-      <div class="card-footer">2024–2028</div>
-    </div>
-    <div class="member-card">
-      <div class="card-glow"></div>
-      <div class="avatar-wrap">
-        <div class="avatar"><img src="15.jpeg" alt="Safa Fatima">
-          <div class="avatar-ring"></div>
-        </div>
-      </div>
-      <div class="card-body">
-        <h4>Safa Fatima</h4><span class="role-badge role-student">Operational Head</span>
-        <p class="card-dept">2nd Year CSE</p>
-      </div>
-      <div class="card-footer">2024–2028</div>
-    </div>
-    <div class="member-card">
-      <div class="card-glow"></div>
-      <div class="avatar-wrap">
-        <div class="avatar"><img src="16.jpeg" alt="Atikha Ahmed">
-          <div class="avatar-ring"></div>
-        </div>
-      </div>
-      <div class="card-body">
-        <h4>Atikha Ahmed</h4><span class="role-badge role-student">Operation Coordinator</span>
-        <p class="card-dept">2nd Year CSE</p>
-      </div>
-      <div class="card-footer">2024–2028</div>
-    </div>
-    <div class="member-card">
-      <div class="card-glow"></div>
-      <div class="avatar-wrap">
-        <div class="avatar"><img src="/8.jpeg" alt="Nitha Reddy">
-          <div class="avatar-ring"></div>
-        </div>
-      </div>
-      <div class="card-body">
-        <h4>Nitha Reddy</h4><span class="role-badge role-student">SNS Head</span>
-        <p class="card-dept">2nd Year CSE</p>
-      </div>
-      <div class="card-footer">2024–2028</div>
-    </div>
-    <div class="member-card">
-      <div class="card-glow"></div>
-      <div class="avatar-wrap">
-        <div class="avatar"><img src="7.jpeg" alt="Sanjana Vaddepally">
-          <div class="avatar-ring"></div>
-        </div>
-      </div>
-      <div class="card-body">
-        <h4>Sanjana Vaddepally</h4><span class="role-badge role-student">Social Media Networking Coordinator</span>
-        <p class="card-dept">2nd Year CSE</p>
-      </div>
-      <div class="card-footer">2024–2028</div>
-    </div>
-    <div class="member-card">
-      <div class="card-glow"></div>
-      <div class="avatar-wrap">
-        <div class="avatar"><img src="5.jpeg" alt="Gandhari Likhitha">
-          <div class="avatar-ring"></div>
-        </div>
-      </div>
-      <div class="card-body">
-        <h4>Gandhari Likhitha</h4><span class="role-badge role-student">Marketing Coordinator</span>
-        <p class="card-dept">3rd Year CSE</p>
-      </div>
-      <div class="card-footer">2023–2027</div>
-    </div>
-    <div class="member-card">
-      <div class="card-glow"></div>
-      <div class="avatar-wrap">
-        <div class="avatar"><img src="6.jpeg" alt="G.Rishitha Goud">
-          <div class="avatar-ring"></div>
-        </div>
-      </div>
-      <div class="card-body">
-        <h4>G.Rishitha Goud</h4><span class="role-badge role-student">Marketing Head</span>
-        <p class="card-dept">3rd Year CSE</p>
-      </div>
-      <div class="card-footer">2023–2027</div>
-    </div>
-
-
-    <div class="member-card">
-      <div class="card-glow"></div>
-      <div class="avatar-wrap">
-        <div class="avatar"><img src="9.jpeg" alt="Mekalollu Nandika">
-          <div class="avatar-ring"></div>
-        </div>
-      </div>
-      <div class="card-body">
-        <h4>Mekalollu Nandika</h4><span class="role-badge role-student">Designing Co-ordinator</span>
-        <p class="card-dept">2nd Year CSE</p>
-      </div>
-      <div class="card-footer">2024–2028</div>
-    </div>
-    <div class="member-card">
-      <div class="card-glow"></div>
-      <div class="avatar-wrap">
-        <div class="avatar"><img src="/10.jpeg" alt="Vyshnavi Aluri">
-          <div class="avatar-ring"></div>
-        </div>
-      </div>
-      <div class="card-body">
-        <h4>Vyshnavi Aluri</h4><span class="role-badge role-student">Marketing Coordinator</span>
-        <p class="card-dept">2nd Year CSE</p>
-      </div>
-      <div class="card-footer">2024–2028</div>
-    </div>
-    <div class="member-card">
-      <div class="card-glow"></div>
-      <div class="avatar-wrap">
-        <div class="avatar"><img src="11.jpeg" alt="Nagireddy Neha Reddy">
-          <div class="avatar-ring"></div>
-        </div>
-      </div>
-      <div class="card-body">
-        <h4>Nagireddy Neha Reddy</h4><span class="role-badge role-student">Functional Member</span>
-        <p class="card-dept">2nd Year CSE</p>
-      </div>
-      <div class="card-footer">2024–2028</div>
-    </div>
-    <div class="member-card">
-      <div class="card-glow"></div>
-      <div class="avatar-wrap">
-        <div class="avatar"><img src="12.jpeg" alt="B.Bhumika Singh">
-          <div class="avatar-ring"></div>
-        </div>
-      </div>
-      <div class="card-body">
-        <h4>B.Bhumika Singh</h4><span class="role-badge role-student">Designing Head</span>
-        <p class="card-dept">3rd Year CSE</p>
-      </div>
-      <div class="card-footer">2023–2027</div>
-    </div>
-    <div class="member-card">
-      <div class="card-glow"></div>
-      <div class="avatar-wrap">
-        <div class="avatar"><img src="13.jpeg" alt="Thiruvaipati Harini">
-          <div class="avatar-ring"></div>
-        </div>
-      </div>
-      <div class="card-body">
-        <h4>Thiruvaipati Harini</h4><span class="role-badge role-student">External Head</span>
-        <p class="card-dept">3rd Year CSE</p>
-      </div>
-      <div class="card-footer">2023–2027</div>
-    </div>
-    <div class="member-card">
-      <div class="card-glow"></div>
-      <div class="avatar-wrap">
-        <div class="avatar"><img src="14.jpeg" alt="Gangidi Sai Sree Pradyugna Reddy">
-          <div class="avatar-ring"></div>
-        </div>
-      </div>
-      <div class="card-body">
-        <h4>Gangidi Sai Sree Pradyugna Reddy</h4><span class="role-badge role-student">External Coordinator</span>
-        <p class="card-dept">2nd Year CSE</p>
-      </div>
-      <div class="card-footer">2024–2028</div>
-    </div>
+    </section>
 
     <!-- ===== VISION & MISSION ===== -->
-    <section id="vision" class="section">
-      <div class="section-header reveal">
-        <h2 class="section-title">Vision &amp; <span class="accent-glow">Mission</span></h2>
-      </div>
+    <section id="vision" class="sect sect--tint">
+      <div class="wrap">
+        <div class="sect-label reveal"><span class="num">04</span><h2>Vision &amp; Mission</h2><span class="rule"></span></div>
 
-      <div class="vm-grid">
-        <div class="vm-card reveal">
-          <div class="vm-icon-wrap">
-            <i class="fa-solid fa-eye vm-icon"></i>
-            <div class="vm-icon-ring"></div>
+        <div class="manifesto">
+          <div class="manifesto-card reveal">
+            <div class="manifesto-quote">“</div>
+            <h3>Our Vision</h3>
+            <p>To build a generation of engineers who don't just write code — they think in systems, break
+              boundaries, and architect the future. Code Crypt exists to transform curious students into confident
+              technologists who lead, innovate, and inspire.</p>
+            <ul class="check-list">
+              <li><i class="fa-solid fa-check-circle"></i> Foster a culture of curiosity and relentless learning</li>
+              <li><i class="fa-solid fa-check-circle"></i> Bridge the gap between academics and industry</li>
+              <li><i class="fa-solid fa-check-circle"></i> Make our campus a launchpad for tech innovators</li>
+            </ul>
           </div>
-          <h3>Our Vision</h3>
-          <p>To build a generation of engineers who don't just write code — they think in systems, break boundaries, and
-            architect the future. Code Crypt exists to transform curious students into confident technologists who lead,
-            innovate, and inspire.</p>
-          <ul class="vm-list">
-            <li><i class="fa-solid fa-check-circle"></i> Foster a culture of curiosity and relentless learning</li>
-            <li><i class="fa-solid fa-check-circle"></i> Bridge the gap between academics and industry</li>
-            <li><i class="fa-solid fa-check-circle"></i> Make our campus a launchpad for tech innovators</li>
-          </ul>
+
+          <div class="manifesto-card reveal">
+            <div class="manifesto-quote">“</div>
+            <h3>Our Mission</h3>
+            <p>To create a vibrant, inclusive community where every student — from a first-year beginner to a
+              final-year expert — can collaborate, compete, and grow. We do this through hands-on events,
+              open-source culture, and mentorship from peers and professionals.</p>
+            <ul class="check-list">
+              <li><i class="fa-solid fa-check-circle"></i> Organize impactful workshops, hackathons &amp; CTFs</li>
+              <li><i class="fa-solid fa-check-circle"></i> Mentor juniors through real-world project experience</li>
+              <li><i class="fa-solid fa-check-circle"></i> Connect members with alumni and industry partners</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="vm-card reveal">
-          <div class="vm-icon-wrap">
-            <i class="fa-solid fa-bullseye vm-icon"></i>
-            <div class="vm-icon-ring"></div>
-          </div>
-          <h3>Our Mission</h3>
-          <p>To create a vibrant, inclusive community where every student — from a first-year beginner to a final-year
-            expert — can collaborate, compete, and grow. We do this through hands-on events, open-source culture, and
-            mentorship from peers and professionals.</p>
-          <ul class="vm-list">
-            <li><i class="fa-solid fa-check-circle"></i> Organize impactful workshops, hackathons &amp; CTFs</li>
-            <li><i class="fa-solid fa-check-circle"></i> Mentor juniors through real-world project experience</li>
-            <li><i class="fa-solid fa-check-circle"></i> Connect members with alumni and industry partners</li>
-          </ul>
+        <div class="values-row reveal">
+          <div class="value-chip"><i class="fa-solid fa-bolt"></i> Innovation</div>
+          <div class="value-chip"><i class="fa-solid fa-handshake"></i> Collaboration</div>
+          <div class="value-chip"><i class="fa-solid fa-shield"></i> Integrity</div>
+          <div class="value-chip"><i class="fa-solid fa-seedling"></i> Growth</div>
+          <div class="value-chip"><i class="fa-solid fa-fire"></i> Passion</div>
         </div>
-      </div>
-
-      <div class="values-row reveal">
-        <div class="value-chip"><i class="fa-solid fa-bolt"></i> Innovation</div>
-        <div class="value-chip"><i class="fa-solid fa-handshake"></i> Collaboration</div>
-        <div class="value-chip"><i class="fa-solid fa-shield"></i> Integrity</div>
-        <div class="value-chip"><i class="fa-solid fa-seedling"></i> Growth</div>
-        <div class="value-chip"><i class="fa-solid fa-fire"></i> Passion</div>
       </div>
     </section>
 
     <!-- ===== CONTACT ===== -->
-    <section id="contact" class="section">
-      <div class="section-header reveal">
-        <h2 class="section-title">Get In <span class="accent-glow">Touch</span></h2>
-        <p class="section-sub">Have questions? Want to collaborate? Reach out to us.</p>
-      </div>
-      <div class="contact-grid reveal">
-        <div class="contact-card">
-          <i class="fa-solid fa-envelope contact-ico"></i>
-          <h4>Email Us</h4>
-          <a href="mailto:codecrypt@stanley.edu.in">codecrypt@stanley.edu.in</a>
-        </div>
-        <div class="contact-card">
-          <i class="fa-brands fa-linkedin-in contact-ico"></i>
-          <h4>Connect on LinkedIn</h4>
-          <a href="https://www.linkedin.com/company/codecrypt-club-stlw/" target="_blank"
-            rel="noopener">linkedin.com/codecrypt</a>
-        </div>
-        <div class="contact-card">
-          <i class="fa-brands fa-instagram contact-ico"></i>
-          <h4>Instagram</h4>
-          <a href="https://www.instagram.com/code_crypt_" target="_blank" rel="noopener">@codecrypt_cse</a>
+    <section id="contact" class="sect">
+      <div class="wrap">
+        <div class="sect-label reveal"><span class="num">05</span><h2>Get In Touch</h2><span class="rule"></span></div>
+        <p class="sect-sub reveal">Have questions? Want to collaborate? Reach out to us.</p>
+
+        <div class="contact-grid reveal">
+          <div class="contact-card">
+            <i class="fa-solid fa-envelope"></i>
+            <h4>Email Us</h4>
+            <a href="mailto:codecrypt@stanley.edu.in">codecrypt@stanley.edu.in</a>
+          </div>
+          <div class="contact-card">
+            <i class="fa-brands fa-linkedin-in"></i>
+            <h4>Connect on LinkedIn</h4>
+            <a href="https://www.linkedin.com/company/codecrypt-club-stlw/" target="_blank" rel="noopener">linkedin.com/codecrypt</a>
+          </div>
+          <div class="contact-card">
+            <i class="fa-brands fa-instagram"></i>
+            <h4>Instagram</h4>
+            <a href="https://www.instagram.com/code_crypt_" target="_blank" rel="noopener">@codecrypt_cse</a>
+          </div>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
   <footer id="footer">
-    <div class="footer-inner">
+    <div class="wrap footer-inner">
       <div class="footer-brand">
-        <div class="logo-box sm">
-          <span class="logo-bracket"></span>
-          <img src="logo.png" alt="Logo" class="logo-img">
-          <span class="logo-bracket"></span>
-        </div>
-        <span class="logo-name">Code<span class="accent">Crypt</span></span>
+        <span class="brand-mark">{ }</span>
+        <span class="brand-name">Code<em>Crypt</em></span>
       </div>
       <p class="footer-tagline">Decoding the future, one commit at a time.</p>
       <div class="footer-socials">
-        <a href="https://www.instagram.com/code_crypt_" target="_blank" rel="noopener"><i
-            class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/company/codecrypt-club-stlw/" target="_blank" rel="noopener"><i
-            class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/code_crypt_" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/codecrypt-club-stlw/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a>
         <a href="mailto:codecrypt@stanley.edu.in"><i class="fa-solid fa-envelope"></i></a>
       </div>
       <p class="footer-copy">&copy; 2025 Code Crypt · CSE Dept · All Rights Reserved</p>
@@ -645,48 +424,6 @@
 
   <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
 
-
-  <!-- Gallery 3D tilt effect (self-contained, doesn't touch script.js) -->
-  <script>
-    (function () {
-      const cards = document.querySelectorAll('.gallery-item');
-      const MAX_TILT = 8; // degrees — kept subtle for a professional feel
-
-      cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const px = x / rect.width;   // 0 → 1
-          const py = y / rect.height;  // 0 → 1
-
-          const rotateY = (px - 0.5) * MAX_TILT * 2;
-          const rotateX = (0.5 - py) * MAX_TILT * 2;
-
-          card.style.transform =
-            `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03,1.03,1.03)`;
-          card.style.setProperty('--mx', `${px * 100}%`);
-          card.style.setProperty('--my', `${py * 100}%`);
-        });
-
-        card.addEventListener('mouseleave', () => {
-          card.classList.add('dragging-off');
-          card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
-          setTimeout(() => card.classList.remove('dragging-off'), 500);
-        });
-
-        // Touch devices: skip tilt math, just a gentle tap scale
-        card.addEventListener('touchstart', () => {
-          card.style.transform = 'scale3d(0.98,0.98,0.98)';
-        }, { passive: true });
-        card.addEventListener('touchend', () => {
-          card.style.transform = 'scale3d(1,1,1)';
-        }, { passive: true });
-      });
-    })();
-  </script>
-
-  <!-- SCRIPTS -->
   <script src="script.js"></script>
 </body>
 
